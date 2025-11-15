@@ -1,2261 +1,284 @@
 {
-  "summary": {
-    "hours_by_competence": {
-      "C1": {
-        "label": "Traiter des données à des fins décisionnelles",
-        "hours": 245
-      },
-      "C2": {
-        "label": "Analyser statistiquement les données",
-        "hours": 245
-      },
-      "C3": {
-        "label": "Valoriser une production",
-        "hours": 200
-      },
-      "C4": {
-        "label": "Développer un outil décisionnel",
-        "hours": 160
-      }
-    },
-    "hours_total": 850,
-    "sae_vcod_count": 22,
-    "ressources_count": 54,
-    "proofs_count": 0
+  "meta": {
+    "etudiant": "Zodara CAMARA",
+    "parcours": "Visualisation, Conception d’outils Décisionnels",
+    "but": "BUT Science des Données"
   },
-  "competences": [
-    {
-      "id_competence": "C1",
-      "intitule": "Traiter des données à des fins décisionnelles",
-      "description": "En intervenant à toutes les étapes du cycle de vie de la donnée (insertion, modification, extraction, suppression). En utilisant le modèle de données adapté aux besoins. En s'inscrivant dans une démarche de documentation des réalisations adaptée au public visé. En traduisant correctement les demandes métier en programmes, avec le respect du cahier des charges s'il existe. En écrivant un programme correctement structuré et documenté, respectant les bonnes pratiques. En identifiant les librairies et langages dédiés."
-    },
-    {
-      "id_competence": "C2",
-      "intitule": "Analyser statistiquement les données",
-      "description": "En tenant compte du contexte de l'étude (économique, socio-démographique, commerciale, clinique…). En mettant en évidence les grandes tendances et les informations principales. En identifiant et en mettant en œuvre les techniques adaptées aux attentes du client ou de l’instance décisionnaire. En identifiant et en mettant en œuvre les techniques adaptées aux données complexes (données massives, données mal structurées, flux de données…). En tenant compte du contexte inférentiel (variabilité de l’échantillon)."
-    },
-    {
-      "id_competence": "C3",
-      "intitule": "Valoriser une production",
-      "description": "En s’adaptant au niveau d’expertise, à la culture et au statut du destinataire. En s'exprimant correctement, aussi bien en français qu’en anglais, à l'oral comme à l'écrit. En veillant aux aspects éthiques, déontologiques et réglementaires d’utilisation et de diffusion des données. En interprétant et contextualisant les résultats (citations, vérification des sources, esprit critique). En utilisant la forme de restitution adaptée. En tenant compte des réalités économiques et managériales des entreprises."
-    },
-    {
-      "id_competence": "C4",
-      "intitule": "Développer un outil décisionnel",
-      "description": "En mettant en œuvre une structuration des données adaptée à leurs caractéristiques (type, volume…). En assurant la qualité des données et minimisant les biais liés à l’incertitude et l’imprécision dans les sources. En étant sensible aux aspects éthiques, déontologiques et juridiques d’utilisation et de diffusion des données. En réalisant des solutions de visualisation spécifiques aux données métier. En intervenant à différents niveaux de la chaîne décisionnelle. En utilisant des méthodes de développement logiciel."
+
+  "stats": {
+    "total_hours": 850,
+    "nb_sae": 22,
+    "nb_preuves": 0,
+    "hours_by_competence": {
+      "C1": 230,
+      "C2": 210,
+      "C3": 190,
+      "C4": 220
     }
-  ],
+  },
+
+  "competences": {
+    "C1": {
+      "label": "Traiter des données à des fins décisionnelles",
+      "description": "Intervenir à toutes les étapes du cycle de vie de la donnée en utilisant des modèles de données et des programmes adaptés."
+    },
+    "C2": {
+      "label": "Analyser statistiquement les données",
+      "description": "Mettre en évidence les grandes tendances et les informations clés à l’aide de méthodes statistiques appropriées."
+    },
+    "C3": {
+      "label": "Valoriser une production dans un contexte professionnel",
+      "description": "Restituer et communiquer les résultats en s’adaptant au public, au contexte et aux contraintes professionnelles."
+    },
+    "C4": {
+      "label": "Développer un outil décisionnel",
+      "description": "Concevoir et maintenir des solutions logicielles et des composants s’intégrant dans une chaîne décisionnelle."
+    }
+  },
+
   "ressources": [
-    {
-      "code": "R1.01",
-      "titre": "Tableur et reporting",
-      "description": "Création de formules, graphiques, TCD, reporting"
-    },
-    {
-      "code": "R1.02",
-      "titre": "Bases de données relationnelles 1",
-      "description": "SGBD relationnel, SQL, modèle relationnel"
-    },
-    {
-      "code": "R1.03",
-      "titre": "Bases de la programmation 1",
-      "description": null
-    },
-    {
-      "code": "R1.04",
-      "titre": "Statistique descriptive 1",
-      "description": null
-    },
-    {
-      "code": "R1.05",
-      "titre": "Probabilités 1",
-      "description": null
-    },
-    {
-      "code": "R1.06",
-      "titre": "Mathématiques - analyse",
-      "description": null
-    },
-    {
-      "code": "R1.07",
-      "titre": "Initiation à l’anglais de spécialité",
-      "description": null
-    },
-    {
-      "code": "R1.08",
-      "titre": "Communication de l’information et recherche documentaire",
-      "description": null
-    },
-    {
-      "code": "R1.09",
-      "titre": "Découverte des données de l’environnement territorial et économique",
-      "description": null
-    },
-    {
-      "code": "R1.10",
-      "titre": "Projet Personnel et Professionnel 1",
-      "description": "PPP 1"
-    },
-    {
-      "code": "R2.01",
-      "titre": "Reporting et Datavisualisation",
-      "description": null
-    },
-    {
-      "code": "R2.02",
-      "titre": "Bases de données relationnelles 2",
-      "description": null
-    },
-    {
-      "code": "R2.03",
-      "titre": "Bases de la programmation 2",
-      "description": null
-    },
-    {
-      "code": "R2.04",
-      "titre": "Programmation statistique 2",
-      "description": null
-    },
-    {
-      "code": "R2.05",
-      "titre": "Statistique descriptive 2",
-      "description": null
-    },
-    {
-      "code": "R2.06",
-      "titre": "Probabilités 2",
-      "description": null
-    },
-    {
-      "code": "R2.07",
-      "titre": "Bases de l’algèbre",
-      "description": null
-    },
-    {
-      "code": "R2.08",
-      "titre": "Statistique inférentielle",
-      "description": null
-    },
-    {
-      "code": "R2.09",
-      "titre": "Approfondissement de l’anglais de spécialité",
-      "description": null
-    },
-    {
-      "code": "R2.10",
-      "titre": "Communication et sémiologie",
-      "description": null
-    },
-    {
-      "code": "R2.11",
-      "titre": "Étude des données de l’environnement entrepreneurial et économique",
-      "description": null
-    },
-    {
-      "code": "R2.12",
-      "titre": "Projet Personnel et Professionnel 2",
-      "description": "PPP 2"
-    },
-    {
-      "code": "R3.01",
-      "titre": "Utilisation avancée d’outils de reporting",
-      "description": null
-    },
-    {
-      "code": "R3.02",
-      "titre": "Systèmes d’information décisionnels",
-      "description": null
-    },
-    {
-      "code": "R3.03",
-      "titre": "Technologies web",
-      "description": null
-    },
-    {
-      "code": "R3.04",
-      "titre": "Programmation statistique automatisée",
-      "description": null
-    },
-    {
-      "code": "R3.05",
-      "titre": "Algèbre linéaire",
-      "description": null
-    },
-    {
-      "code": "R3.06",
-      "titre": "Tests d’hypothèses pour analyses bivariées",
-      "description": null
-    },
-    {
-      "code": "R3.07",
-      "titre": "Anglais professionnel",
-      "description": null
-    },
-    {
-      "code": "R3.08",
-      "titre": "Communication professionnelle",
-      "description": null
-    },
-    {
-      "code": "R3.09",
-      "titre": "Les données de l’environnement entrepreneurial et économique pour l’aide à la décision",
-      "description": null
-    },
-    {
-      "code": "R3.10",
-      "titre": "Programmation objet",
-      "description": null
-    },
-    {
-      "code": "R3.11",
-      "titre": "Projet Personnel et Professionnel 3",
-      "description": "PPP 3"
-    },
-    {
-      "code": "R4.01",
-      "titre": "Automatisation et test en programmation",
-      "description": null
-    },
-    {
-      "code": "R4.02",
-      "titre": "Méthodes factorielles",
-      "description": null
-    },
-    {
-      "code": "R4.03",
-      "titre": "Classification automatique",
-      "description": null
-    },
-    {
-      "code": "R4.04",
-      "titre": "Anglais scientifique et argumentation",
-      "description": null
-    },
-    {
-      "code": "R4.05",
-      "titre": "Communication scientifique et argumentation",
-      "description": null
-    },
-    {
-      "code": "R4.06",
-      "titre": "Exploration et valorisation de données dans un cadre juridique et économique",
-      "description": null
-    },
-    {
-      "code": "R4.07",
-      "titre": "Projet Personnel et Professionnel 4",
-      "description": "PPP 4"
-    },
-    {
-      "code": "R4.08",
-      "titre": "Préparation/intégration de données",
-      "description": null
-    },
-    {
-      "code": "R4.09",
-      "titre": "Programmation web",
-      "description": null
-    },
-    {
-      "code": "R5.01",
-      "titre": "Bases de données NoSQL",
-      "description": null
-    },
-    {
-      "code": "R5.02",
-      "titre": "Data mining",
-      "description": null
-    },
-    {
-      "code": "R5.03",
-      "titre": "Anglais pour la coopération internationale et l’écrit international des données",
-      "description": null
-    },
-    {
-      "code": "R5.04",
-      "titre": "Communication des données, éthique et responsabilités",
-      "description": null
-    },
-    {
-      "code": "R5.05",
-      "titre": "Projet Personnel et Professionnel 5",
-      "description": "PPP 5"
-    },
-    {
-      "code": "R5.06",
-      "titre": "Développement logiciel",
-      "description": null
-    },
-    {
-      "code": "R5.07",
-      "titre": "Programmation web pour la visualisation",
-      "description": null
-    },
-    {
-      "code": "R6.01",
-      "titre": "Big Data : enjeux, stockage et extraction",
-      "description": null
-    },
-    {
-      "code": "R6.02",
-      "titre": "Méthodes statistiques pour le Big Data",
-      "description": null
-    },
-    {
-      "code": "R6.03",
-      "titre": "Anglais pour la communication d’entreprise",
-      "description": null
-    },
-    {
-      "code": "R6.04",
-      "titre": "Communication pour le management",
-      "description": null
-    },
-    {
-      "code": "R6.05",
-      "titre": "Approfondissement en Big Data",
-      "description": null
-    }
+    { "code": "R1.01", "titre": "Tableur et reporting", "semestre": 1 },
+    { "code": "R1.02", "titre": "Bases de données relationnelles 1", "semestre": 1 },
+    { "code": "R1.03", "titre": "Bases de la programmation 1", "semestre": 1 },
+    { "code": "R1.04", "titre": "Statistique descriptive 1", "semestre": 1 },
+    { "code": "R1.05", "titre": "Probabilités 1", "semestre": 1 },
+    { "code": "R1.06", "titre": "Mathématiques - analyse", "semestre": 1 },
+    { "code": "R1.07", "titre": "Initiation à l’anglais de spécialité", "semestre": 1 },
+    { "code": "R1.08", "titre": "Communication de l’information et recherche documentaire", "semestre": 1 },
+    { "code": "R1.09", "titre": "Données de l’environnement territorial et économique", "semestre": 1 },
+    { "code": "R1.10", "titre": "Projet Personnel et Professionnel 1", "semestre": 1 },
+
+    { "code": "R2.01", "titre": "Reporting et Datavisualisation", "semestre": 2 },
+    { "code": "R2.02", "titre": "Bases de données relationnelles 2", "semestre": 2 },
+    { "code": "R2.03", "titre": "Bases de la programmation 2", "semestre": 2 },
+    { "code": "R2.04", "titre": "Programmation statistique 2", "semestre": 2 },
+    { "code": "R2.05", "titre": "Statistique descriptive 2", "semestre": 2 },
+    { "code": "R2.06", "titre": "Probabilités 2", "semestre": 2 },
+    { "code": "R2.07", "titre": "Bases de l’algèbre", "semestre": 2 },
+    { "code": "R2.08", "titre": "Statistique inférentielle", "semestre": 2 },
+    { "code": "R2.09", "titre": "Approfondissement de l’anglais de spécialité", "semestre": 2 },
+    { "code": "R2.10", "titre": "Communication et sémiologie", "semestre": 2 },
+    { "code": "R2.11", "titre": "Données de l’environnement entrepreneurial et économique", "semestre": 2 },
+    { "code": "R2.12", "titre": "Projet Personnel et Professionnel 2", "semestre": 2 },
+
+    { "code": "R3.01", "titre": "Utilisation avancée d’outils de reporting", "semestre": 3 },
+    { "code": "R3.02", "titre": "Systèmes d’information décisionnels", "semestre": 3 },
+    { "code": "R3.03", "titre": "Technologies web", "semestre": 3 },
+    { "code": "R3.04", "titre": "Programmation statistique automatisée", "semestre": 3 },
+    { "code": "R3.05", "titre": "Algèbre linéaire", "semestre": 3 },
+    { "code": "R3.06", "titre": "Tests d’hypothèses pour analyses bivariées", "semestre": 3 },
+    { "code": "R3.07", "titre": "Anglais professionnel", "semestre": 3 },
+    { "code": "R3.08", "titre": "Communication professionnelle", "semestre": 3 },
+    { "code": "R3.09", "titre": "Données de l’environnement entrepreneurial et économique pour l’aide à la décision", "semestre": 3 },
+    { "code": "R3.10", "titre": "Programmation objet", "semestre": 3 },
+    { "code": "R3.11", "titre": "Projet Personnel et Professionnel 3", "semestre": 3 },
+
+    { "code": "R4.01", "titre": "Automatisation et test en programmation", "semestre": 4 },
+    { "code": "R4.02", "titre": "Méthodes factorielles", "semestre": 4 },
+    { "code": "R4.03", "titre": "Classification automatique", "semestre": 4 },
+    { "code": "R4.04", "titre": "Anglais scientifique et argumentation", "semestre": 4 },
+    { "code": "R4.05", "titre": "Communication scientifique et argumentation", "semestre": 4 },
+    { "code": "R4.06", "titre": "Exploration et valorisation de données dans un cadre juridique et économique", "semestre": 4 },
+    { "code": "R4.07", "titre": "Projet Personnel et Professionnel 4", "semestre": 4 },
+    { "code": "R4.08", "titre": "Préparation / intégration de données", "semestre": 4 },
+    { "code": "R4.09", "titre": "Programmation web", "semestre": 4 },
+
+    { "code": "R5.01", "titre": "Bases de données NoSQL", "semestre": 5 },
+    { "code": "R5.02", "titre": "Data mining", "semestre": 5 },
+    { "code": "R5.03", "titre": "Anglais pour la coopération internationale", "semestre": 5 },
+    { "code": "R5.04", "titre": "Communication des données, éthique et responsabilités", "semestre": 5 },
+    { "code": "R5.05", "titre": "Projet Personnel et Professionnel 5", "semestre": 5 },
+    { "code": "R5.06", "titre": "Développement logiciel", "semestre": 5 },
+    { "code": "R5.07", "titre": "Programmation web pour la visualisation", "semestre": 5 },
+
+    { "code": "R6.01", "titre": "Big Data : enjeux, stockage et extraction", "semestre": 6 },
+    { "code": "R6.02", "titre": "Méthodes statistiques pour le Big Data", "semestre": 6 },
+    { "code": "R6.03", "titre": "Anglais pour la communication d’entreprise", "semestre": 6 },
+    { "code": "R6.04", "titre": "Communication pour le management", "semestre": 6 },
+    { "code": "R6.05", "titre": "Approfondissement en Big Data", "semestre": 6 }
   ],
-  "acs": [
-    {
-      "code": "AC11.01",
-      "intitule": "Interpréter et prendre en compte le besoin du client",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC11.02",
-      "intitule": "Respecter les formalismes de notation",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC11.03",
-      "intitule": "Connaître la syntaxe des langages et savoir l’utiliser",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC11.04",
-      "intitule": "Maîtriser la structure des données à exploiter (importance)",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC11.05",
-      "intitule": "Comprendre les structures algorithmiques de base",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC11.06",
-      "intitule": "Prendre conscience de l’intérêt de la programmation",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC12.01",
-      "intitule": "Réaliser que les sources de données ont des caractéristiques propres à considérer",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC12.02",
-      "intitule": "Comprendre qu’une analyse correcte ne peut émaner que de données propres et préparées",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC12.03",
-      "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour décrire une variable statistique",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC12.04",
-      "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables.",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC12.05",
-      "intitule": "Comprendre l'intérêt de l’utilisation d’un modèle probabiliste",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC12.06",
-      "intitule": "Appréhender la notion de fluctuation d'échantillonnage, notamment à l’aide de simulations probabilistes",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC13.01",
-      "intitule": "Prendre connaissance des biais rencontrés dans la mise en place d’une enquête",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC13.02",
-      "intitule": "Identifier l’importance de contextualiser ses données",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC13.03",
-      "intitule": "Mesurer l’importance de mettre en évidence des résultats clés par l’utilisation d’indicateurs pertinents",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC13.04",
-      "intitule": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC13.05",
-      "intitule": "Comprendre les intérêts de la data visualisation et de l’infographie",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC13.06",
-      "intitule": "Mesurer l’importance d’une expression précise et nuancée dans la communication en français et dans une langue étrangère des résultats",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC21.01",
-      "intitule": "Comprendre l’organisation des données de l’entreprise",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC21.02",
-      "intitule": "Réaliser le rôle central et spécifique de l’entrepôt de données dans la chaîne décisionnelle",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC21.03",
-      "intitule": "Identifier et résoudre les problèmes d’intégration de sources complémentaires et hétérogènes",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC21.04",
-      "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC21.05",
-      "intitule": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC21.06",
-      "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC22.01",
-      "intitule": "Prendre conscience de la différence entre modélisation statistique et analyse exploratoire",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC22.02",
-      "intitule": "Saisir la spécificité de l’analyse des données temporelles ou chronologiques",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC22.05",
-      "intitule": "Apprécier les limites de validité des modèles utilisés",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC23.01",
-      "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC23.02",
-      "intitule": "Savoir défendre ses choix d’analyses",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC23.03",
-      "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC23.04",
-      "intitule": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC24.01",
-      "intitule": "Comprendre le rôle fondamental de l’analyse des besoins et de l’existant dans un projet décisionnel",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC24.02",
-      "intitule": "Percevoir les enjeux de l’automatisation et de l’interopérabilité d’un ensemble de tâches",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC24.03",
-      "intitule": "Prendre conscience des différences entre outils (logiciels, langages) pour choisir le plus adapté",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC24.04",
-      "intitule": "Comprendre le cycle de vie d’un projet informatique",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC25.01",
-      "intitule": "Comprendre les enjeux des relations en milieu professionnel adaptées à l’interlocuteur et à sa culture",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC31.02",
-      "intitule": "Spécificités des données complexes",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC31.03",
-      "intitule": "Mener une veille technologique",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC32.02",
-      "intitule": "Importance de la mise en œuvre de méthodes adaptées",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC33.01",
-      "intitule": "Savoir transformer la donnée",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC33.02",
-      "intitule": "Mesurer l’impact du RGPD",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC33.03",
-      "intitule": "Identifier les formes de bonne communication",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC33.04",
-      "intitule": "Comprendre les mécanismes de base de l’IA",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC33.05",
-      "intitule": "Être force de proposition",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC34.01",
-      "intitule": "Prendre conscience de la nécessité de différencier les interlocuteurs",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC34.02",
-      "intitule": "Défendre ses choix de solution",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC34.03",
-      "intitule": "Réaliser l’intérêt d’appliquer des méthodes de développement",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC34.04",
-      "intitule": "Apprécier l’intérêt du gestionnaire de versions",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC41.01",
-      "intitule": "Comprendre l’organisation des données de l’entreprise",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC41.02",
-      "intitule": "Réaliser le rôle central et spécifique de l’entrepôt de données dans la chaine décisionnelle",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC41.03",
-      "intitule": "Identifier et résoudre les problèmes d’intégration de sources complémentaires et hétérogènes",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC41.04",
-      "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC41.05",
-      "intitule": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC43.01",
-      "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC43.02",
-      "intitule": "Savoir défendre ses choix d’analyses",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC43.03",
-      "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC43.04",
-      "intitule": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC44.01",
-      "intitule": "Comprendre le rôle fondamental de l’analyse des besoins et de l’existant dans un projet décisionnel",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC44.02",
-      "intitule": "Percevoir les enjeux de l’automatisation et de l’interopérabilité d’un ensemble de tâches",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC44.03",
-      "intitule": "Prendre conscience des différences entre outils (logiciels, langages) pour choisir le plus adapté",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC44.04",
-      "intitule": "Comprendre le cycle de vie d’un projet informatique",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC52.01",
-      "intitule": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC52.02",
-      "intitule": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC52.03",
-      "intitule": "Saisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques(Marketing, Biostatistique, Statistique spatiale, Gestion",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC52.04",
-      "intitule": "Comprendre les mécanismes de bases de l’intelligence artificielle (apprentissage statistique supervisé, échan-tillons d’apprentissage et échantillons de test",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC53.01",
-      "intitule": "Mesurer l’impact d’un respect de la législation en terme de droit des données",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC53.02",
-      "intitule": "Identifier les clés d’une bonne communication (procédures et techniques utilisées)",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC53.03",
-      "intitule": "Mesurer l’importance de comprendre et de répondre à l’ensemble des problématiques posées",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC53.04",
-      "intitule": "Être force de proposition",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC61.01",
-      "intitule": "Identifier les solutions technologiques permettant la collecte et la diffusion de données",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC61.02",
-      "intitule": "Comprendre les spécificités des données complexes et de leur exploitation",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC61.03",
-      "intitule": "Savoir mener une veille technologique",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC62.01",
-      "intitule": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC62.02",
-      "intitule": "Saisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques marketing, Biostatistique, Statistique spatiale, Gestion ",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC63.01",
-      "intitule": "Savoir transformer la donnée pour la mettre en conformité avec des normes (anonymisation, normalisation",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC63.02",
-      "intitule": "Mesurer l’impact d’un respect de la législation en terme de droit des données",
-      "description": null,
-      "id_competence": "C2"
-    },
-    {
-      "code": "AC63.03",
-      "intitule": "Identifier les clés d’une bonne communication (procédures et techniques utilisées",
-      "description": null,
-      "id_competence": "C3"
-    },
-    {
-      "code": "AC63.04",
-      "intitule": "Mesurer l’importance de comprendre et de répondre à l’ensemble des problématiques posées",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC63.05",
-      "intitule": "Être force de proposition",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC63.06",
-      "intitule": "Prendre conscience de la nécessité d’intégrer la vision de l’interlocuteur (transversalité, international, multiculture, niveau d’expertise",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC64.01",
-      "intitule": "Prendre conscience de la nécessité d’utiliser des moyens specifiques pour exploiter les Big data ou les flux de données",
-      "description": null,
-      "id_competence": "C1"
-    },
-    {
-      "code": "AC64.02",
-      "intitule": "Défendre ses choix de solution par un argumentaire éclairé",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC64.03",
-      "intitule": "Réaliser l’intérêt d’appliquer les méthodes de développement dans la réalisation un projet informatique",
-      "description": null,
-      "id_competence": "C4"
-    },
-    {
-      "code": "AC64.04",
-      "intitule": "Apprécier l’intérêt de l’utilisation d’un gestionnaire de versions de code ",
-      "description": null,
-      "id_competence": "C4"
-    }
-  ],
+
   "sae": [
     {
-      "id_sae": 1,
       "code": "SAÉ 1.01",
       "titre": "Reporting à partir de données stockées dans un SGBD relationnel",
       "semestre": 1,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC11.01",
-          "intitule": "Interpréter et prendre en compte le besoin du client"
-        },
-        {
-          "code": "AC11.02",
-          "intitule": "Respecter les formalismes de notation"
-        },
-        {
-          "code": "AC11.03",
-          "intitule": "Connaître la syntaxe des langages et savoir l’utiliser"
-        },
-        {
-          "code": "AC11.04",
-          "intitule": "Maîtriser la structure des données à exploiter (importance)"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R1.01",
-          "titre": "Tableur et reporting"
-        },
-        {
-          "code": "R1.02",
-          "titre": "Bases de données relationnelles 1"
-        },
-        {
-          "code": "R1.10",
-          "titre": "Projet Personnel et Professionnel 1"
-        }
-      ]
+      "competences": ["C1"],
+      "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel (requêtes SQL, tableaux de bord)."
     },
     {
-      "id_sae": 2,
       "code": "SAÉ 1.02",
       "titre": "Écriture et lecture de fichiers de données",
       "semestre": 1,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC11.01",
-          "intitule": "Interpréter et prendre en compte le besoin du client"
-        },
-        {
-          "code": "AC11.02",
-          "intitule": "Respecter les formalismes de notation"
-        },
-        {
-          "code": "AC11.03",
-          "intitule": "Connaître la syntaxe des langages et savoir l’utiliser"
-        },
-        {
-          "code": "AC11.04",
-          "intitule": "Maîtriser la structure des données à exploiter (importance)"
-        },
-        {
-          "code": "AC11.05",
-          "intitule": "Comprendre les structures algorithmiques de base"
-        },
-        {
-          "code": "AC11.06",
-          "intitule": "Prendre conscience de l’intérêt de la programmation"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R1.03",
-          "titre": "Bases de la programmation 1"
-        },
-        {
-          "code": "R1.10",
-          "titre": "Projet Personnel et Professionnel 1"
-        }
-      ]
+      "competences": ["C1"],
+      "description": "Automatiser l’écriture et la lecture de fichiers de données pour alimenter des traitements décisionnels."
     },
     {
-      "id_sae": 3,
       "code": "SAÉ 1.03",
-      "titre": "Préparation et synthèse d’une analyse (statistique) simple",
+      "titre": "Préparation et synthèse d’une analyse simple",
       "semestre": 1,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC12.01",
-          "intitule": "Réaliser que les sources de données ont des caractéristiques propres à considérer"
-        },
-        {
-          "code": "AC12.02",
-          "intitule": "Comprendre qu’une analyse correcte ne peut émaner que de données propres et préparées"
-        },
-        {
-          "code": "AC12.03",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour décrire une variable statistique"
-        },
-        {
-          "code": "AC12.04",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables."
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R1.04",
-          "titre": "Statistique descriptive 1"
-        },
-        {
-          "code": "R1.10",
-          "titre": "Projet Personnel et Professionnel 1"
-        }
-      ]
+      "competences": ["C2"],
+      "description": "Préparer un tableau de données, choisir des indicateurs descriptifs et les interpréter."
     },
     {
-      "id_sae": 4,
       "code": "SAÉ 1.04",
-      "titre": "Apprendre en situation professionnelle ou production de données en entreprise",
+      "titre": "Apprendre en situation professionnelle ou production de données",
       "semestre": 1,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "1"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC13.02",
-          "intitule": "Identifier l’importance de contextualiser ses données"
-        },
-        {
-          "code": "AC13.03",
-          "intitule": "Mesurer l’importance de mettre en évidence des résultats clés par l’utilisation d’indicateurs pertinents"
-        },
-        {
-          "code": "AC13.04",
-          "intitule": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R1.09",
-          "titre": "Découverte des données de l’environnement territorial et économique"
-        },
-        {
-          "code": "R1.10",
-          "titre": "Projet Personnel et Professionnel 1"
-        }
-      ]
+      "competences": ["C3"],
+      "description": "Découvrir un contexte professionnel ou produire des données et en restituer les résultats."
     },
     {
-      "id_sae": 5,
       "code": "SAÉ 1.05",
       "titre": "Présentation en anglais d’un territoire économique et culturel",
       "semestre": 1,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "1"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC13.04",
-          "intitule": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie"
-        },
-        {
-          "code": "AC13.06",
-          "intitule": "Mesurer l’importance d’une expression précise et nuancée dans la communication en français et dans une langue étrangère des résultats"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R1.07",
-          "titre": "Initiation à l’anglais de spécialité"
-        },
-        {
-          "code": "R1.08",
-          "titre": "Communication de l’information et recherche documentaire"
-        },
-        {
-          "code": "R1.09",
-          "titre": "Découverte des données de l’environnement territorial et économique"
-        },
-        {
-          "code": "R1.10",
-          "titre": "Projet Personnel et Professionnel 1"
-        }
-      ]
+      "competences": ["C3"],
+      "description": "Présenter en anglais un territoire en mobilisant des indicateurs économiques et culturels."
     },
     {
-      "id_sae": 6,
       "code": "SAÉ 1.06",
       "titre": "Mise en œuvre d’une enquête",
       "semestre": 1,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "1"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC13.01",
-          "intitule": "Prendre connaissance des biais rencontrés dans la mise en place d’une enquête"
-        },
-        {
-          "code": "AC13.02",
-          "intitule": "Identifier l’importance de contextualiser ses données"
-        },
-        {
-          "code": "AC13.03",
-          "intitule": "Mesurer l’importance de mettre en évidence des résultats clés par l’utilisation d’indicateurs pertinents"
-        },
-        {
-          "code": "AC13.04",
-          "intitule": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie"
-        },
-        {
-          "code": "AC13.05",
-          "intitule": "Comprendre les intérêts de la data visualisation et de l’infographie"
-        },
-        {
-          "code": "AC13.06",
-          "intitule": "Mesurer l’importance d’une expression précise et nuancée dans la communication en français et dans une langue étrangère des résultats"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R1.08",
-          "titre": "Communication de l’information et recherche documentaire"
-        },
-        {
-          "code": "R1.09",
-          "titre": "Découverte des données de l’environnement territorial et économique"
-        },
-        {
-          "code": "R1.10",
-          "titre": "Projet Personnel et Professionnel 1"
-        }
-      ]
+      "competences": ["C3"],
+      "description": "Concevoir et mener une enquête, puis analyser et présenter les résultats."
     },
+
     {
-      "id_sae": 7,
       "code": "SAÉ 2.01",
       "titre": "Conception et implémentation d’une base de données",
       "semestre": 2,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC11.01",
-          "intitule": "Interpréter et prendre en compte le besoin du client"
-        },
-        {
-          "code": "AC11.02",
-          "intitule": "Respecter les formalismes de notation"
-        },
-        {
-          "code": "AC11.03",
-          "intitule": "Connaître la syntaxe des langages et savoir l’utiliser"
-        },
-        {
-          "code": "AC11.04",
-          "intitule": "Maîtriser la structure des données à exploiter (importance)"
-        },
-        {
-          "code": "AC11.05",
-          "intitule": "Comprendre les structures algorithmiques de base"
-        },
-        {
-          "code": "AC11.06",
-          "intitule": "Prendre conscience de l’intérêt de la programmation"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R2.01",
-          "titre": "Reporting et Datavisualisation"
-        },
-        {
-          "code": "R2.02",
-          "titre": "Bases de données relationnelles 2"
-        },
-        {
-          "code": "R2.03",
-          "titre": "Bases de la programmation 2"
-        },
-        {
-          "code": "R2.12",
-          "titre": "Projet Personnel et Professionnel 2"
-        }
-      ]
+      "competences": ["C1"],
+      "description": "Modéliser et implémenter une base de données adaptée à un besoin métier."
     },
     {
-      "id_sae": 8,
       "code": "SAÉ 2.02",
       "titre": "Estimation par échantillonnage",
       "semestre": 2,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC12.01",
-          "intitule": "Réaliser que les sources de données ont des caractéristiques propres à considérer"
-        },
-        {
-          "code": "AC12.02",
-          "intitule": "Comprendre qu’une analyse correcte ne peut émaner que de données propres et préparées"
-        },
-        {
-          "code": "AC12.05",
-          "intitule": "Comprendre l'intérêt de l’utilisation d’un modèle probabiliste"
-        },
-        {
-          "code": "AC12.06",
-          "intitule": "Appréhender la notion de fluctuation d'échantillonnage, notamment à l’aide de simulations probabilistes"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R2.06",
-          "titre": "Probabilités 2"
-        },
-        {
-          "code": "R2.08",
-          "titre": "Statistique inférentielle"
-        },
-        {
-          "code": "R2.12",
-          "titre": "Projet Personnel et Professionnel 2"
-        }
-      ]
+      "competences": ["C2"],
+      "description": "Mettre en œuvre un plan de sondage et réaliser une estimation à partir d’un échantillon."
     },
     {
-      "id_sae": 9,
       "code": "SAÉ 2.03",
       "titre": "Régression sur données réelles",
       "semestre": 2,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC12.03",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour décrire une variable statistique"
-        },
-        {
-          "code": "AC12.04",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables."
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R2.04",
-          "titre": "Programmation statistique 2"
-        },
-        {
-          "code": "R2.05",
-          "titre": "Statistique descriptive 2"
-        },
-        {
-          "code": "R2.12",
-          "titre": "Projet Personnel et Professionnel 2"
-        }
-      ]
+      "competences": ["C2"],
+      "description": "Ajuster et interpréter un modèle de régression sur des données réelles."
     },
     {
-      "id_sae": 10,
       "code": "SAÉ 2.04",
       "titre": "Datavisualisation",
       "semestre": 2,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": "2"
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": "2"
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC11.01",
-          "intitule": "Interpréter et prendre en compte le besoin du client"
-        },
-        {
-          "code": "AC11.04",
-          "intitule": "Maîtriser la structure des données à exploiter (importance)"
-        },
-        {
-          "code": "AC12.02",
-          "intitule": "Comprendre qu’une analyse correcte ne peut émaner que de données propres et préparées"
-        },
-        {
-          "code": "AC12.03",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour décrire une variable statistique"
-        },
-        {
-          "code": "AC12.04",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables."
-        },
-        {
-          "code": "AC13.02",
-          "intitule": "Identifier l’importance de contextualiser ses données"
-        },
-        {
-          "code": "AC13.05",
-          "intitule": "Comprendre les intérêts de la data visualisation et de l’infographie"
-        },
-        {
-          "code": "AC13.06",
-          "intitule": "Mesurer l’importance d’une expression précise et nuancée dans la communication en français et dans une langue étrangère des résultats"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R2.01",
-          "titre": "Reporting et Datavisualisation"
-        },
-        {
-          "code": "R2.05",
-          "titre": "Statistique descriptive 2"
-        },
-        {
-          "code": "R2.10",
-          "titre": "Communication et sémiologie"
-        },
-        {
-          "code": "R2.12",
-          "titre": "Projet Personnel et Professionnel 2"
-        }
-      ]
+      "competences": ["C1", "C2", "C3"],
+      "description": "Concevoir des visualisations interactives permettant d’explorer et de communiquer des données."
     },
     {
-      "id_sae": 11,
       "code": "SAÉ 2.05",
       "titre": "Construction et présentation d’indicateurs de performance",
       "semestre": 2,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "2"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC13.02",
-          "intitule": "Identifier l’importance de contextualiser ses données"
-        },
-        {
-          "code": "AC13.03",
-          "intitule": "Mesurer l’importance de mettre en évidence des résultats clés par l’utilisation d’indicateurs pertinents"
-        },
-        {
-          "code": "AC13.04",
-          "intitule": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie"
-        },
-        {
-          "code": "AC13.05",
-          "intitule": "Comprendre les intérêts de la data visualisation et de l’infographie"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R2.11",
-          "titre": "Étude des données de l’environnement entrepreneurial et économique"
-        },
-        {
-          "code": "R2.12",
-          "titre": "Projet Personnel et Professionnel 2"
-        }
-      ]
+      "competences": ["C3"],
+      "description": "Construire des tableaux de bord de performance et les présenter à un client."
     },
     {
-      "id_sae": 12,
       "code": "SAÉ 2.06",
       "titre": "Analyse de données, reporting et datavisualisation",
       "semestre": 2,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC11.01",
-          "intitule": "Interpréter et prendre en compte le besoin du client"
-        },
-        {
-          "code": "AC11.02",
-          "intitule": "Respecter les formalismes de notation"
-        },
-        {
-          "code": "AC11.03",
-          "intitule": "Connaître la syntaxe des langages et savoir l’utiliser"
-        },
-        {
-          "code": "AC11.04",
-          "intitule": "Maîtriser la structure des données à exploiter (importance)"
-        },
-        {
-          "code": "AC11.05",
-          "intitule": "Comprendre les structures algorithmiques de base"
-        },
-        {
-          "code": "AC11.06",
-          "intitule": "Prendre conscience de l’intérêt de la programmation"
-        },
-        {
-          "code": "AC12.01",
-          "intitule": "Réaliser que les sources de données ont des caractéristiques propres à considérer"
-        },
-        {
-          "code": "AC12.02",
-          "intitule": "Comprendre qu’une analyse correcte ne peut émaner que de données propres et préparées"
-        },
-        {
-          "code": "AC12.03",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour décrire une variable statistique"
-        },
-        {
-          "code": "AC12.04",
-          "intitule": "Comprendre l’intérêt des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables."
-        },
-        {
-          "code": "AC12.05",
-          "intitule": "Comprendre l'intérêt de l’utilisation d’un modèle probabiliste"
-        },
-        {
-          "code": "AC12.06",
-          "intitule": "Appréhender la notion de fluctuation d'échantillonnage, notamment à l’aide de simulations probabilistes"
-        },
-        {
-          "code": "AC13.01",
-          "intitule": "Prendre connaissance des biais rencontrés dans la mise en place d’une enquête"
-        },
-        {
-          "code": "AC13.02",
-          "intitule": "Identifier l’importance de contextualiser ses données"
-        },
-        {
-          "code": "AC13.03",
-          "intitule": "Mesurer l’importance de mettre en évidence des résultats clés par l’utilisation d’indicateurs pertinents"
-        },
-        {
-          "code": "AC13.04",
-          "intitule": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie"
-        },
-        {
-          "code": "AC13.05",
-          "intitule": "Comprendre les intérêts de la data visualisation et de l’infographie"
-        },
-        {
-          "code": "AC13.06",
-          "intitule": "Mesurer l’importance d’une expression précise et nuancée dans la communication en français et dans une langue étrangère des résultats"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R2.01",
-          "titre": "Reporting et Datavisualisation"
-        },
-        {
-          "code": "R2.02",
-          "titre": "Bases de données relationnelles 2"
-        },
-        {
-          "code": "R2.03",
-          "titre": "Bases de la programmation 2"
-        },
-        {
-          "code": "R2.04",
-          "titre": "Programmation statistique 2"
-        },
-        {
-          "code": "R2.05",
-          "titre": "Statistique descriptive 2"
-        },
-        {
-          "code": "R2.06",
-          "titre": "Probabilités 2"
-        },
-        {
-          "code": "R2.08",
-          "titre": "Statistique inférentielle"
-        },
-        {
-          "code": "R2.09",
-          "titre": "Approfondissement de l’anglais de spécialité"
-        },
-        {
-          "code": "R2.10",
-          "titre": "Communication et sémiologie"
-        },
-        {
-          "code": "R2.11",
-          "titre": "Étude des données de l’environnement entrepreneurial et économique"
-        },
-        {
-          "code": "R2.12",
-          "titre": "Projet Personnel et Professionnel 2"
-        }
-      ]
+      "competences": ["C1", "C2", "C3"],
+      "description": "Réaliser une étude complète : préparation des données, analyses statistiques, reporting et restitution."
     },
+
     {
-      "id_sae": 13,
       "code": "SAÉ 3.01",
       "titre": "Collecte automatisée de données web",
       "semestre": 3,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C4",
-          "intitule": "Développer un outil décisionnel",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC21.01",
-          "intitule": "Comprendre l’organisation des données de l’entreprise"
-        },
-        {
-          "code": "AC21.03",
-          "intitule": "Identifier et résoudre les problèmes d’intégration de sources complémentaires et hétérogènes"
-        },
-        {
-          "code": "AC21.05",
-          "intitule": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser"
-        },
-        {
-          "code": "AC21.06",
-          "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme"
-        },
-        {
-          "code": "AC23.01",
-          "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement"
-        },
-        {
-          "code": "AC23.02",
-          "intitule": "Savoir défendre ses choix d’analyses"
-        },
-        {
-          "code": "AC24.01",
-          "intitule": "Comprendre le rôle fondamental de l’analyse des besoins et de l’existant dans un projet décisionnel"
-        },
-        {
-          "code": "AC24.02",
-          "intitule": "Percevoir les enjeux de l’automatisation et de l’interopérabilité d’un ensemble de tâches"
-        },
-        {
-          "code": "AC24.03",
-          "intitule": "Prendre conscience des différences entre outils (logiciels, langages) pour choisir le plus adapté"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R3.02",
-          "titre": "Systèmes d’information décisionnels"
-        },
-        {
-          "code": "R3.03",
-          "titre": "Technologies web"
-        },
-        {
-          "code": "R3.04",
-          "titre": "Programmation statistique automatisée"
-        },
-        {
-          "code": "R3.05",
-          "titre": "Algèbre linéaire"
-        },
-        {
-          "code": "R3.11",
-          "titre": "Projet Personnel et Professionnel 3"
-        }
-      ]
+      "competences": ["C1", "C2", "C3", "C4"],
+      "description": "Mettre en œuvre un système de collecte automatisée (web scraping / API) et stocker les données."
     },
     {
-      "id_sae": 14,
       "code": "SAÉ 3.02",
       "titre": "Intégration de données dans un datawarehouse",
       "semestre": 3,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC21.01",
-          "intitule": "Comprendre l’organisation des données de l’entreprise"
-        },
-        {
-          "code": "AC21.02",
-          "intitule": "Réaliser le rôle central et spécifique de l’entrepôt de données dans la chaîne décisionnelle"
-        },
-        {
-          "code": "AC21.03",
-          "intitule": "Identifier et résoudre les problèmes d’intégration de sources complémentaires et hétérogènes"
-        },
-        {
-          "code": "AC21.04",
-          "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme"
-        },
-        {
-          "code": "AC21.05",
-          "intitule": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser"
-        },
-        {
-          "code": "AC23.03",
-          "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats"
-        },
-        {
-          "code": "AC23.04",
-          "intitule": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R3.02",
-          "titre": "Systèmes d’information décisionnels"
-        },
-        {
-          "code": "R3.04",
-          "titre": "Programmation statistique automatisée"
-        },
-        {
-          "code": "R3.11",
-          "titre": "Projet Personnel et Professionnel 3"
-        }
-      ]
+      "competences": ["C1", "C3"],
+      "description": "Concevoir et alimenter un entrepôt de données en intégrant des sources hétérogènes."
     },
     {
-      "id_sae": 15,
       "code": "SAÉ 3.03",
       "titre": "Description et prévision de données temporelles",
       "semestre": 3,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC22.01",
-          "intitule": "Prendre conscience de la différence entre modélisation statistique et analyse exploratoire"
-        },
-        {
-          "code": "AC22.02",
-          "intitule": "Saisir la spécificité de l’analyse des données temporelles ou chronologiques"
-        },
-        {
-          "code": "AC22.05",
-          "intitule": "Apprécier les limites de validité des modèles utilisés"
-        },
-        {
-          "code": "AC23.01",
-          "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement"
-        },
-        {
-          "code": "AC23.02",
-          "intitule": "Savoir défendre ses choix d’analyses"
-        },
-        {
-          "code": "AC23.03",
-          "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats"
-        },
-        {
-          "code": "AC43.04",
-          "intitule": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R3.09",
-          "titre": "Les données de l’environnement entrepreneurial et économique pour l’aide à la décision"
-        },
-        {
-          "code": "R3.11",
-          "titre": "Projet Personnel et Professionnel 3"
-        }
-      ]
+      "competences": ["C2", "C3"],
+      "description": "Analyser une série temporelle et proposer des prévisions à court ou moyen terme."
     },
     {
-      "id_sae": 16,
       "code": "SAÉ 3.04",
       "titre": "Conformité réglementaire pour traiter des données",
       "semestre": 3,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC21.01",
-          "intitule": "Comprendre l’organisation des données de l’entreprise"
-        },
-        {
-          "code": "AC23.01",
-          "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement"
-        },
-        {
-          "code": "AC23.03",
-          "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats"
-        },
-        {
-          "code": "AC23.04",
-          "intitule": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos"
-        },
-        {
-          "code": "AC25.01",
-          "intitule": "Comprendre les enjeux des relations en milieu professionnel adaptées à l’interlocuteur et à sa culture"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R3.02",
-          "titre": "Systèmes d’information décisionnels"
-        },
-        {
-          "code": "R3.08",
-          "titre": "Communication professionnelle"
-        },
-        {
-          "code": "R3.09",
-          "titre": "Les données de l’environnement entrepreneurial et économique pour l’aide à la décision"
-        },
-        {
-          "code": "R3.11",
-          "titre": "Projet Personnel et Professionnel 3"
-        }
-      ]
+      "competences": ["C1", "C2", "C3"],
+      "description": "Évaluer la conformité d’un traitement de données vis-à-vis du RGPD et des contraintes réglementaires."
     },
+
     {
-      "id_sae": 17,
       "code": "SAÉ 4.01",
       "titre": "Développement d’un composant d’une solution décisionnelle",
       "semestre": 4,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": "3"
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "3"
-        },
-        {
-          "id_competence": "C4",
-          "intitule": "Développer un outil décisionnel",
-          "niveau_cible": "3"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC21.01",
-          "intitule": "Comprendre l’organisation des données de l’entreprise"
-        },
-        {
-          "code": "AC21.02",
-          "intitule": "Réaliser le rôle central et spécifique de l’entrepôt de données dans la chaîne décisionnelle"
-        },
-        {
-          "code": "AC21.03",
-          "intitule": "Identifier et résoudre les problèmes d’intégration de sources complémentaires et hétérogènes"
-        },
-        {
-          "code": "AC21.04",
-          "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme"
-        },
-        {
-          "code": "AC21.05",
-          "intitule": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser"
-        },
-        {
-          "code": "AC23.01",
-          "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement"
-        },
-        {
-          "code": "AC23.02",
-          "intitule": "Savoir défendre ses choix d’analyses"
-        },
-        {
-          "code": "AC23.03",
-          "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats"
-        },
-        {
-          "code": "AC24.01",
-          "intitule": "Comprendre le rôle fondamental de l’analyse des besoins et de l’existant dans un projet décisionnel"
-        },
-        {
-          "code": "AC24.02",
-          "intitule": "Percevoir les enjeux de l’automatisation et de l’interopérabilité d’un ensemble de tâches"
-        },
-        {
-          "code": "AC24.03",
-          "intitule": "Prendre conscience des différences entre outils (logiciels, langages) pour choisir le plus adapté"
-        },
-        {
-          "code": "AC24.04",
-          "intitule": "Comprendre le cycle de vie d’un projet informatique"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R4.01",
-          "titre": "Automatisation et test en programmation"
-        },
-        {
-          "code": "R4.07",
-          "titre": "Projet Personnel et Professionnel 4"
-        },
-        {
-          "code": "R4.08",
-          "titre": "Préparation/intégration de données"
-        },
-        {
-          "code": "R4.09",
-          "titre": "Programmation web"
-        }
-      ]
+      "competences": ["C4", "C1", "C3"],
+      "description": "Concevoir et développer un composant logiciel interopérable dans une chaîne décisionnelle."
     },
     {
-      "id_sae": 18,
       "code": "SAÉ 4.02",
       "titre": "Reporting d’une analyse multivariée",
       "semestre": 4,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": "3"
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": "3"
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": "3"
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC21.01",
-          "intitule": "Comprendre l’organisation des données de l’entreprise"
-        },
-        {
-          "code": "AC21.04",
-          "intitule": "Comprendre la nécessité de tester, corriger et documenter un programme"
-        },
-        {
-          "code": "AC21.05",
-          "intitule": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser"
-        },
-        {
-          "code": "AC22.01",
-          "intitule": "Prendre conscience de la différence entre modélisation statistique et analyse exploratoire"
-        },
-        {
-          "code": "AC22.02",
-          "intitule": "Saisir la spécificité de l’analyse des données temporelles ou chronologiques"
-        },
-        {
-          "code": "AC22.05",
-          "intitule": "Apprécier les limites de validité des modèles utilisés"
-        },
-        {
-          "code": "AC23.01",
-          "intitule": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement"
-        },
-        {
-          "code": "AC23.02",
-          "intitule": "Savoir défendre ses choix d’analyses"
-        },
-        {
-          "code": "AC23.03",
-          "intitule": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats"
-        },
-        {
-          "code": "AC23.04",
-          "intitule": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R4.01",
-          "titre": "Automatisation et test en programmation"
-        },
-        {
-          "code": "R4.02",
-          "titre": "Méthodes factorielles"
-        },
-        {
-          "code": "R4.03",
-          "titre": "Classification automatique"
-        },
-        {
-          "code": "R4.05",
-          "titre": "Communication scientifique et argumentation"
-        },
-        {
-          "code": "R4.07",
-          "titre": "Projet Personnel et Professionnel 4"
-        }
-      ]
+      "competences": ["C1", "C2", "C3"],
+      "description": "Mettre en œuvre des méthodes factorielles / de classification et restituer les résultats à un client."
     },
+
     {
-      "id_sae": 19,
       "code": "SAÉ 5.01",
       "titre": "Analyse et conception d’un outil décisionnel",
       "semestre": 5,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C4",
-          "intitule": "Développer un outil décisionnel",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC31.02",
-          "intitule": "Spécificités des données complexes"
-        },
-        {
-          "code": "AC31.03",
-          "intitule": "Mener une veille technologique"
-        },
-        {
-          "code": "AC32.02",
-          "intitule": "Importance de la mise en œuvre de méthodes adaptées"
-        },
-        {
-          "code": "AC33.01",
-          "intitule": "Savoir transformer la donnée"
-        },
-        {
-          "code": "AC33.02",
-          "intitule": "Mesurer l’impact du RGPD"
-        },
-        {
-          "code": "AC33.03",
-          "intitule": "Identifier les formes de bonne communication"
-        },
-        {
-          "code": "AC33.04",
-          "intitule": "Comprendre les mécanismes de base de l’IA"
-        },
-        {
-          "code": "AC33.05",
-          "intitule": "Être force de proposition"
-        },
-        {
-          "code": "AC34.01",
-          "intitule": "Prendre conscience de la nécessité de différencier les interlocuteurs"
-        },
-        {
-          "code": "AC34.02",
-          "intitule": "Défendre ses choix de solution"
-        },
-        {
-          "code": "AC34.03",
-          "intitule": "Réaliser l’intérêt d’appliquer des méthodes de développement"
-        },
-        {
-          "code": "AC34.04",
-          "intitule": "Apprécier l’intérêt du gestionnaire de versions"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R4.01",
-          "titre": "Automatisation et test en programmation"
-        },
-        {
-          "code": "R5.05",
-          "titre": "Projet Personnel et Professionnel 5"
-        },
-        {
-          "code": "R5.06",
-          "titre": "Développement logiciel"
-        }
-      ]
+      "competences": ["C1", "C2", "C3", "C4"],
+      "description": "Analyser les besoins d’un client et spécifier un futur outil décisionnel."
     },
     {
-      "id_sae": 20,
       "code": "SAÉ 5.02",
       "titre": "Migration de données vers ou depuis un environnement NoSQL",
       "semestre": 5,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C4",
-          "intitule": "Développer un outil décisionnel",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC31.02",
-          "intitule": "Spécificités des données complexes"
-        },
-        {
-          "code": "AC31.03",
-          "intitule": "Mener une veille technologique"
-        },
-        {
-          "code": "AC33.01",
-          "intitule": "Savoir transformer la donnée"
-        },
-        {
-          "code": "AC33.03",
-          "intitule": "Identifier les formes de bonne communication"
-        },
-        {
-          "code": "AC33.05",
-          "intitule": "Être force de proposition"
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R5.05",
-          "titre": "Projet Personnel et Professionnel 5"
-        }
-      ]
+      "competences": ["C1", "C3", "C4"],
+      "description": "Concevoir et mettre en œuvre la migration de données entre bases relationnelles et NoSQL."
     },
     {
-      "id_sae": 21,
       "code": "SAÉ 5.03",
       "titre": "Mise en œuvre d’un processus de Datamining",
       "semestre": 5,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C4",
-          "intitule": "Développer un outil décisionnel",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC52.01",
-          "intitule": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté"
-        },
-        {
-          "code": "AC52.02",
-          "intitule": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté"
-        },
-        {
-          "code": "AC52.03",
-          "intitule": "Saisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques(Marketing, Biostatistique, Statistique spatiale, Gestion"
-        },
-        {
-          "code": "AC53.01",
-          "intitule": "Mesurer l’impact d’un respect de la législation en terme de droit des données"
-        },
-        {
-          "code": "AC53.02",
-          "intitule": "Identifier les clés d’une bonne communication (procédures et techniques utilisées)"
-        },
-        {
-          "code": "AC53.03",
-          "intitule": "Mesurer l’importance de comprendre et de répondre à l’ensemble des problématiques posées"
-        },
-        {
-          "code": "AC53.04",
-          "intitule": "Être force de proposition"
-        }
-      ],
-      "ressources": []
+      "competences": ["C2", "C3"],
+      "description": "Mettre en place un workflow de datamining pour résoudre un problème métier (classification, scoring, etc.)."
     },
+
     {
-      "id_sae": 22,
       "code": "SAÉ 6.01",
       "titre": "Développement et test d’un outil décisionnel",
       "semestre": 6,
       "valeur": "VCOD",
-      "competences": [
-        {
-          "id_competence": "C1",
-          "intitule": "Traiter des données à des fins décisionnelles",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C2",
-          "intitule": "Analyser statistiquement les données",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C3",
-          "intitule": "Valoriser une production",
-          "niveau_cible": ""
-        },
-        {
-          "id_competence": "C4",
-          "intitule": "Développer un outil décisionnel",
-          "niveau_cible": ""
-        }
-      ],
-      "ac": [
-        {
-          "code": "AC61.01",
-          "intitule": "Identifier les solutions technologiques permettant la collecte et la diffusion de données"
-        },
-        {
-          "code": "AC61.02",
-          "intitule": "Comprendre les spécificités des données complexes et de leur exploitation"
-        },
-        {
-          "code": "AC61.03",
-          "intitule": "Savoir mener une veille technologique"
-        },
-        {
-          "code": "AC62.01",
-          "intitule": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté"
-        },
-        {
-          "code": "AC62.02",
-          "intitule": "Saisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques marketing, Biostatistique, Statistique spatiale, Gestion "
-        },
-        {
-          "code": "AC63.01",
-          "intitule": "Savoir transformer la donnée pour la mettre en conformité avec des normes (anonymisation, normalisation"
-        },
-        {
-          "code": "AC63.02",
-          "intitule": "Mesurer l’impact d’un respect de la législation en terme de droit des données"
-        },
-        {
-          "code": "AC63.03",
-          "intitule": "Identifier les clés d’une bonne communication (procédures et techniques utilisées"
-        },
-        {
-          "code": "AC63.04",
-          "intitule": "Mesurer l’importance de comprendre et de répondre à l’ensemble des problématiques posées"
-        },
-        {
-          "code": "AC63.05",
-          "intitule": "Être force de proposition"
-        },
-        {
-          "code": "AC63.06",
-          "intitule": "Prendre conscience de la nécessité d’intégrer la vision de l’interlocuteur (transversalité, international, multiculture, niveau d’expertise"
-        },
-        {
-          "code": "AC64.01",
-          "intitule": "Prendre conscience de la nécessité d’utiliser des moyens specifiques pour exploiter les Big data ou les flux de données"
-        },
-        {
-          "code": "AC64.02",
-          "intitule": "Défendre ses choix de solution par un argumentaire éclairé"
-        },
-        {
-          "code": "AC64.03",
-          "intitule": "Réaliser l’intérêt d’appliquer les méthodes de développement dans la réalisation un projet informatique"
-        },
-        {
-          "code": "AC64.04",
-          "intitule": "Apprécier l’intérêt de l’utilisation d’un gestionnaire de versions de code "
-        }
-      ],
-      "ressources": [
-        {
-          "code": "R6.05",
-          "titre": "Approfondissement en Big Data"
-        }
-      ]
+      "competences": ["C1", "C2", "C3", "C4"],
+      "description": "Développer, tester et livrer un outil décisionnel complet en respectant un cahier des charges."
     }
   ]
 }
