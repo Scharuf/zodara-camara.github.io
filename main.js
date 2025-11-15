@@ -1,391 +1,337 @@
-// static/js/main.js
+// --------- helpers affichage ----------
+function qs(sel) {
+  return document.querySelector(sel);
+}
+function qsa(sel) {
+  return Array.from(document.querySelectorAll(sel));
+}
 
-let gData = null;
+// Etats globaux
+let PORTFOLIO = null;
 let barChart = null;
 let donutChart = null;
-let radarGlobalChart = null;
-let radarSaeChart = null;
+let radarChart = null;
+let currentSaeId = null;
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Charger les données statiques
-  fetch("static/data/portfolio.json")
-    .then((r) => r.json())
-    .then((json) => {
-      gData = json;
-      initNavigation();
-      initThemeToggle();
-      initCVButtons();
-      initHomeView();
-      initSaeView();
-      initCompetencesView();
-      initRessourcesView();
-    })
-    .catch((err) => {
-      console.error("Erreur de chargement du JSON :", err);
-    });
-});
-
-/* =========================
-   Navigation entre les vues
-   ========================= */
-function initNavigation() {
-  const views = document.querySelectorAll(".view");
-
-  function showView(name) {
-    views.forEach((v) => v.classList.remove("active"));
-    const target = document.getElementById("view-" + name);
-    if (target) target.classList.add("active");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  // Liens du header
-  document.querySelectorAll("nav a[data-view]").forEach((a) => {
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      const view = a.getAttribute("data-view");
-      if (view === "home") showView("home");
-      else showView(view);
-    });
-  });
-
-  // Boutons "Retour à l’accueil"
-  document.querySelectorAll(".back-home").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      showView("home");
-    });
-  });
-}
-
-/* =========================
-   Thème clair / sombre
-   ========================= */
-function initThemeToggle() {
-  const btn = document.getElementById("theme");
-  const html = document.documentElement;
-
-  if (!btn) return;
-
-  function updateLabel() {
-    const isDark = html.getAttribute("data-theme") === "dark";
-    btn.textContent = isDark ? "☀️ Mode clair" : "🌙 Mode sombre";
-  }
-
-  btn.addEventListener("click", () => {
-    const current = html.getAttribute("data-theme") || "light";
-    html.setAttribute("data-theme", current === "light" ? "dark" : "light");
-    updateLabel();
-  });
-
-  updateLabel();
-}
-
-/* =========================
-   Boutons CV
-   ========================= */
-function initCVButtons() {
-  const btnView = document.getElementById("btnViewCV");
-
-  if (btnView) {
-    btnView.addEventListener("click", () => {
-      document
-        .querySelectorAll(".view")
-        .forEach((v) => v.classList.remove("active"));
-      const v = document.getElementById("view-cv");
-      if (v) v.classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+// --------- chargement JSON ----------
+async function loadPortfolio() {
+  try {
+    const res = await fetch('portfolio.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    PORTFOLIO = data;
+    console.log('📄 portfolio.json chargé', data);
+    initFromData();
+  } catch (err) {
+    console.error('Erreur de chargement de portfolio.json', err);
   }
 }
 
-/* =========================
-   Vue accueil : KPIs + charts
-   ========================= */
-function initHomeView() {
-  if (!gData || !gData.summary) return;
+// --------- initialisation globale ----------
+function initFromData() {
+  if (!PORTFOLIO) return;
 
-  const sum = gData.summary;
+  fillKpis(PORTFOLIO.summary);
+  initCharts(PORTFOLIO.summary);
+  fillCompetences(PORTFOLIO.competences);
+  fillRessources(PORTFOLIO.ressources);
+  fillSaeList(PORTFOLIO.sae);
+  setupNavigation();
+  setupThemeToggle();
+  setupButtons();
+}
 
-  // KPIs
-  const kHours = document.getElementById("kHours");
-  const kSplit = document.getElementById("kSplit");
-  const kVCOD = document.getElementById("kVCOD");
-  const kRess = document.getElementById("kRess");
+// --------- KPIs ----------
+function fillKpis(summary) {
+  qs('#kHours').textContent = summary.hours_total ?? 0;
+  qs('#kVCOD').textContent = summary.sae_vcod_count ?? 0;
+  qs('#kRess').textContent = summary.ressource_count ?? 0;
+  qs('#kProofHint').textContent = `Preuves : ${summary.proofs_count ?? 0}`;
 
-  if (kHours) kHours.textContent = sum.hours_total ?? 0;
-  if (kVCOD) kVCOD.textContent = sum.sae_vcod_count ?? 0;
-  if (kRess) kRess.textContent = sum.ressources_count ?? 0;
+  const split = summary.hours_by_competence || {};
+  const txt = Object.entries(split)
+    .map(([c, h]) => `${c} : ${h} h`)
+    .join(' • ');
+  qs('#kSplit').textContent = txt || '—';
+}
 
-  if (kSplit) {
-    const parts = [];
-    for (const [cid, obj] of Object.entries(sum.hours_by_competence || {})) {
-      parts.push(`${cid} ${obj.hours} h`);
+// --------- CHARTS ----------
+function initCharts(summary) {
+  const ctxBar = qs('#bar').getContext('2d');
+  const ctxDonut = qs('#donut').getContext('2d');
+  const ctxRadar = qs('#radar').getContext('2d');
+  const hours = summary.hours_by_competence || {};
+  const labels = Object.keys(hours);
+  const values = Object.values(hours);
+
+  // Bar
+  if (barChart) barChart.destroy();
+  barChart = new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Heures',
+        data: values
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true }
+      }
     }
-    kSplit.textContent = parts.length ? parts.join(" • ") : "—";
-  }
+  });
 
-  // Données pour graphiques
-  const labels = [];
-  const hours = [];
-  for (const [cid, obj] of Object.entries(sum.hours_by_competence || {})) {
-    labels.push(`${cid} – ${obj.label}`);
-    hours.push(obj.hours);
-  }
-
-  // Bar chart
-  const barCanvas = document.getElementById("bar");
-  if (barCanvas && labels.length) {
-    if (barChart) barChart.destroy();
-    barChart = new Chart(barCanvas.getContext("2d"), {
-      type: "bar",
-      data: {
-        labels,
-        datasets: [
-          {
-            label: "Heures",
-            data: hours,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
-
-  // Donut chart
-  const donutCanvas = document.getElementById("donut");
-  if (donutCanvas && labels.length) {
-    if (donutChart) donutChart.destroy();
-    donutChart = new Chart(donutCanvas.getContext("2d"), {
-      type: "doughnut",
-      data: {
-        labels,
-        datasets: [
-          {
-            data: hours,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-        },
-      },
-    });
-
-    const legend = document.getElementById("donutLegend");
-    if (legend) {
-      legend.innerHTML = "";
-      labels.forEach((lab, idx) => {
-        const span = document.createElement("span");
-        span.textContent = `${lab} (${hours[idx]} h)`;
-        legend.appendChild(span);
-      });
+  // Donut
+  if (donutChart) donutChart.destroy();
+  donutChart = new Chart(ctxDonut, {
+    type: 'doughnut',
+    data: {
+      labels,
+      datasets: [{
+        data: values
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } }
     }
-  }
+  });
 
-  // Radar global = mêmes données heures / compétence
-  const radarCanvas = document.getElementById("radar");
-  if (radarCanvas && labels.length) {
-    if (radarGlobalChart) radarGlobalChart.destroy();
-    radarGlobalChart = new Chart(radarCanvas.getContext("2d"), {
-      type: "radar",
-      data: {
-        labels,
-        datasets: [
-          {
-            label: "Heures par compétence",
-            data: hours,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-        },
-        scales: {
-          r: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
+  // Radar global = somme des radars de toutes les SAÉ
+  const radarData = { C1: 0, C2: 0, C3: 0, C4: 0 };
+  (PORTFOLIO.sae || []).forEach(s => {
+    if (!s.radar) return;
+    for (const k of ['C1', 'C2', 'C3', 'C4']) {
+      radarData[k] += s.radar[k] || 0;
+    }
+  });
+
+  const rLabels = Object.keys(radarData);
+  const rValues = Object.values(radarData);
+
+  if (radarChart) radarChart.destroy();
+  radarChart = new Chart(ctxRadar, {
+    type: 'radar',
+    data: {
+      labels: rLabels,
+      datasets: [{
+        label: 'Intensité globale (AC par compétence)',
+        data: rValues
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        r: { beginAtZero: true }
+      }
+    }
+  });
 }
 
-/* =========================
-   Vue SAÉ & Projets
-   ========================= */
-function initSaeView() {
-  if (!gData || !Array.isArray(gData.sae)) return;
+// --------- COMPÉTENCES vue ----------
+function fillCompetences(list) {
+  const container = qs('#compBadges');
+  if (!container) return;
+  container.innerHTML = '';
 
-  const select = document.getElementById("sae");
-  const dTitle = document.getElementById("dTitle");
-  const dBody = document.getElementById("dBody");
-  const radarCanvas = document.getElementById("radar-sae");
+  (list || []).forEach(c => {
+    const el = document.createElement('div');
+    el.className = 'chip';
+    el.innerHTML = `<strong>${c.id}</strong> — ${c.intitule}`;
+    el.title = c.description || '';
+    container.appendChild(el);
+  });
+}
 
+// --------- RESSOURCES vue ----------
+function fillRessources(list) {
+  const container = qs('#ressTable');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const table = document.createElement('table');
+  table.className = 'table-ress';
+  const thead = document.createElement('thead');
+  thead.innerHTML = `
+    <tr>
+      <th>Code</th>
+      <th>Semestre</th>
+      <th>Titre</th>
+    </tr>`;
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  (list || []).forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${r.code}</td>
+      <td>${r.semestre ?? ''}</td>
+      <td>${r.titre}</td>`;
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  container.appendChild(table);
+}
+
+// --------- SAÉ vue ----------
+function fillSaeList(list) {
+  const select = qs('#sae');
   if (!select) return;
+  select.innerHTML = '';
 
-  // Remplir la liste
-  gData.sae.forEach((s) => {
-    const opt = document.createElement("option");
+  (list || []).forEach(s => {
+    const opt = document.createElement('option');
     opt.value = String(s.id_sae);
     opt.textContent = `${s.code} — ${s.titre}`;
     select.appendChild(opt);
   });
 
-  function renderRadarForSae(sae) {
-    if (!radarCanvas) return;
+  select.addEventListener('change', () => {
+    const id = Number(select.value || 0);
+    showSaeDetails(id);
+  });
 
-    const labels = ["C1", "C2", "C3", "C4"];
-    const values = [0, 0, 0, 0];
+  // Sélectionne la première par défaut
+  if (list.length > 0) {
+    select.value = String(list[0].id_sae);
+    showSaeDetails(list[0].id_sae);
+  }
+}
 
-    (sae.competences || []).forEach((c) => {
-      const idx = labels.indexOf(c.id_competence);
-      if (idx >= 0) {
-        const lvl = parseInt(c.niveau_cible || "0", 10);
-        values[idx] = isNaN(lvl) ? 0 : lvl;
-      }
-    });
+function showSaeDetails(id_sae) {
+  const sae = (PORTFOLIO.sae || []).find(s => s.id_sae === Number(id_sae));
+  currentSaeId = id_sae;
+  const titleEl = qs('#dTitle');
+  const bodyEl = qs('#dBody');
+  const ctxRadar = qs('#radar-sae')?.getContext('2d');
 
-    if (radarSaeChart) radarSaeChart.destroy();
-    radarSaeChart = new Chart(radarCanvas.getContext("2d"), {
-      type: "radar",
+  if (!sae) {
+    if (titleEl) titleEl.textContent = 'Détails Saé';
+    if (bodyEl) bodyEl.textContent = 'Aucune Saé sélectionnée.';
+    if (radarChart) radarChart.update(); // global seulement
+    return;
+  }
+
+  if (titleEl) {
+    titleEl.textContent = `${sae.code} — Semestre ${sae.semestre}`;
+  }
+
+  if (bodyEl) {
+    const comp = sae.competences?.join(', ') || '—';
+    const acs = sae.acs?.join(', ') || '—';
+    const ress = sae.ressources?.join(', ') || '—';
+
+    bodyEl.innerHTML = `
+      <p><strong>Titre :</strong> ${sae.titre}</p>
+      <p><strong>Semestre :</strong> S${sae.semestre}</p>
+      <p><strong>Valeur :</strong> ${sae.valeur || ''}</p>
+      <p><strong>Compétences ciblées :</strong> ${comp}</p>
+      <p><strong>AC associées :</strong> ${acs}</p>
+      <p><strong>Ressources mobilisées :</strong> ${ress}</p>
+    `;
+  }
+
+  // Radar spécifique SAÉ sur #radar-sae
+  if (ctxRadar && sae.radar) {
+    const labels = ['C1', 'C2', 'C3', 'C4'];
+    const values = labels.map(k => sae.radar[k] || 0);
+
+    if (window.saeRadarChart) {
+      window.saeRadarChart.destroy();
+    }
+    window.saeRadarChart = new Chart(ctxRadar, {
+      type: 'radar',
       data: {
         labels,
-        datasets: [
-          {
-            label: "Niveau cible par compétence",
-            data: values,
-          },
-        ],
+        datasets: [{
+          label: `Profil AC — ${sae.code}`,
+          data: values
+        }]
       },
       options: {
         responsive: true,
-        plugins: {
-          legend: { display: false },
-        },
         scales: {
-          r: {
-            beginAtZero: true,
-            suggestedMax: 3,
-            ticks: {
-              stepSize: 1,
-            },
-          },
-        },
-      },
+          r: { beginAtZero: true }
+        }
+      }
+    });
+  }
+}
+
+// --------- Navigation entre vues ----------
+function setupNavigation() {
+  const links = qsa('nav a[data-view]');
+  const views = {
+    home: qs('#view-home'),
+    sae: qs('#view-sae'),
+    competences: qs('#view-competences'),
+    ressources: qs('#view-ressources'),
+    contact: qs('#view-contact'),
+    cv: qs('#view-cv'),
+  };
+
+  links.forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const view = a.dataset.view;
+      if (!view || !views[view]) return;
+      qsa('.view').forEach(v => v.classList.remove('active'));
+      views[view].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  qsa('.back-home').forEach(btn => {
+    btn.addEventListener('click', () => {
+      qsa('.view').forEach(v => v.classList.remove('active'));
+      views.home.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+}
+
+// --------- Thème clair/sombre ----------
+function setupThemeToggle() {
+  const btn = qs('#theme');
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    btn.textContent = next === 'light' ? '🌙 Mode sombre' : '☀ Mode clair';
+  });
+}
+
+// --------- Boutons CV / preuves ----------
+function setupButtons() {
+  const btnViewCV = qs('#btnViewCV');
+  if (btnViewCV) {
+    btnViewCV.addEventListener('click', () => {
+      const views = {
+        home: qs('#view-home'),
+        cv: qs('#view-cv'),
+      };
+      qsa('.view').forEach(v => v.classList.remove('active'));
+      views.cv.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  function renderDetails(sae) {
-    if (dTitle)
-      dTitle.textContent = `${sae.code} — Semestre ${sae.semestre}`;
-
-    if (!dBody) return;
-
-    const compList = (sae.competences || [])
-      .map((c) => `${c.id_competence} – ${c.intitule}`)
-      .join("<br>");
-
-    const acList = (sae.ac || [])
-      .map((a) => `${a.code} – ${a.intitule}`)
-      .join("<br>");
-
-    const ressList = (sae.ressources || [])
-      .map((r) => `${r.code} – ${r.titre}`)
-      .join("<br>");
-
-    dBody.innerHTML = `
-      <p><strong>Titre :</strong> ${sae.titre}</p>
-      <p><strong>Valeur :</strong> ${sae.valeur || "—"}</p>
-      <p><strong>Compétences visées :</strong><br>${compList || "—"}</p>
-      <p><strong>Apprentissages critiques (AC) :</strong><br>${acList || "—"}</p>
-      <p><strong>Ressources mobilisées :</strong><br>${ressList || "—"}</p>
-    `;
-  }
-
-  select.addEventListener("change", () => {
-    const id = parseInt(select.value, 10);
-    const sae = gData.sae.find((s) => s.id_sae === id);
-    if (!sae) return;
-    renderDetails(sae);
-    renderRadarForSae(sae);
-  });
-
-  // Sélectionner la première SAÉ par défaut
-  if (gData.sae.length > 0) {
-    select.value = String(gData.sae[0].id_sae);
-    select.dispatchEvent(new Event("change"));
+  const btnProofs = qs('#btnProofs');
+  if (btnProofs) {
+    btnProofs.addEventListener('click', () => {
+      // Pour l'instant, simple popup
+      alert("Ici tu pourras lier des images / pdf de preuves de projets.");
+    });
   }
 }
 
-/* =========================
-   Vue Compétences
-   ========================= */
-function initCompetencesView() {
-  if (!gData || !Array.isArray(gData.competences)) return;
-
-  const container = document.getElementById("compBadges");
-  if (!container) return;
-
-  container.innerHTML = "";
-  gData.competences.forEach((c) => {
-    const div = document.createElement("div");
-    div.className = "chip";
-    div.innerHTML = `
-      <strong>${c.id_competence}</strong> – ${c.intitule}
-      <p class="chip-desc">${c.description || ""}</p>
-    `;
-    container.appendChild(div);
-  });
-}
-
-/* =========================
-   Vue Ressources
-   ========================= */
-function initRessourcesView() {
-  if (!gData || !Array.isArray(gData.ressources)) return;
-
-  const container = document.getElementById("ressTable");
-  if (!container) return;
-
-  const table = document.createElement("table");
-  table.className = "ress-table";
-  table.innerHTML = `
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Intitulé</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  `;
-
-  const tbody = table.querySelector("tbody");
-
-  gData.ressources.forEach((r) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${r.code}</td>
-      <td>${r.titre}</td>
-      <td>${r.description || ""}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  container.innerHTML = "";
-  container.appendChild(table);
-}
+// --------- DOM READY ----------
+document.addEventListener('DOMContentLoaded', () => {
+  loadPortfolio();
+});
