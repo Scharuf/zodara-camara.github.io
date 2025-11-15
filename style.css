@@ -1,0 +1,428 @@
+:root{
+  --bg:#f5f7fb; --card:#fff; --text:#1d2125; --muted:#6c757d; --primary:#0d6efd;
+  --border:#e5e9f2; --shadow:0 18px 40px rgba(15,23,42,.08); --ring:rgba(13,110,253,.18);
+  --badge-bg:#eef4ff; --badge-fg:#274c9b;  --accent:#fb7185; 
+}
+[data-theme="dark"]{
+  --bg:#050816; --card:#0b1220; --text:#e5ecff; --muted:#94a3b8; --primary:#3b82f6;
+  --border:#1e293b; --shadow:0 18px 40px rgba(0,0,0,.9); --ring:rgba(59,130,246,.3);
+  --badge-bg:#1d283a; --badge-fg:#bfdbfe; --accent:#fb7185;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; padding:24px; background:radial-gradient(circle at top,#e0edff 0,#f5f7fb 36%,var(--bg) 100%);
+  font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
+}
+[data-theme="dark"] body{
+  background:radial-gradient(circle at top,#0b1120 0,#020617 40%,#020617 100%);
+}
+.container{ max-width:1200px; margin:0 auto }
+
+/* VUES : une seule visible à la fois */
+.view{
+  display:none;
+  margin-top:28px;
+}
+.view.active{
+  display:block;
+}
+
+/* ==== HEADER / CARTE PROFIL ==== */
+.profile-card{
+  background:var(--card); border-radius:24px; padding:24px 28px; box-shadow:var(--shadow);
+  border:1px solid var(--border); display:flex; flex-direction:column; gap:18px; position:relative;
+}
+.profile-top{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  border-bottom:1px solid var(--border); padding-bottom:14px;
+}
+.brand{ font-weight:800; letter-spacing:.03em; font-size:18px }
+/* barre de menu */
+.profile-top nav{
+  display:flex;
+  gap:32px;
+}
+
+/* lien = bloc vertical : icône au-dessus, texte en dessous */
+.profile-top nav a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:13px;
+
+  display:inline-flex;
+  flex-direction:column;      /* icône au-dessus du texte */
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+
+  padding:6px 0;
+  position:relative;
+  transition:color .2s, transform .2s;
+}
+
+/* petite barre d’activation sous le texte */
+.profile-top nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-4px;
+  height:2px;
+  border-radius:999px;
+  background:var(--primary);
+  opacity:0;
+  transform:scaleX(0);
+  transition:.2s;
+}
+
+/* style de l’icône */
+.nav-icon{
+  font-size:20px;
+  line-height:1;
+}
+
+/* label */
+.nav-label{
+  line-height:1.2;
+}
+
+/* effet au survol comme sur LinkedIn */
+.profile-top nav a:hover{
+  color:var(--text);
+  transform:translateY(-1px);
+}
+.profile-top nav a:hover::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
+nav a:hover,
+nav a:focus{
+  color:var(--accent);
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(15,23,42,.08);
+}
+
+nav a:hover::before,
+nav a:focus::before{
+  opacity:1;
+  transform:scale(1);
+}
+
+nav a:hover::after,
+nav a:focus::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
+/* si ton JS ajoute une classe .active sur l’onglet courant */
+nav a.active{
+  color:var(--accent);
+}
+nav a.active::before{
+  opacity:1;
+  transform:scale(1);
+}
+nav a.active::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
+.profile-main{
+  display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+}
+.avatar{
+  width:110px; height:110px; border-radius:999px; overflow:hidden; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#0ea5e9,#6366f1);
+  color:#fff; font-weight:800; font-size:32px;
+}
+.avatar img{ width:100%; height:100%; object-fit:cover }
+.profile-text h1{ margin:0 0 6px; font-size:28px }
+.profile-text p{ margin:0; color:var(--muted); font-size:14px }
+.profile-meta{ margin-top:8px; display:flex; flex-wrap:wrap; gap:6px 12px; font-size:13px; color:var(--muted) }
+
+.profile-actions{
+  display:flex; flex-direction:column; align-items:flex-end; gap:10px; min-width:210px;
+}
+.btn{
+  border-radius:999px; border:none; padding:10px 16px; font-weight:600; cursor:pointer;
+  display:inline-flex; align-items:center; gap:8px; font-size:14px;
+}
+.btn.primary{ background:var(--primary); color:#fff; box-shadow:0 10px 25px var(--ring); }
+.btn.outline{ background:transparent; color:var(--muted); border:1px solid var(--border); }
+.pill-inline{
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:13px; color:var(--muted);
+}
+.pill-inline select{
+  padding:6px 10px; border-radius:999px; border:1px solid var(--border);
+  background:var(--card); color:var(--text); font-size:13px;
+}
+
+/* ==== SECTION TITLES ==== */
+.section{ margin-top:28px }
+.section-header{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:10px }
+.section-title{ font-size:20px; margin:0 }
+.section-sub{ margin:0; color:var(--muted); font-size:13px }
+
+/* ==== KPIs STRIP ==== */
+.kpis{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:10px;
+}
+@media (max-width:900px){ .kpis{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:580px){ .kpis{ grid-template-columns:1fr; } }
+.kpi{
+  background:var(--card); border-radius:18px; padding:14px 16px;
+  border:1px solid var(--border); box-shadow:var(--shadow);
+}
+.kpi .t{ font-size:12px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.08em }
+.kpi .v{ font-size:24px; font-weight:800; margin-top:4px }
+.kpi .s{ font-size:11px; color:var(--muted); margin-top:4px }
+
+.btn.small{ padding:6px 10px; font-size:12px }
+
+/* ==== GRILLE INDICATEURS ==== */
+.card{
+  background:var(--card);
+  border-radius:18px;
+  padding:16px 18px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:
+    box-shadow .2s ease,
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+/* survol d’une carte (graphique, ressources, etc.) */
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(15,23,42,.12);
+  border-color:rgba(251,113,133,0.4);          /* bord légèrement rose */
+  background:linear-gradient(135deg,#fff,rgba(251,113,133,0.05));
+}
+
+.card h3{ margin:0 0 8px; font-size:15px }
+.grid{
+  display:grid;
+  grid-template-columns: 1.1fr 1.1fr 1fr;
+  grid-template-areas: "g1 g2 g3"
+                       "table table side";
+  gap:16px;
+}
+@media (max-width:1100px){
+  .grid{
+    grid-template-columns:1fr;
+    grid-template-areas:"g1" "g2" "g3" "table" "side";
+  }
+}
+
+.chart-box{ height:320px }
+#bar,#donut{ width:100%; height:100% !important }
+.radar-wrap{ width:100%; max-width:420px; aspect-ratio:1/1; margin:0 auto }
+#radar{ width:100%; height:100% !important }
+
+/* ==== TABLE / LISTES ==== */
+#ressTable{ max-height:360px; overflow:auto; border-radius:14px; border:1px solid var(--border); }
+table{ width:100%; border-collapse:collapse; font-size:13px }
+th,td{ padding:9px 10px; border-bottom:1px solid var(--border); text-align:left }
+th{ background:var(--primary); color:#fff; position:sticky; top:0; z-index:1; }
+.badge{
+  display:inline-block; padding:3px 9px; border-radius:999px;
+  background:var(--badge-bg); color:var(--badge-fg); font-weight:600; font-size:11px;
+}
+.muted{ color:var(--muted); font-size:12px }
+
+.list{
+  width:100%; min-height:240px; border-radius:14px; border:1px solid var(--border);
+  background:var(--card); padding:8px; font-size:13px;
+}
+
+/* ==== PANEL SAE ==== */
+.detail-title{ margin:8px 0 4px; font-size:15px }
+.detail-body{ font-size:13px }
+
+/* ==== COMPETENCES BADGES ==== */
+.chips{
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;
+}
+.chip{
+  padding:6px 10px; border-radius:999px; border:1px solid var(--border);
+  background:var(--card); font-size:12px; display:inline-flex; align-items:center; gap:6px;
+}
+.chip span.code{
+  background:var(--primary); color:#fff; border-radius:999px; padding:2px 6px; font-size:11px; font-weight:700;
+}
+
+/* ==== CONTACT / FOOTER ==== */
+.contact-card{
+  display:flex; flex-wrap:wrap; gap:18px;
+}
+.contact-item{
+  flex:1 1 220px; background:var(--card); border-radius:18px; padding:12px 14px;
+  border:1px solid var(--border); box-shadow:var(--shadow); font-size:13px;
+}
+
+/* ==== Légende personnalisée du donut ==== */
+.legend-row{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  justify-content:center;
+  font-size:12px;
+  color:var(--muted);
+}
+.legend-item{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.legend-color{
+  width:18px;
+  height:4px;
+  border-radius:999px;
+  background:#ccc;
+}
+
+.back-top{
+  margin-top:16px;
+}
+
+/* ===== BOUTONS CV (télécharger / visualiser) ===== */
+.cv-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+/* on surcharge les styles .btn.primary / .btn.outline pour les boutons de CV */
+.cv-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.cv-btn{
+  text-decoration:none;
+  border-radius:16px;
+  border:2px solid var(--accent);
+  padding:12px 18px;
+  font-weight:700;
+  font-size:14px;
+  display:inline-flex;
+  gap:10px;
+  align-items:flex-start;
+  justify-content:space-between;
+  min-width:180px;
+  background:var(--accent);
+  color:#fff;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease,
+    color .15s ease;
+}
+
+.cv-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 30px rgba(251,113,133,0.45);
+}
+
+
+/* même style, qu'ils soient "primary" ou "outline" dans le HTML */
+.cv-actions .cv-btn.primary,
+.cv-actions .cv-btn.outline{
+  background:#fb7185;
+  color:#fff;
+  border-color:#fb7185;
+}
+
+.cv-actions .cv-btn span{
+  display:block;
+  line-height:1.1;
+}
+
+.cv-actions .cv-btn .cv-icon{
+  font-size:18px;
+  align-self:center;
+}
+
+/* ===== Mise en page de la vue CV ===== */
+/* ===== Mise en page de la vue CV (maquette en blocs) ===== */
+.cv-card{
+  padding:0;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+/* Bandeau haut */
+.cv-banner{
+  background:#0b7285;          /* bleu/vert type maquette */
+  color:#fff;
+  text-align:center;
+  padding:16px 20px;
+}
+
+.cv-banner h3{
+  margin:0 0 4px;
+  font-size:20px;
+}
+
+.cv-banner p{
+  margin:0;
+  font-size:13px;
+}
+
+/* Deux colonnes */
+.cv-columns{
+  display:flex;
+  gap:16px;
+  padding:16px;
+  background:var(--card);
+  flex-wrap:wrap;
+}
+
+.cv-col{
+  flex:1 1 260px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font-size:13px;
+}
+
+/* Blocs / cartes internes */
+.cv-box{
+  background:#0b7285;
+  color:#fff;
+  border-radius:8px;
+  padding:10px 12px;
+}
+
+.cv-box h4{
+  margin:0 0 6px;
+  font-size:14px;
+  text-decoration:underline;
+}
+
+.cv-box p{
+  margin:2px 0;
+}
+
+.cv-box ul{
+  margin:0 0 4px 18px;
+  padding:0;
+}
+
+.cv-box li{
+  margin-bottom:4px;
+}
+
+/* Liens dans les blocs CV */
+.cv-box a{
+  color:#fffbeb;
+  text-decoration:underline;
+}
+
