@@ -145,8 +145,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC13.04","AC13.06"],
+      "ressources": ["R1.07", "R1.08","R1.09", "R1.10"],
       "description": "Présenter en anglais un territoire en mobilisant des indicateurs économiques et culturels."
     },
     {
@@ -155,8 +155,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC13.01","AC13.02","AC13.03","AC13.04","AC13.05","AC13.06"],
+      "ressources": ["R1.08","R1.09", "R1.10"],
       "description": "Concevoir et mener une enquête, puis analyser et présenter les résultats."
     },
 
@@ -166,8 +166,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C1"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC12.01","AC12.02","AC12.05","AC12.06"],
+      "ressources": ["R2.01","R2.02","R2.03","R2.12"],
       "description": "Modéliser et implémenter une base de données adaptée à un besoin métier."
     },
     {
@@ -177,7 +177,7 @@
       "valeur": "VCOD",
       "competences": ["C2"],
       "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "ressources": ["R2.06", "R2.08","R2.12"],
       "description": "Mettre en œuvre un plan de sondage et réaliser une estimation à partir d’un échantillon."
     },
     {
@@ -186,8 +186,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C2"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC12.03","AC12.04"],
+      "ressources": ["R2.04", "R2.05","R2.12"],
       "description": "Ajuster et interpréter un modèle de régression sur des données réelles."
     },
     {
@@ -196,8 +196,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC11.01","AC11.04","AC12.02","AC12.03","AC12.04","AC13.02","AC13.05"],
+      "ressources": ["R2.01", "R2.05","R2.05", "R2.12"],
       "description": "Concevoir des visualisations interactives permettant d’explorer et de communiquer des données."
     },
     {
@@ -206,8 +206,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC13.02","AC13.03","AC13.04","AC13.05"],
+      "ressources": ["R2.11", "R2.12"],
       "description": "Construire des tableaux de bord de performance et les présenter à un client."
     },
     {
@@ -216,8 +216,9 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC11.01","AC11.02","AC11.03","AC11.04","AC11.05","AC11.06","AC12.01",
+        "AC12.02","AC12.03","AC12.04","AC12.05","AC12.06","AC13.01","AC13.02","AC13.03","AC13.04","AC13.05","AC13.06"],
+      "ressources": ["R2.01","R2.02","R2.03","R2.04","R2.05","R2.06","R2.08","R2.09","R2.10","R2.11","R2.12"],
       "description": "Réaliser une étude complète : préparation des données, analyses statistiques, reporting et restitution."
     },
 
@@ -227,8 +228,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3", "C4"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC21.01","AC21.03","AC21.05","AC21.06","AC23.01","AC23.02","AC24.01","AC24.02","AC24.03"],
+      "ressources": ["R3.02","R3.03", "R3.04","R3.05","R3.11"],
       "description": "Mettre en œuvre un système de collecte automatisée (web scraping / API) et stocker les données."
     },
     {
@@ -237,8 +238,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C1", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC21.01","AC21.02","AC21.03","AC21.04","AC21.05","AC23.03","AC23.04"],
+      "ressources": ["R3.02", "R3.04","R3.11"],
       "description": "Concevoir et alimenter un entrepôt de données en intégrant des sources hétérogènes."
     },
     {
@@ -247,8 +248,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C2", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC22.01","AC22.02","AC22.05","AC21.06","AC23.01","AC23.02","AC23.05","AC43.04"],
+      "ressources": ["R3.09","R3.11"],
       "description": "Analyser une série temporelle et proposer des prévisions à court ou moyen terme."
     },
     {
@@ -257,8 +258,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC21.01","AC23.01","AC23.03","AC23.04","AC25.01"],
+      "ressources": ["R3.02","R3.08","R3.09","R3.11"],
       "description": "Évaluer la conformité d’un traitement de données vis-à-vis du RGPD et des contraintes réglementaires."
     },
 
@@ -268,8 +269,8 @@
       "semestre": 4,
       "valeur": "VCOD",
       "competences": ["C4", "C1", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC21.01","AC21.02","AC21.03","AC21.04","AC21.05","AC23.01","AC23.02","AC23.03","AC24.01","AC24.02","AC24.03","AC24.04"],
+      "ressources": ["R4.01", "R4.07","R4.08", "R4.09"],
       "description": "Concevoir et développer un composant logiciel interopérable dans une chaîne décisionnelle."
     },
     {
@@ -278,8 +279,8 @@
       "semestre": 4,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC21.01","AC21.04","AC21.05","AC22.01","AC22.02","AC22.05","AC23.01","AC23.02","AC23.03","AC23.04"],
+      "ressources": ["R4.01","R4.02","R4.03","R4.05","R4.07"],
       "description": "Mettre en œuvre des méthodes factorielles / de classification et restituer les résultats à un client."
     },
 
@@ -289,8 +290,8 @@
       "semestre": 5,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3", "C4"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC31.02","AC31.03","AC32.02","AC33.01","AC33.02","AC33.03","AC33.04","AC33.05","AC34.01","AC34.02","AC34.03","AC34.04"],
+      "ressources": ["R4.01", "R5.05","R5.06"],
       "description": "Analyser les besoins d’un client et spécifier un futur outil décisionnel."
     },
     {
@@ -299,8 +300,8 @@
       "semestre": 5,
       "valeur": "VCOD",
       "competences": ["C1", "C3", "C4"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC31.02", "AC31.03", "AC33.01", "AC33.03", "AC33.05"],
+      "ressources": ["R5.05"],
       "description": "Concevoir et mettre en œuvre la migration de données entre bases relationnelles et NoSQL."
     },
     {
@@ -309,8 +310,8 @@
       "semestre": 5,
       "valeur": "VCOD",
       "competences": ["C2", "C3"],
-      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
+      "acs": ["AC52.01","AC52.02","AC52.03","AC53.01","AC53.02","AC53.03","AC53.04"],
+      "ressources": ["R4.01", "R5.05","R5.06","R5.05"],
       "description": "Mettre en place un workflow de datamining pour résoudre un problème métier (classification, scoring, etc.)."
     },
 
@@ -327,4 +328,5 @@
 
   ]
 }
+
 
