@@ -1,212 +1,391 @@
-const PIE_COLORS = ["#2196F3", "#FF5C8D", "#FF9F40", "#FFD966"];
+// static/js/main.js
 
-const themeBtn = document.getElementById("theme");
-function setTheme(t){
-  document.documentElement.setAttribute("data-theme", t);
-  themeBtn.textContent = t==="dark" ? "☀️ Mode clair" : "🌙 Mode sombre";
-  localStorage.setItem("theme", t);
-}
-setTheme(localStorage.getItem("theme") || "light");
-themeBtn.onclick = () =>
-  setTheme((document.documentElement.getAttribute("data-theme")||"light")==="light"?"dark":"light");
+let gData = null;
+let barChart = null;
+let donutChart = null;
+let radarGlobalChart = null;
+let radarSaeChart = null;
 
-// bouton preuves
-document.getElementById("btnProofs").onclick = () => { window.location.href = "/preuves"; };
-
-const qs = p=>p?`?semestre=${encodeURIComponent(p.replace('S',''))}`:"";
-const esc = s=>(s??"").toString().replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
-const $ = id=>document.getElementById(id);
-
-function showView(name){
-  document.querySelectorAll(".view").forEach(v => {
-    v.classList.toggle("active", v.id === "view-" + name);
-  });
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-// ===== NAVIGATION PAR VUES =====
-document.querySelectorAll("nav a[data-view]").forEach(link => {
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const view = link.getAttribute("data-view");
-    showView(view);
-  });
-});
-// Bouton "Visualiser le CV"
-const btnViewCV = document.getElementById("btnViewCV");
-if (btnViewCV){
-  btnViewCV.addEventListener("click", () => {
-    showView("cv");
-  });
-}
-
-
-// Boutons "Retour à l'accueil"
-document.querySelectorAll(".back-home").forEach(btn => {
-  btn.addEventListener("click", () => showView("home"));
+document.addEventListener("DOMContentLoaded", () => {
+  // Charger les données statiques
+  fetch("static/data/portfolio.json")
+    .then((r) => r.json())
+    .then((json) => {
+      gData = json;
+      initNavigation();
+      initThemeToggle();
+      initCVButtons();
+      initHomeView();
+      initSaeView();
+      initCompetencesView();
+      initRessourcesView();
+    })
+    .catch((err) => {
+      console.error("Erreur de chargement du JSON :", err);
+    });
 });
 
+/* =========================
+   Navigation entre les vues
+   ========================= */
+function initNavigation() {
+  const views = document.querySelectorAll(".view");
 
-let bar, donut, radar;
-let currentSem="";
+  function showView(name) {
+    views.forEach((v) => v.classList.remove("active"));
+    const target = document.getElementById("view-" + name);
+    if (target) target.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
-// ===== KPIs =====
-async function loadKPIs(){
-  const k = await (await fetch("/api/kpis"+qs(currentSem))).json();
-  $("kHours").textContent = k.total_heures || 0;
-  $("kVCOD").textContent  = k.sae_vcod || 0;
-  $("kRess").textContent  = k.ressources_total || 0;
-  const n = k.preuves_total || 0;
-  $("kProofHint").textContent = n ? `Galerie d’images (${n})` : "Galerie d’images";
-  const split = (k.heures||[]).map(h=>`${h.intitule.split(" ")[0]}: ${h.total_heures}`).join(" · ") || "—";
-  $("kSplit").textContent = split;
+  // Liens du header
+  document.querySelectorAll("nav a[data-view]").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const view = a.getAttribute("data-view");
+      if (view === "home") showView("home");
+      else showView(view);
+    });
+  });
+
+  // Boutons "Retour à l’accueil"
+  document.querySelectorAll(".back-home").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showView("home");
+    });
+  });
 }
 
-// ===== CHARTS =====
-async function loadHeures(){
-  const data = await (await fetch("/api/heures"+qs(currentSem))).json();
-  const labels = data.map(d=>d.intitule);
-  const values = data.map(d=>Number(d.total_heures)||0);
+/* =========================
+   Thème clair / sombre
+   ========================= */
+function initThemeToggle() {
+  const btn = document.getElementById("theme");
+  const html = document.documentElement;
+
+  if (!btn) return;
+
+  function updateLabel() {
+    const isDark = html.getAttribute("data-theme") === "dark";
+    btn.textContent = isDark ? "☀️ Mode clair" : "🌙 Mode sombre";
+  }
+
+  btn.addEventListener("click", () => {
+    const current = html.getAttribute("data-theme") || "light";
+    html.setAttribute("data-theme", current === "light" ? "dark" : "light");
+    updateLabel();
+  });
+
+  updateLabel();
+}
+
+/* =========================
+   Boutons CV
+   ========================= */
+function initCVButtons() {
+  const btnView = document.getElementById("btnViewCV");
+
+  if (btnView) {
+    btnView.addEventListener("click", () => {
+      document
+        .querySelectorAll(".view")
+        .forEach((v) => v.classList.remove("active"));
+      const v = document.getElementById("view-cv");
+      if (v) v.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+}
+
+/* =========================
+   Vue accueil : KPIs + charts
+   ========================= */
+function initHomeView() {
+  if (!gData || !gData.summary) return;
+
+  const sum = gData.summary;
+
+  // KPIs
+  const kHours = document.getElementById("kHours");
+  const kSplit = document.getElementById("kSplit");
+  const kVCOD = document.getElementById("kVCOD");
+  const kRess = document.getElementById("kRess");
+
+  if (kHours) kHours.textContent = sum.hours_total ?? 0;
+  if (kVCOD) kVCOD.textContent = sum.sae_vcod_count ?? 0;
+  if (kRess) kRess.textContent = sum.ressources_count ?? 0;
+
+  if (kSplit) {
+    const parts = [];
+    for (const [cid, obj] of Object.entries(sum.hours_by_competence || {})) {
+      parts.push(`${cid} ${obj.hours} h`);
+    }
+    kSplit.textContent = parts.length ? parts.join(" • ") : "—";
+  }
+
+  // Données pour graphiques
+  const labels = [];
+  const hours = [];
+  for (const [cid, obj] of Object.entries(sum.hours_by_competence || {})) {
+    labels.push(`${cid} – ${obj.label}`);
+    hours.push(obj.hours);
+  }
 
   // Bar chart
-  if (bar) bar.destroy();
-  bar = new Chart($("bar").getContext("2d"), {
-    type:"bar",
-    data:{ labels, datasets:[{label:"Heures totales", data:values}] },
-    options:{
-      responsive:true,
-      maintainAspectRatio:false,
-      scales:{y:{beginAtZero:true}},
-      plugins:{legend:{display:true}}
+  const barCanvas = document.getElementById("bar");
+  if (barCanvas && labels.length) {
+    if (barChart) barChart.destroy();
+    barChart = new Chart(barCanvas.getContext("2d"), {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Heures",
+            data: hours,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  }
+
+  // Donut chart
+  const donutCanvas = document.getElementById("donut");
+  if (donutCanvas && labels.length) {
+    if (donutChart) donutChart.destroy();
+    donutChart = new Chart(donutCanvas.getContext("2d"), {
+      type: "doughnut",
+      data: {
+        labels,
+        datasets: [
+          {
+            data: hours,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+      },
+    });
+
+    const legend = document.getElementById("donutLegend");
+    if (legend) {
+      legend.innerHTML = "";
+      labels.forEach((lab, idx) => {
+        const span = document.createElement("span");
+        span.textContent = `${lab} (${hours[idx]} h)`;
+        legend.appendChild(span);
+      });
     }
+  }
+
+  // Radar global = mêmes données heures / compétence
+  const radarCanvas = document.getElementById("radar");
+  if (radarCanvas && labels.length) {
+    if (radarGlobalChart) radarGlobalChart.destroy();
+    radarGlobalChart = new Chart(radarCanvas.getContext("2d"), {
+      type: "radar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Heures par compétence",
+            data: hours,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  }
+}
+
+/* =========================
+   Vue SAÉ & Projets
+   ========================= */
+function initSaeView() {
+  if (!gData || !Array.isArray(gData.sae)) return;
+
+  const select = document.getElementById("sae");
+  const dTitle = document.getElementById("dTitle");
+  const dBody = document.getElementById("dBody");
+  const radarCanvas = document.getElementById("radar-sae");
+
+  if (!select) return;
+
+  // Remplir la liste
+  gData.sae.forEach((s) => {
+    const opt = document.createElement("option");
+    opt.value = String(s.id_sae);
+    opt.textContent = `${s.code} — ${s.titre}`;
+    select.appendChild(opt);
   });
 
-  // Donut chart avec légende HTML
-  if (donut) donut.destroy();
-  const colors = PIE_COLORS.slice(0, values.length);
-  donut = new Chart($("donut").getContext("2d"), {
-    type:"doughnut",
-    data:{
-      labels,
-      datasets:[{
-        data:values,
-        backgroundColor:colors
-      }]
-    },
-    options:{
-      responsive:true,
-      maintainAspectRatio:false,
-      cutout:"60%",
-      plugins:{ legend:{ display:false } }
-    }
+  function renderRadarForSae(sae) {
+    if (!radarCanvas) return;
+
+    const labels = ["C1", "C2", "C3", "C4"];
+    const values = [0, 0, 0, 0];
+
+    (sae.competences || []).forEach((c) => {
+      const idx = labels.indexOf(c.id_competence);
+      if (idx >= 0) {
+        const lvl = parseInt(c.niveau_cible || "0", 10);
+        values[idx] = isNaN(lvl) ? 0 : lvl;
+      }
+    });
+
+    if (radarSaeChart) radarSaeChart.destroy();
+    radarSaeChart = new Chart(radarCanvas.getContext("2d"), {
+      type: "radar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Niveau cible par compétence",
+            data: values,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            suggestedMax: 3,
+            ticks: {
+              stepSize: 1,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  function renderDetails(sae) {
+    if (dTitle)
+      dTitle.textContent = `${sae.code} — Semestre ${sae.semestre}`;
+
+    if (!dBody) return;
+
+    const compList = (sae.competences || [])
+      .map((c) => `${c.id_competence} – ${c.intitule}`)
+      .join("<br>");
+
+    const acList = (sae.ac || [])
+      .map((a) => `${a.code} – ${a.intitule}`)
+      .join("<br>");
+
+    const ressList = (sae.ressources || [])
+      .map((r) => `${r.code} – ${r.titre}`)
+      .join("<br>");
+
+    dBody.innerHTML = `
+      <p><strong>Titre :</strong> ${sae.titre}</p>
+      <p><strong>Valeur :</strong> ${sae.valeur || "—"}</p>
+      <p><strong>Compétences visées :</strong><br>${compList || "—"}</p>
+      <p><strong>Apprentissages critiques (AC) :</strong><br>${acList || "—"}</p>
+      <p><strong>Ressources mobilisées :</strong><br>${ressList || "—"}</p>
+    `;
+  }
+
+  select.addEventListener("change", () => {
+    const id = parseInt(select.value, 10);
+    const sae = gData.sae.find((s) => s.id_sae === id);
+    if (!sae) return;
+    renderDetails(sae);
+    renderRadarForSae(sae);
   });
 
-  const legend = $("donutLegend");
-  legend.innerHTML = labels.map((label, i) => `
-    <div class="legend-item">
-      <span class="legend-color" style="background:${colors[i]}"></span>
-      <span>${esc(label)}</span>
-    </div>
-  `).join("");
-}
-
-// ===== RESSOURCES =====
-async function loadRessources(){
-  const rows = await (await fetch("/api/ressources")).json();
-  const target = $("ressTable");
-  if (!rows.length){
-    target.innerHTML = `<div class="muted" style="padding:10px;">Aucune ressource.</div>`;
-    return;
-  }
-  let html = `<table><thead><tr><th>Code</th><th>Titre</th></tr></thead><tbody>`;
-  rows.forEach(r => html += `<tr><td><span class="badge">${esc(r.code)}</span></td><td>${esc(r.titre)}</td></tr>`);
-  html += `</tbody></table>`;
-  target.innerHTML = html;
-}
-
-// ===== SAE LIST + DETAIL + RADAR =====
-async function loadSAE(){
-  const rows = await (await fetch("/api/sae"+qs(currentSem))).json();
-  const sel = $("sae");
-  sel.innerHTML = rows.map(s=>`<option value="${s.id_sae}">${esc(s.code)} — ${esc(s.titre)}</option>`).join("");
-  function open(){
-    if(!sel.value) return;
-    openDetail(sel.value);
-    loadRadar(sel.value);
-  }
-  sel.onchange = open;
-  sel.ondblclick = open;
-  if (rows.length){ sel.value = rows[0].id_sae; open(); }
-  else{
-    $("dTitle").textContent="Détails SAÉ";
-    $("dBody").textContent="Aucune SAÉ.";
-    if(radar){radar.destroy(); radar=null;}
+  // Sélectionner la première SAÉ par défaut
+  if (gData.sae.length > 0) {
+    select.value = String(gData.sae[0].id_sae);
+    select.dispatchEvent(new Event("change"));
   }
 }
 
-async function openDetail(id){
-  const r = await fetch(`/api/sae/${id}`);
-  if(!r.ok) return;
-  const d = await r.json();
-  $("dTitle").textContent = `${d.code} — Semestre ${d.semestre}`;
-  const comp = (d.competences||[]).map(x=>`<li><strong>${x.id_competence}</strong> — ${esc(x.intitule)}</li>`).join("") || "<li class='muted'>Aucune</li>";
-  const acs  = (d.acs||[]).map(x=>`<li><strong>${x.code}</strong> — ${esc(x.intitule)}</li>`).join("") || "<li class='muted'>Aucune</li>";
-  const ress = (d.ressources||[]).map(x=>`<li><strong>${x.code}</strong> — ${esc(x.titre)}</li>`).join("") || "<li class='muted'>Aucune</li>";
-  $("dBody").innerHTML = `
-    <p><strong>Titre :</strong> ${esc(d.titre)}</p>
-    <p><strong>Valeur :</strong> <span class="badge">${esc(d.valeur||"—")}</span></p>
-    <h4>Compétences</h4><ul>${comp}</ul>
-    <h4>AC associées</h4><ul>${acs}</ul>
-    <h4>Ressources utilisées</h4><ul>${ress}</ul>
+/* =========================
+   Vue Compétences
+   ========================= */
+function initCompetencesView() {
+  if (!gData || !Array.isArray(gData.competences)) return;
+
+  const container = document.getElementById("compBadges");
+  if (!container) return;
+
+  container.innerHTML = "";
+  gData.competences.forEach((c) => {
+    const div = document.createElement("div");
+    div.className = "chip";
+    div.innerHTML = `
+      <strong>${c.id_competence}</strong> – ${c.intitule}
+      <p class="chip-desc">${c.description || ""}</p>
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* =========================
+   Vue Ressources
+   ========================= */
+function initRessourcesView() {
+  if (!gData || !Array.isArray(gData.ressources)) return;
+
+  const container = document.getElementById("ressTable");
+  if (!container) return;
+
+  const table = document.createElement("table");
+  table.className = "ress-table";
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Intitulé</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
   `;
-}
 
-async function loadRadar(id){
-  const r = await fetch(`/api/sae/${id}/radar`);
-  const d = await r.json();
-  if (radar) radar.destroy();
-  radar = new Chart($("radar").getContext("2d"), {
-    type:"radar",
-    data:{ labels:d.labels, datasets:[{label:"Niveau", data:d.values, borderWidth:2, pointRadius:3}] },
-    options:{
-      responsive:true,
-      maintainAspectRatio:true,
-      plugins:{ legend:{display:false} },
-      scales:{ r:{ beginAtZero:true, suggestedMax:Math.max(3,...d.values,3), ticks:{ stepSize:1 } } }
-    }
+  const tbody = table.querySelector("tbody");
+
+  gData.ressources.forEach((r) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${r.code}</td>
+      <td>${r.titre}</td>
+      <td>${r.description || ""}</td>
+    `;
+    tbody.appendChild(tr);
   });
+
+  container.innerHTML = "";
+  container.appendChild(table);
 }
-
-// ===== COMPETENCES (badges) =====
-async function loadCompetences(){
-  const rows = await (await fetch("/api/competences")).json();
-  const t = $("compBadges");
-  t.innerHTML = rows.map(c => `
-    <div class="chip">
-      <span class="code">${esc(c.id_competence)}</span>
-      <div>
-        <strong>${esc(c.intitule)}</strong><br>
-        <span class="muted">${esc(c.description)}</span>
-      </div>
-    </div>
-  `).join("");
-}
-
-// ===== Semestre filtre =====
-$("sem").onchange = async (e)=>{
-  const v = e.target.value;
-  currentSem = v ? v.replace('S','') : "";
-  await Promise.all([loadKPIs(), loadHeures(), loadSAE(), loadRessources()]);
-};
-
-// ===== Boutons "Retour à l'accueil" =====
-document.querySelectorAll(".back-top").forEach(btn => {
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-});
-
-// ===== INIT =====
-(async function(){
-  await Promise.all([loadKPIs(), loadHeures(), loadSAE(), loadRessources(), loadCompetences()]);
-})();
