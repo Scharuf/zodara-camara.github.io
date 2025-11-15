@@ -105,6 +105,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C1"],
+      "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04"],
+      "ressources": ["R1.01", "R1.02", "R1.10"],
       "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel (requêtes SQL, tableaux de bord)."
     },
     {
@@ -113,6 +115,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C1"],
+      "acs": ["AC11.01","AC11.02","AC11.03","AC11.04","AC11.05","AC11.06"],
+      "ressources": ["R1.03", "R1.10"],
       "description": "Automatiser l’écriture et la lecture de fichiers de données pour alimenter des traitements décisionnels."
     },
     {
@@ -121,6 +125,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C2"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Préparer un tableau de données, choisir des indicateurs descriptifs et les interpréter."
     },
     {
@@ -129,6 +135,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Découvrir un contexte professionnel ou produire des données et en restituer les résultats."
     },
     {
@@ -137,6 +145,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Présenter en anglais un territoire en mobilisant des indicateurs économiques et culturels."
     },
     {
@@ -145,6 +155,8 @@
       "semestre": 1,
       "valeur": "VCOD",
       "competences": ["C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Concevoir et mener une enquête, puis analyser et présenter les résultats."
     },
 
@@ -154,6 +166,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C1"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Modéliser et implémenter une base de données adaptée à un besoin métier."
     },
     {
@@ -162,6 +176,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C2"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Mettre en œuvre un plan de sondage et réaliser une estimation à partir d’un échantillon."
     },
     {
@@ -170,6 +186,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C2"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Ajuster et interpréter un modèle de régression sur des données réelles."
     },
     {
@@ -178,6 +196,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Concevoir des visualisations interactives permettant d’explorer et de communiquer des données."
     },
     {
@@ -186,6 +206,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Construire des tableaux de bord de performance et les présenter à un client."
     },
     {
@@ -194,6 +216,8 @@
       "semestre": 2,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Réaliser une étude complète : préparation des données, analyses statistiques, reporting et restitution."
     },
 
@@ -203,6 +227,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3", "C4"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Mettre en œuvre un système de collecte automatisée (web scraping / API) et stocker les données."
     },
     {
@@ -211,6 +237,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C1", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Concevoir et alimenter un entrepôt de données en intégrant des sources hétérogènes."
     },
     {
@@ -219,6 +247,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C2", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Analyser une série temporelle et proposer des prévisions à court ou moyen terme."
     },
     {
@@ -227,6 +257,8 @@
       "semestre": 3,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Évaluer la conformité d’un traitement de données vis-à-vis du RGPD et des contraintes réglementaires."
     },
 
@@ -236,6 +268,8 @@
       "semestre": 4,
       "valeur": "VCOD",
       "competences": ["C4", "C1", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Concevoir et développer un composant logiciel interopérable dans une chaîne décisionnelle."
     },
     {
@@ -244,6 +278,8 @@
       "semestre": 4,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Mettre en œuvre des méthodes factorielles / de classification et restituer les résultats à un client."
     },
 
@@ -253,6 +289,8 @@
       "semestre": 5,
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3", "C4"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Analyser les besoins d’un client et spécifier un futur outil décisionnel."
     },
     {
@@ -261,6 +299,8 @@
       "semestre": 5,
       "valeur": "VCOD",
       "competences": ["C1", "C3", "C4"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Concevoir et mettre en œuvre la migration de données entre bases relationnelles et NoSQL."
     },
     {
@@ -269,16 +309,22 @@
       "semestre": 5,
       "valeur": "VCOD",
       "competences": ["C2", "C3"],
+      "acs": ["AC12.01","AC12.02","AC12.03","AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
       "description": "Mettre en place un workflow de datamining pour résoudre un problème métier (classification, scoring, etc.)."
     },
 
-    {
-      "code": "SAÉ 6.01",
-      "titre": "Développement et test d’un outil décisionnel",
-      "semestre": 6,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3", "C4"],
-      "description": "Développer, tester et livrer un outil décisionnel complet en respectant un cahier des charges."
+   {
+     "code": "SAÉ 6.01",
+     "titre": "Développement et test d’un outil décisionnel",
+     "semestre": 6,
+     "valeur": "VCOD",
+     "competences": ["C1", "C2", "C3", "C4"],
+     "acs": ["AC11.01", "AC12.03", "AC22.05"],
+     "ressources": ["R5.01", "R5.06", "R5.07", "R6.01"],
+     "description": "Développer, tester et livrer un outil décisionnel complet en respectant un cahier des charges."
     }
+
   ]
 }
+
