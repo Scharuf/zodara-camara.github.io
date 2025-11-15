@@ -7,9 +7,19 @@ let radarHomeChart = null;
 let radarSaeChart = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Charger le JSON
+  // Ces parties ne dépendent pas des données
+  initNavigation();
+  initThemeToggle();
+  initCvButtons();
+
+  // Chargement du JSON
   fetch("portfolio.json")
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("HTTP " + res.status);
+      }
+      return res.json();
+    })
     .then((json) => {
       DATA = json;
       initKpis();
@@ -17,19 +27,29 @@ document.addEventListener("DOMContentLoaded", () => {
       initSaeView();
       initCompetencesView();
       initRessourcesView();
-      initNavigation();
-      initThemeToggle();
-      initCvButtons();
     })
     .catch((err) => {
       console.error("Erreur de chargement de portfolio.json", err);
+      showDataError();
     });
 });
+
+// ---------------------------------------------------------
+//  En cas d'erreur de données
+// ---------------------------------------------------------
+function showDataError() {
+  const kSplit = document.getElementById("kSplit");
+  if (kSplit) {
+    kSplit.textContent = "Erreur de chargement des données (portfolio.json).";
+  }
+}
 
 // ---------------------------------------------------------
 //  KPIs
 // ---------------------------------------------------------
 function initKpis() {
+  if (!DATA) return;
+
   const kHours = document.getElementById("kHours");
   const kSplit = document.getElementById("kSplit");
   const kVCOD = document.getElementById("kVCOD");
@@ -39,28 +59,32 @@ function initKpis() {
   const stats = DATA.stats;
   const hoursByComp = stats.hours_by_competence;
 
-  kHours.textContent = stats.total_hours;
-  kVCOD.textContent = DATA.stats.nb_sae;
-  kRess.textContent = DATA.ressources.length;
-  kProofHint.textContent = `Preuves : ${stats.nb_preuves}`;
+  if (kHours) kHours.textContent = stats.total_hours;
+  if (kVCOD) kVCOD.textContent = stats.nb_sae;
+  if (kRess) kRess.textContent = DATA.ressources.length;
+  if (kProofHint) kProofHint.textContent = `Preuves : ${stats.nb_preuves}`;
 
   // Texte "C1 : 230 h • C2 : ..."
   const parts = Object.entries(hoursByComp).map(
     ([code, h]) => `${code} : ${h} h`
   );
-  kSplit.textContent = parts.join(" • ");
+  if (kSplit) kSplit.textContent = parts.join(" • ");
 }
 
 // ---------------------------------------------------------
 //  Graphiques (Chart.js)
 // ---------------------------------------------------------
 function initCharts() {
+  if (!DATA || !window.Chart) return;
+
   const hoursByComp = DATA.stats.hours_by_competence;
   const labels = Object.keys(hoursByComp); // ["C1","C2","C3","C4"]
   const values = Object.values(hoursByComp);
 
   // Bar chart
-  const barCtx = document.getElementById("bar").getContext("2d");
+  const barCanvas = document.getElementById("bar");
+  if (!barCanvas) return;
+  const barCtx = barCanvas.getContext("2d");
   barChart = new Chart(barCtx, {
     type: "bar",
     data: {
@@ -83,7 +107,9 @@ function initCharts() {
   });
 
   // Donut chart
-  const donutCtx = document.getElementById("donut").getContext("2d");
+  const donutCanvas = document.getElementById("donut");
+  if (!donutCanvas) return;
+  const donutCtx = donutCanvas.getContext("2d");
   donutChart = new Chart(donutCtx, {
     type: "doughnut",
     data: {
@@ -103,12 +129,16 @@ function initCharts() {
 
   // Légende custom
   const legendContainer = document.getElementById("donutLegend");
-  legendContainer.innerHTML = labels
-    .map((c, i) => `<span class="chip">${c} : ${values[i]} h</span>`)
-    .join(" ");
+  if (legendContainer) {
+    legendContainer.innerHTML = labels
+      .map((c, i) => `<span class="chip">${c} : ${values[i]} h</span>`)
+      .join(" ");
+  }
 
-  // Radar global (même données que bar, pour l’instant)
-  const radarCtx = document.getElementById("radar").getContext("2d");
+  // Radar global
+  const radarCanvas = document.getElementById("radar");
+  if (!radarCanvas) return;
+  const radarCtx = radarCanvas.getContext("2d");
   radarHomeChart = new Chart(radarCtx, {
     type: "radar",
     data: {
@@ -132,8 +162,10 @@ function initCharts() {
     }
   });
 
-  // Radar par SAÉ (niveau de 0 à 3)
-  const radarSaeCtx = document.getElementById("radar-sae").getContext("2d");
+  // Radar par SAÉ (sera mis à jour dans initSaeView)
+  const radarSaeCanvas = document.getElementById("radar-sae");
+  if (!radarSaeCanvas) return;
+  const radarSaeCtx = radarSaeCanvas.getContext("2d");
   radarSaeChart = new Chart(radarSaeCtx, {
     type: "radar",
     data: {
@@ -162,10 +194,14 @@ function initCharts() {
 //  Vue SAÉ & Projets
 // ---------------------------------------------------------
 function initSaeView() {
+  if (!DATA) return;
+
   const saeSelect = document.getElementById("sae");
   const semSelect = document.getElementById("sem");
   const dTitle = document.getElementById("dTitle");
   const dBody = document.getElementById("dBody");
+
+  if (!saeSelect || !dTitle || !dBody) return;
 
   function fillSaeOptions(filterSem) {
     saeSelect.innerHTML = "";
@@ -184,9 +220,10 @@ function initSaeView() {
       dTitle.textContent = "Aucune Saé disponible";
       dBody.textContent =
         "Aucune Saé pour ce semestre dans les données du portfolio.";
-      // reset radar
-      radarSaeChart.data.datasets[0].data = [0, 0, 0, 0];
-      radarSaeChart.update();
+      if (radarSaeChart) {
+        radarSaeChart.data.datasets[0].data = [0, 0, 0, 0];
+        radarSaeChart.update();
+      }
     }
   }
 
@@ -214,15 +251,16 @@ function initSaeView() {
       <p><strong>Ressources mobilisées :</strong> — (non renseignées dans la version statique)</p>
     `;
 
-    // Mettre à jour le radar par SAÉ :
-    // on met 3 si la compétence est ciblée, 0 sinon
-    const labels = ["C1", "C2", "C3", "C4"];
-    const data = labels.map((c) =>
-      sae.competences && sae.competences.includes(c) ? 3 : 0
-    );
-    radarSaeChart.data.labels = labels;
-    radarSaeChart.data.datasets[0].data = data;
-    radarSaeChart.update();
+    // Mettre à jour le radar par SAÉ : 3 si la compétence est présente, 0 sinon
+    if (radarSaeChart) {
+      const labels = ["C1", "C2", "C3", "C4"];
+      const data = labels.map((c) =>
+        sae.competences && sae.competences.includes(c) ? 3 : 0
+      );
+      radarSaeChart.data.labels = labels;
+      radarSaeChart.data.datasets[0].data = data;
+      radarSaeChart.update();
+    }
   }
 
   // changement de SAÉ
@@ -244,6 +282,8 @@ function initSaeView() {
 //  Vue Compétences
 // ---------------------------------------------------------
 function initCompetencesView() {
+  if (!DATA) return;
+
   const container = document.getElementById("compBadges");
   if (!container) return;
 
@@ -267,6 +307,8 @@ function initCompetencesView() {
 //  Vue Ressources
 // ---------------------------------------------------------
 function initRessourcesView() {
+  if (!DATA) return;
+
   const container = document.getElementById("ressTable");
   if (!container) return;
 
@@ -346,24 +388,23 @@ function initThemeToggle() {
 }
 
 // ---------------------------------------------------------
-//  Boutons CV
+//  Boutons CV / Preuves
 // ---------------------------------------------------------
 function initCvButtons() {
   const btnView = document.getElementById("btnViewCV");
-  if (!btnView) return;
-
-  btnView.addEventListener("click", () => {
-    const views = document.querySelectorAll(".view");
-    views.forEach((v) => v.classList.remove("active"));
-    const target = document.getElementById("view-cv");
-    if (target) target.classList.add("active");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  if (btnView) {
+    btnView.addEventListener("click", () => {
+      const views = document.querySelectorAll(".view");
+      views.forEach((v) => v.classList.remove("active"));
+      const target = document.getElementById("view-cv");
+      if (target) target.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   const btnProofs = document.getElementById("btnProofs");
   if (btnProofs) {
     btnProofs.addEventListener("click", () => {
-      // pour l’instant : simple alert / TODO: rediriger vers une galerie
       alert("Galerie de preuves non encore configurée dans la version statique.");
     });
   }
