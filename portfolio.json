@@ -102,8 +102,8 @@
 
     "AC52.01": { "label": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté" },
     "AC52.02": { "label": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté" },
-    "AC52.03": { "aisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques(Marketing, Biostatistique, Statistique spatiale, Gestion" },
-    "AC52.04": { "Comprendre les mécanismes de bases de l’intelligence artificielle (apprentissage statistique supervisé, échan-tillons d’apprentissage et échantillons de test"},
+    "AC52.03": { "label": "Saisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques(Marketing, Biostatistique, Statistique spatiale, Gestion" },
+    "AC52.04": { "label": "Comprendre les mécanismes de bases de l’intelligence artificielle (apprentissage statistique supervisé, échan-tillons d’apprentissage et échantillons de test" },
     
     "AC53.01": { "label": "Mesurer l’impact d’un respect de la législation en terme de droit des données" },
     "AC53.02": { "label": "Identifier les clés d’une bonne communication (procédures et techniques utilisées" },
@@ -420,4 +420,5 @@
     }
   ]
 }
+
 
