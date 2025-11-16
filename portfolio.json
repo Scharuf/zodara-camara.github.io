@@ -40,75 +40,75 @@
     "AC11.01": { "label": "Interpréter et prendre en compte le besoin du client" },
     "AC11.02": { "label": "Respecter les formalismes de notation" },
     "AC11.03": { "label": "Connaître la syntaxe des langages et savoir l’utiliser" },
-    "AC11.04": { "label": "Maîtriser la structure des données à exploiter (importance)" },
+    "AC11.04": { "label": "Maîtriser la structure des données à exploiter" },
     "AC11.05": { "label": "Comprendre les structures algorithmiques de base" },
     "AC11.06": { "label": "Prendre conscience de l’intérêt de la programmation" },
 
-    "AC12.01": { "label": "Réaliser que les sources de données ont des caractéristiques propres à considérer" },
-    "AC12.02": { "label": "Comprendre qu’une analyse correcte ne peut émaner que de données propres et préparées" },
-    "AC12.03": { "label": "Comprendre l’intérêt des synthèses numériques et graphiques pour décrire une variable statistique" },
-    "AC12.04": { "label": "Comprendre l’intérêt des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables." },
-    "AC12.05": { "label": "Comprendre l''intérêt de l’utilisation d’un modèle probabiliste" },
-    "AC12.06": { "label": "Appréhender la notion de fluctuation d''échantillonnage, notamment à l’aide de simulations probabilistes" },
+    "AC12.01": { "label": "Identifier les caractéristiques propres aux différentes sources de données" },
+    "AC12.02": { "label": "Comprendre qu’une bonne analyse nécessite des données propres et préparées" },
+    "AC12.03": { "label": "Utiliser des synthèses numériques et graphiques pour décrire une variable" },
+    "AC12.04": { "label": "Utiliser des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables" },
+    "AC12.05": { "label": "Comprendre l’intérêt de l’utilisation d’un modèle probabiliste" },
+    "AC12.06": { "label": "Appréhender la notion de fluctuation d’échantillonnage à l’aide de simulations" },
 
-    "AC13.01": { "label": "Prendre connaissance des biais rencontrés dans la mise en place d’une enquête" },
-    "AC13.02": { "label": "Identifier l’importance de contextualiser ses données" },
-    "AC13.03": { "label": "Mesurer l’importance de mettre en évidence des résultats clés par l’utilisation d’indicateurs pertinents" },
-    "AC13.04": { "label": "Lors de la restitution des résultats, mesurer l’importance d’expliciter également la démarche suivie" },
-    "AC13.05": { "label": "Comprendre les intérêts de la data visualisation et de l’infographie" },
-    "AC13.06": { "label": "Mesurer l’importance d’une expression précise et nuancée dans la communication en français et dans une langue étrangère des résultats" },
+    "AC13.01": { "label": "Connaître les biais possibles lors de la mise en place d’une enquête" },
+    "AC13.02": { "label": "Mesurer l’importance de contextualiser les données" },
+    "AC13.03": { "label": "Mettre en évidence des résultats clés à l’aide d’indicateurs pertinents" },
+    "AC13.04": { "label": "Savoir expliciter la démarche suivie lors de la restitution des résultats" },
+    "AC13.05": { "label": "Comprendre les apports de la datavisualisation et de l’infographie" },
+    "AC13.06": { "label": "Mesurer l’importance d’une expression précise et nuancée pour communiquer les résultats" },
 
-    "AC21.01": { "label": "Comprendre l’organisation des données de l’entreprise" },
-    "AC21.02": { "label": "Réaliser le rôle central et spécifique de l’entrepôt de données dans la chaîne décisionnelle" },
-    "AC21.03": { "label": "Identifier et résoudre les problèmes d’intégration de sources complémentaires et hétérogènes" },
+    "AC21.01": { "label": "Comprendre l’organisation des données dans l’entreprise" },
+    "AC21.02": { "label": "Comprendre le rôle central de l’entrepôt de données dans la chaîne décisionnelle" },
+    "AC21.03": { "label": "Identifier et résoudre les problèmes d’intégration de sources hétérogènes" },
     "AC21.04": { "label": "Comprendre la nécessité de tester, corriger et documenter un programme" },
-    "AC21.05": { "label": "Apprécier l’intérêt de briques logicielles existantes et savoir les utiliser" },
+    "AC21.05": { "label": "Apprécier l’intérêt des briques logicielles existantes et savoir les utiliser" },
     "AC21.06": { "label": "Apprécier les limites de validité et les conditions d’application d’une analyse" },
 
-    "AC22.01": { "label": "Prendre conscience de la différence entre modélisation statistique et analyse exploratoire" },
-    "AC22.02": { "label": "Saisir la spécificité de l’analyse des données temporelles ou chronologiques" },
-    "AC22.05": { "label": "Apprécier les limites de validité des modèles utilisés" },
+    "AC22.01": { "label": "Différencier modélisation statistique et analyse exploratoire" },
+    "AC22.02": { "label": "Comprendre la spécificité de l’analyse des données temporelles" },
+    "AC22.05": { "label": "Apprécier les limites de validité des modèles statistiques utilisés" },
 
-    "AC23.01": { "label": "Saisir l’intérêt de mobiliser de manière proactive des ressources métiers liées à l’environnement" },
-    "AC23.02": { "label": "Savoir défendre ses choix d’analyses" },
-    "AC23.03": { "label": "Saisir la nécessité de choisir des indicateurs pertinents pour communiquer sur les résultats" },
-    "AC23.04": { "label": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos" },
-    "AC23.05": { "label": "Description à préciser (AC23.05)" },
+    "AC23.01": { "label": "Mobiliser de manière proactive des ressources métiers liées à l’environnement" },
+    "AC23.02": { "label": "Défendre et justifier ses choix d’analyses" },
+    "AC23.03": { "label": "Choisir des indicateurs pertinents pour communiquer sur les résultats" },
+    "AC23.04": { "label": "Assurer la rigueur des productions et de la communication associée" },
+    "AC23.05": { "label": "Comprendre les enjeux éthiques et juridiques liés à la diffusion des résultats" },
 
-    "AC24.01": { "label": "Comprendre le rôle fondamental de l’analyse des besoins et de l’existant dans un projet décisionnel" },
-    "AC24.02": { "label": "Percevoir les enjeux de l’automatisation et de l’interopérabilité d’un ensemble de tâches" },
-    "AC24.03": { "label": "Prendre conscience des différences entre outils (logiciels, langages) pour choisir le plus adapté" },
+    "AC24.01": { "label": "Analyser les besoins et l’existant dans un projet décisionnel" },
+    "AC24.02": { "label": "Percevoir les enjeux de l’automatisation et de l’interopérabilité des tâches" },
+    "AC24.03": { "label": "Choisir des outils adaptés parmi plusieurs logiciels et langages" },
     "AC24.04": { "label": "Comprendre le cycle de vie d’un projet informatique" },
 
-    "AC25.01": { "label": "Comprendre les enjeux des relations en milieu professionnel adaptées à l’interlocuteur et à sa culture" },
+    "AC25.01": { "label": "Adapter sa communication aux interlocuteurs et à leur culture en milieu professionnel" },
 
-    "AC31.02": { "label": "Spécificités des données complexes" },
-    "AC31.03": { "label": "Mener une veille technologique" },
+    "AC31.02": { "label": "Identifier les spécificités des données complexes" },
+    "AC31.03": { "label": "Mener une veille technologique sur les outils et méthodes décisionnels" },
 
-    "AC32.02": { "label": "Importance de la mise en œuvre de méthodes adaptées" },
+    "AC32.02": { "label": "Apprécier l’importance de méthodes adaptées aux données disponibles" },
 
-    "AC33.01": { "label": "Savoir transformer la donnée" },
-    "AC33.02": { "label": "Mesurer l’impact du RGPD" },
-    "AC33.03": { "label": "Identifier les formes de bonne communication" },
-    "AC33.04": { "label": "Comprendre les mécanismes de base de l’IA" },
-    "AC33.05": { "label": "Être force de proposition" },
+    "AC33.01": { "label": "Transformer et préparer les données pour l’analyse" },
+    "AC33.02": { "label": "Mesurer l’impact du RGPD sur les traitements de données" },
+    "AC33.03": { "label": "Mettre en œuvre une communication claire et adaptée" },
+    "AC33.04": { "label": "Comprendre les mécanismes de base de l’intelligence artificielle" },
+    "AC33.05": { "label": "Être force de proposition dans un contexte décisionnel" },
 
-    "AC34.01": { "label": "Prendre conscience de la nécessité de différencier les interlocuteurs" },
-    "AC34.02": { "label": "Défendre ses choix de solution" },
-    "AC34.03": { "label": "Réaliser l’intérêt d’appliquer des méthodes de développement" },
-    "AC34.04": { "label": "Apprécier l’intérêt du gestionnaire de versions" },
+    "AC34.01": { "label": "Adapter sa présentation selon les interlocuteurs" },
+    "AC34.02": { "label": "Défendre ses choix de solution technique" },
+    "AC34.03": { "label": "Appliquer des méthodes de développement logicielle" },
+    "AC34.04": { "label": "Comprendre l’intérêt d’un gestionnaire de versions" },
 
-    "AC43.04": { "label": "Prendre conscience de la rigueur requise dans ses productions et dans la communication à leur propos" },
+    "AC43.04": { "label": "Assurer la rigueur des productions et de la communication associée" },
 
-    "AC52.01": { "label": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté" },
-    "AC52.02": { "label": "Prendre conscience des différences entre des outils statistiques pour choisir le plus adapté" },
-    "AC52.03": { "label": "Saisir l’importance de la mise en œuvre de méthodes adaptées à des domaines et des données spécifiques(Marketing, Biostatistique, Statistique spatiale, Gestion" },
-    "AC52.04": { "label": "Comprendre les mécanismes de bases de l’intelligence artificielle (apprentissage statistique supervisé, échan-tillons d’apprentissage et échantillons de test" },
-    
-    "AC53.01": { "label": "Mesurer l’impact d’un respect de la législation en terme de droit des données" },
-    "AC53.02": { "label": "Identifier les clés d’une bonne communication (procédures et techniques utilisées" },
-    "AC53.03": { "label": "Mesurer l’importance de comprendre et de répondre à l’ensemble des problématiques posées" },
-    "AC53.04": { "label": "Identifier les solutions technologiques permettant la collecte et la diffusion de données" }
+    "AC52.01": { "label": "Choisir l’outil statistique le plus adapté" },
+    "AC52.02": { "label": "Comprendre les limites et hypothèses des méthodes de data mining" },
+    "AC52.03": { "label": "Adapter les méthodes à des domaines et des données spécifiques" },
+    "AC52.04": { "label": "Comprendre les bases de l’IA et de l’apprentissage supervisé" },
+
+    "AC53.01": { "label": "Mesurer l’impact du respect de la législation sur les données" },
+    "AC53.02": { "label": "Identifier les clés d’une bonne communication (procédures, supports, canaux)" },
+    "AC53.03": { "label": "Comprendre et traiter l’ensemble des problématiques posées" },
+    "AC53.04": { "label": "Identifier les solutions technologiques pour collecter et diffuser des données" }
   },
 
   "ressources": [
@@ -182,7 +182,7 @@
       "competences": ["C1"],
       "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04"],
       "ressources": ["R1.01", "R1.02", "R1.10"],
-      "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel (requêtes SQL, tableaux de bord)."
+      "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel."
     },
     {
       "code": "SAÉ 1.02",
@@ -292,24 +292,9 @@
       "valeur": "VCOD",
       "competences": ["C1", "C2", "C3"],
       "acs": [
-        "AC11.01",
-        "AC11.02",
-        "AC11.03",
-        "AC11.04",
-        "AC11.05",
-        "AC11.06",
-        "AC12.01",
-        "AC12.02",
-        "AC12.03",
-        "AC12.04",
-        "AC12.05",
-        "AC12.06",
-        "AC13.01",
-        "AC13.02",
-        "AC13.03",
-        "AC13.04",
-        "AC13.05",
-        "AC13.06"
+        "AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06",
+        "AC12.01", "AC12.02", "AC12.03", "AC12.04", "AC12.05", "AC12.06",
+        "AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06"
       ],
       "ressources": ["R2.01", "R2.02", "R2.03", "R2.04", "R2.05", "R2.06", "R2.08", "R2.09", "R2.10", "R2.11", "R2.12"],
       "description": "Réaliser une étude complète : préparation des données, analyses statistiques, reporting et restitution."
@@ -323,7 +308,7 @@
       "competences": ["C1", "C2", "C3", "C4"],
       "acs": ["AC21.01", "AC21.03", "AC21.05", "AC21.06", "AC23.01", "AC23.02", "AC24.01", "AC24.02", "AC24.03"],
       "ressources": ["R3.02", "R3.03", "R3.04", "R3.05", "R3.11"],
-      "description": "Mettre en œuvre un système de collecte automatisée (web scraping / API) et stocker les données."
+      "description": "Mettre en œuvre un système de collecte automatisée (web scraping ou API) et stocker les données."
     },
     {
       "code": "SAÉ 3.02",
@@ -374,7 +359,7 @@
       "competences": ["C1", "C2", "C3"],
       "acs": ["AC21.01", "AC21.04", "AC21.05", "AC22.01", "AC22.02", "AC22.05", "AC23.01", "AC23.02", "AC23.03", "AC23.04"],
       "ressources": ["R4.01", "R4.02", "R4.03", "R4.05", "R4.07"],
-      "description": "Mettre en œuvre des méthodes factorielles / de classification et restituer les résultats à un client."
+      "description": "Mettre en œuvre des méthodes factorielles ou de classification et restituer les résultats à un client."
     },
 
     {
@@ -405,7 +390,7 @@
       "competences": ["C2", "C3"],
       "acs": ["AC52.01", "AC52.02", "AC52.03", "AC53.01", "AC53.02", "AC53.03", "AC53.04"],
       "ressources": ["R4.01", "R5.05", "R5.06", "R5.05"],
-      "description": "Mettre en place un workflow de datamining pour résoudre un problème métier (classification, scoring, etc.)."
+      "description": "Mettre en place un workflow de datamining pour répondre à une problématique métier."
     },
 
     {
@@ -420,5 +405,3 @@
     }
   ]
 }
-
-
