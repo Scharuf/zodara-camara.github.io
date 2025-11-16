@@ -5,15 +5,20 @@ let barChart = null;
 let donutChart = null;
 let radarHomeChart = null;
 let radarSaeChart = null;
+let currentSemFilter = null; // null = tous les semestres
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("portfolio.json")
     .then((res) => res.json())
     .then((json) => {
       DATA = json;
-      initKpis();
-      initCharts();
-      initSaeView();
+
+      // Stats initiales (tous semestres)
+      const initialStats = computeStatsForSemester(null);
+
+      initKpis(initialStats);
+      initCharts(initialStats);
+      initSaeView();          // utilise radarSaeChart
       initCompetencesView();
       initRessourcesView();
       initNavigation();
@@ -26,21 +31,99 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ---------------------------------------------------------
+//  Calcul des stats en fonction du semestre
+// ---------------------------------------------------------
+function computeStatsForSemester(semValue) {
+  const baseStats = DATA.stats;
+  const allHoursByComp = baseStats.hours_by_competence;
+  const compKeys = Object.keys(allHoursByComp);
+
+  // Tous semestres -> stats globaux
+  if (!semValue) {
+    return {
+      total_hours: baseStats.total_hours,
+      nb_sae: baseStats.nb_sae,
+      nb_preuves: baseStats.nb_preuves,
+      nb_ressources: DATA.ressources.length,
+      hours_by_competence: { ...allHoursByComp }
+    };
+  }
+
+  const semNum = parseInt(semValue.slice(1), 10); // "S4" -> 4
+
+  // SAÉ du semestre
+  const saeSem = DATA.sae.filter((s) => s.semestre === semNum);
+  const nb_sae = saeSem.length;
+
+  // Ressources du semestre (champ "semestre" dans les ressources)
+  const ressourcesSem = DATA.ressources.filter((r) => r.semestre === semNum);
+  const nb_ressources = ressourcesSem.length;
+
+  // Répartition approximative des heures par compétence
+  // On pondère les heures globales par le nombre de SAÉ
+  // qui touchent chaque compétence dans le semestre.
+  const totalOccur = {};
+  const semOccur = {};
+  compKeys.forEach((c) => {
+    totalOccur[c] = 0;
+    semOccur[c] = 0;
+  });
+
+  DATA.sae.forEach((s) => {
+    (s.competences || []).forEach((c) => {
+      if (totalOccur[c] !== undefined) {
+        totalOccur[c] += 1;
+      }
+      if (s.semestre === semNum && semOccur[c] !== undefined) {
+        semOccur[c] += 1;
+      }
+    });
+  });
+
+  const hoursByCompSem = {};
+  compKeys.forEach((c) => {
+    const totOcc = totalOccur[c];
+    if (totOcc === 0) {
+      hoursByCompSem[c] = 0;
+    } else {
+      const ratio = semOccur[c] / totOcc;
+      hoursByCompSem[c] = Math.round(allHoursByComp[c] * ratio);
+    }
+  });
+
+  const total_hours = Object.values(hoursByCompSem).reduce(
+    (sum, h) => sum + h,
+    0
+  );
+
+  return {
+    total_hours,
+    nb_sae,
+    nb_preuves: baseStats.nb_preuves,
+    nb_ressources,
+    hours_by_competence: hoursByCompSem
+  };
+}
+
+// ---------------------------------------------------------
 //  KPIs
 // ---------------------------------------------------------
-function initKpis() {
+function initKpis(stats) {
+  updateKpis(stats);
+}
+
+function updateKpis(stats) {
   const kHours = document.getElementById("kHours");
   const kSplit = document.getElementById("kSplit");
   const kVCOD = document.getElementById("kVCOD");
   const kRess = document.getElementById("kRess");
   const kProofHint = document.getElementById("kProofHint");
 
-  const stats = DATA.stats;
   const hoursByComp = stats.hours_by_competence;
 
   kHours.textContent = stats.total_hours;
-  kVCOD.textContent = DATA.stats.nb_sae;
-  kRess.textContent = DATA.ressources.length;
+  kVCOD.textContent = stats.nb_sae;
+  kRess.textContent = stats.nb_ressources;
   kProofHint.textContent = `Preuves : ${stats.nb_preuves}`;
 
   const parts = Object.entries(hoursByComp).map(
@@ -52,9 +135,9 @@ function initKpis() {
 // ---------------------------------------------------------
 //  Graphiques (Chart.js)
 // ---------------------------------------------------------
-function initCharts() {
-  const hoursByComp = DATA.stats.hours_by_competence;
-  const labels = Object.keys(hoursByComp); // ["C1","C2","C3","C4"]
+function initCharts(stats) {
+  const hoursByComp = stats.hours_by_competence;
+  const labels = Object.keys(hoursByComp);
   const values = Object.values(hoursByComp);
 
   // Bar chart
@@ -99,13 +182,7 @@ function initCharts() {
     }
   });
 
-  // Légende custom
-  const legendContainer = document.getElementById("donutLegend");
-  legendContainer.innerHTML = labels
-    .map((c, i) => `<span class="chip">${c} : ${values[i]} h</span>`)
-    .join(" ");
-
-  // Radar global (même données que bar)
+  // Radar global
   const radarCtx = document.getElementById("radar").getContext("2d");
   radarHomeChart = new Chart(radarCtx, {
     type: "radar",
@@ -130,7 +207,10 @@ function initCharts() {
     }
   });
 
-  // Radar par SAÉ
+  // Légende personnalisée
+  updateDonutLegend(labels, values);
+
+  // Radar par SAÉ (sera mis à jour dans initSaeView)
   const radarSaeCtx = document.getElementById("radar-sae").getContext("2d");
   radarSaeChart = new Chart(radarSaeCtx, {
     type: "radar",
@@ -154,6 +234,49 @@ function initCharts() {
       }
     }
   });
+}
+
+function updateCharts(stats) {
+  const hoursByComp = stats.hours_by_competence;
+  const labels = Object.keys(hoursByComp);
+  const values = Object.values(hoursByComp);
+
+  // Bar
+  barChart.data.labels = labels;
+  barChart.data.datasets[0].data = values;
+  barChart.update();
+
+  // Donut
+  donutChart.data.labels = labels;
+  donutChart.data.datasets[0].data = values;
+  donutChart.update();
+
+  // Radar global
+  radarHomeChart.data.labels = labels;
+  radarHomeChart.data.datasets[0].data = values;
+  radarHomeChart.options.scales.r.suggestedMax =
+    Math.max(...values) + 20;
+  radarHomeChart.update();
+
+  // Légende du donut
+  updateDonutLegend(labels, values);
+}
+
+function updateDonutLegend(labels, values) {
+  const legendContainer = document.getElementById("donutLegend");
+  legendContainer.innerHTML = labels
+    .map((c, i) => `<span class="chip">${c} : ${values[i]} h</span>`)
+    .join(" ");
+}
+
+// ---------------------------------------------------------
+//  Mise à jour globale quand on change de semestre
+// ---------------------------------------------------------
+function updateDashboardForSemester(semValue) {
+  currentSemFilter = semValue || null;
+  const stats = computeStatsForSemester(currentSemFilter);
+  updateKpis(stats);
+  updateCharts(stats);
 }
 
 // ---------------------------------------------------------
@@ -226,13 +349,13 @@ function initSaeView() {
       ${
         acLabels.length
           ? `<ul>${acLabels.join("")}</ul>`
-          : "<p class=\"muted\">Aucune AC renseignée.</p>"
+          : '<p class="muted">Aucune AC renseignée.</p>'
       }
       <p><strong>Ressources mobilisées :</strong></p>
       ${
         resLines.length
           ? `<ul>${resLines.join("")}</ul>`
-          : "<p class=\"muted\">Aucune ressource renseignée.</p>"
+          : '<p class="muted">Aucune ressource renseignée.</p>'
       }
     `;
 
@@ -246,16 +369,19 @@ function initSaeView() {
     radarSaeChart.update();
   }
 
+  // changement de SAÉ
   saeSelect.addEventListener("change", updateSaeDetails);
 
+  // filtre semestre (dans le header)
   if (semSelect) {
     semSelect.addEventListener("change", () => {
-      const val = semSelect.value; // "", "S1", "S2", ...
+      const val = semSelect.value; // "", "S1", ...
       fillSaeOptions(val || null);
+      updateDashboardForSemester(val || null);
     });
   }
 
-  // initial
+  // remplissage initial (tous semestres)
   fillSaeOptions(null);
 }
 
