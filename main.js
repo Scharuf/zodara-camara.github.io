@@ -7,11 +7,17 @@ let radarHomeChart = null;
 let radarSaeChart = null;
 let currentSemFilter = null; // null = tous les semestres
 
+// clé utilisée pour faire le lien SAÉ <-> preuves ("id" ou "code")
+let SAE_KEY_FOR_PREUVES = "id";
+
 document.addEventListener("DOMContentLoaded", () => {
   fetch("portfolio.json")
     .then((res) => res.json())
     .then((json) => {
       DATA = json;
+
+      // Déterminer si les preuves utilisent le champ id (SAE_101) ou code (SAÉ 1.01)
+      detectSaeKeyForPreuves();
 
       // Stats initiales (tous semestres)
       const initialStats = computeStatsForSemester(null);
@@ -24,11 +30,34 @@ document.addEventListener("DOMContentLoaded", () => {
       initNavigation();
       initThemeToggle();
       initCvButtons();
+      initPreuvesPage();      // si on est sur preuve.html, affichage des preuves
     })
     .catch((err) => {
       console.error("Erreur de chargement de portfolio.json", err);
     });
 });
+
+// ---------------------------------------------------------
+//  Détection de la clé utilisée pour relier SAÉ et preuves
+// ---------------------------------------------------------
+function detectSaeKeyForPreuves() {
+  if (!DATA || !DATA.preuves || DATA.preuves.length === 0) return;
+
+  const sample = DATA.preuves[0].sae;
+  if (!sample) return;
+
+  const matchId = DATA.sae.some((s) => s.id === sample);
+  const matchCode = DATA.sae.some((s) => s.code === sample);
+
+  if (matchCode && !matchId) {
+    SAE_KEY_FOR_PREUVES = "code";
+  } else if (matchId && !matchCode) {
+    SAE_KEY_FOR_PREUVES = "id";
+  } else if (matchCode && matchId) {
+    // ambigu -> on garde "id" par défaut
+    SAE_KEY_FOR_PREUVES = "id";
+  }
+}
 
 // ---------------------------------------------------------
 //  Calcul des stats en fonction du semestre
@@ -60,8 +89,6 @@ function computeStatsForSemester(semValue) {
   const nb_ressources = ressourcesSem.length;
 
   // Répartition approximative des heures par compétence
-  // On pondère les heures globales par le nombre de SAÉ
-  // qui touchent chaque compétence dans le semestre.
   const totalOccur = {};
   const semOccur = {};
   compKeys.forEach((c) => {
@@ -119,6 +146,8 @@ function updateKpis(stats) {
   const kRess = document.getElementById("kRess");
   const kProofHint = document.getElementById("kProofHint");
 
+  if (!kHours || !kSplit || !kVCOD || !kRess || !kProofHint) return;
+
   const hoursByComp = stats.hours_by_competence;
 
   kHours.textContent = stats.total_hours;
@@ -140,100 +169,113 @@ function initCharts(stats) {
   const labels = Object.keys(hoursByComp);
   const values = Object.values(hoursByComp);
 
+  const barCanvas = document.getElementById("bar");
+  const donutCanvas = document.getElementById("donut");
+  const radarCanvas = document.getElementById("radar");
+  const radarSaeCanvas = document.getElementById("radar-sae");
+
   // Bar chart
-  const barCtx = document.getElementById("bar").getContext("2d");
-  barChart = new Chart(barCtx, {
-    type: "bar",
-    data: {
-      labels,
-      datasets: [
-        {
-          label: "Heures par compétence",
-          data: values
+  if (barCanvas) {
+    const barCtx = barCanvas.getContext("2d");
+    barChart = new Chart(barCtx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Heures par compétence",
+            data: values
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { title: { display: true, text: "Compétence" } },
+          y: { title: { display: true, text: "Heures" }, beginAtZero: true }
         }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { title: { display: true, text: "Compétence" } },
-        y: { title: { display: true, text: "Heures" }, beginAtZero: true }
       }
-    }
-  });
+    });
+  }
 
   // Donut chart
-  const donutCtx = document.getElementById("donut").getContext("2d");
-  donutChart = new Chart(donutCtx, {
-    type: "doughnut",
-    data: {
-      labels,
-      datasets: [
-        {
-          label: "Répartition des heures",
-          data: values
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { position: "bottom" } }
-    }
-  });
+  if (donutCanvas) {
+    const donutCtx = donutCanvas.getContext("2d");
+    donutChart = new Chart(donutCtx, {
+      type: "doughnut",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Répartition des heures",
+            data: values
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: "bottom" } }
+      }
+    });
+  }
 
   // Radar global
-  const radarCtx = document.getElementById("radar").getContext("2d");
-  radarHomeChart = new Chart(radarCtx, {
-    type: "radar",
-    data: {
-      labels,
-      datasets: [
-        {
-          label: "Heures par compétence",
-          data: values
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        r: {
-          beginAtZero: true,
-          suggestedMax: Math.max(...values) + 20
+  if (radarCanvas) {
+    const radarCtx = radarCanvas.getContext("2d");
+    radarHomeChart = new Chart(radarCtx, {
+      type: "radar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Heures par compétence",
+            data: values
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            beginAtZero: true,
+            suggestedMax: Math.max(...values) + 20
+          }
         }
       }
-    }
-  });
+    });
+  }
 
-  // Légende personnalisée
+  // Légende personnalisée pour le donut
   updateDonutLegend(labels, values);
 
   // Radar par SAÉ (sera mis à jour dans initSaeView)
-  const radarSaeCtx = document.getElementById("radar-sae").getContext("2d");
-  radarSaeChart = new Chart(radarSaeCtx, {
-    type: "radar",
-    data: {
-      labels,
-      datasets: [
-        {
-          label: "Poids des compétences dans la SAÉ",
-          data: [0, 0, 0, 0]
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        r: {
-          beginAtZero: true,
-          suggestedMax: 3
+  if (radarSaeCanvas) {
+    const radarSaeCtx = radarSaeCanvas.getContext("2d");
+    radarSaeChart = new Chart(radarSaeCtx, {
+      type: "radar",
+      data: {
+        labels: ["C1", "C2", "C3", "C4"],
+        datasets: [
+          {
+            label: "Poids des compétences dans la SAÉ",
+            data: [0, 0, 0, 0]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            beginAtZero: true,
+            suggestedMax: 3
+          }
         }
       }
-    }
-  });
+    });
+  }
 }
 
 function updateCharts(stats) {
@@ -242,21 +284,27 @@ function updateCharts(stats) {
   const values = Object.values(hoursByComp);
 
   // Bar
-  barChart.data.labels = labels;
-  barChart.data.datasets[0].data = values;
-  barChart.update();
+  if (barChart) {
+    barChart.data.labels = labels;
+    barChart.data.datasets[0].data = values;
+    barChart.update();
+  }
 
   // Donut
-  donutChart.data.labels = labels;
-  donutChart.data.datasets[0].data = values;
-  donutChart.update();
+  if (donutChart) {
+    donutChart.data.labels = labels;
+    donutChart.data.datasets[0].data = values;
+    donutChart.update();
+  }
 
   // Radar global
-  radarHomeChart.data.labels = labels;
-  radarHomeChart.data.datasets[0].data = values;
-  radarHomeChart.options.scales.r.suggestedMax =
-    Math.max(...values) + 20;
-  radarHomeChart.update();
+  if (radarHomeChart) {
+    radarHomeChart.data.labels = labels;
+    radarHomeChart.data.datasets[0].data = values;
+    radarHomeChart.options.scales.r.suggestedMax =
+      Math.max(...values) + 20;
+    radarHomeChart.update();
+  }
 
   // Légende du donut
   updateDonutLegend(labels, values);
@@ -264,6 +312,8 @@ function updateCharts(stats) {
 
 function updateDonutLegend(labels, values) {
   const legendContainer = document.getElementById("donutLegend");
+  if (!legendContainer) return;
+
   legendContainer.innerHTML = labels
     .map((c, i) => `<span class="chip">${c} : ${values[i]} h</span>`)
     .join(" ");
@@ -288,6 +338,8 @@ function initSaeView() {
   const dTitle = document.getElementById("dTitle");
   const dBody = document.getElementById("dBody");
 
+  if (!saeSelect || !dTitle || !dBody) return; // pas sur la page avec la vue SAÉ
+
   function fillSaeOptions(filterSem) {
     saeSelect.innerHTML = "";
     DATA.sae.forEach((s) => {
@@ -302,11 +354,18 @@ function initSaeView() {
       saeSelect.selectedIndex = 0;
       updateSaeDetails();
     } else {
-      dTitle.textContent = "Aucune Saé disponible";
+      dTitle.textContent = "Aucune SAÉ disponible";
       dBody.textContent =
-        "Aucune Saé pour ce semestre dans les données du portfolio.";
-      radarSaeChart.data.datasets[0].data = [0, 0, 0, 0];
-      radarSaeChart.update();
+        "Aucune SAÉ pour ce semestre dans les données du portfolio.";
+      if (radarSaeChart) {
+        radarSaeChart.data.datasets[0].data = [0, 0, 0, 0];
+        radarSaeChart.update();
+      }
+      const blocExplication = document.getElementById("sae-explication");
+      if (blocExplication) {
+        blocExplication.textContent =
+          "Aucune SAÉ pour ce semestre dans les données du portfolio.";
+      }
     }
   }
 
@@ -315,7 +374,7 @@ function initSaeView() {
     const sae = DATA.sae.find((s) => s.code === code);
     if (!sae) return;
 
-    dTitle.textContent = `${sae.code} — Semestre ${sae.semestre}`;
+    dTitle.textContent = `${sae.code} — Semestre S${sae.semestre}`;
 
     const compLabels = (sae.competences || []).map((c) => {
       const meta = DATA.competences[c];
@@ -360,13 +419,35 @@ function initSaeView() {
     `;
 
     // Radar par SAÉ (3 si la compétence est ciblée, 0 sinon)
-    const labels = ["C1", "C2", "C3", "C4"];
-    const data = labels.map((c) =>
-      sae.competences && sae.competences.includes(c) ? 3 : 0
-    );
-    radarSaeChart.data.labels = labels;
-    radarSaeChart.data.datasets[0].data = data;
-    radarSaeChart.update();
+    if (radarSaeChart) {
+      const labels = ["C1", "C2", "C3", "C4"];
+      const data = labels.map((c) =>
+        sae.competences && sae.competences.includes(c) ? 3 : 0
+      );
+      radarSaeChart.data.labels = labels;
+      radarSaeChart.data.datasets[0].data = data;
+      radarSaeChart.update();
+    }
+
+    // Zone explication perso (sous le radar / panneau)
+    const blocExplication = document.getElementById("sae-explication");
+    if (blocExplication) {
+      blocExplication.textContent =
+        sae.explication || sae.description || "";
+    }
+
+    // Bouton "Voir les preuves de cette SAÉ"
+    const lienPreuves = document.getElementById("btn-preuves-sae");
+    if (lienPreuves) {
+      let keyValue;
+      if (SAE_KEY_FOR_PREUVES === "code") {
+        keyValue = sae.code;
+      } else {
+        // par défaut on privilégie l'id si présent
+        keyValue = sae.id || sae.code;
+      }
+      lienPreuves.href = `preuve.html?sae=${encodeURIComponent(keyValue)}`;
+    }
   }
 
   // changement de SAÉ
@@ -390,7 +471,7 @@ function initSaeView() {
 // ---------------------------------------------------------
 function initCompetencesView() {
   const container = document.getElementById("compBadges");
-  if (!container) return;
+  if (!container || !DATA) return;
 
   const hoursByComp = DATA.stats.hours_by_competence;
 
@@ -413,7 +494,7 @@ function initCompetencesView() {
 // ---------------------------------------------------------
 function initRessourcesView() {
   const container = document.getElementById("ressTable");
-  if (!container) return;
+  if (!container || !DATA) return;
 
   const rows = DATA.ressources
     .map(
@@ -433,6 +514,7 @@ function initRessourcesView() {
         <tr>
           <th>Code</th>
           <th>Titre</th>
+          <th>Titre</th>
           <th>Semestre</th>
         </tr>
       </thead>
@@ -444,11 +526,62 @@ function initRessourcesView() {
 }
 
 // ---------------------------------------------------------
+//  Page PREUVES (preuve.html)
+// ---------------------------------------------------------
+function initPreuvesPage() {
+  const conteneur = document.getElementById("liste-preuves");
+  if (!conteneur || !DATA) return; // on n'est pas sur preuve.html
+
+  const params = new URLSearchParams(window.location.search);
+  const saeParam = params.get("sae"); // ex: "SAE_101" ou "SAÉ 1.01"
+  const texteFiltre = document.getElementById("filtre-sae-texte");
+
+  let preuves = DATA.preuves || [];
+
+  if (saeParam) {
+    preuves = preuves.filter((p) => p.sae === saeParam);
+    if (texteFiltre) {
+      texteFiltre.textContent = `Preuves associées à ${saeParam}`;
+    }
+  } else if (texteFiltre) {
+    texteFiltre.textContent = "Toutes les preuves disponibles.";
+  }
+
+  if (!preuves.length) {
+    conteneur.textContent = "Aucune preuve à afficher pour le moment.";
+    return;
+  }
+
+  conteneur.innerHTML = "";
+
+  preuves.forEach((pr) => {
+    const card = document.createElement("article");
+    card.className = "preuve-card";
+
+    const imgHtml = pr.fichier
+      ? `<img src="${pr.fichier}" alt="${pr.titre}" class="preuve-image">`
+      : "";
+
+    card.innerHTML = `
+      <h2>${pr.titre}</h2>
+      <p><strong>Année :</strong> ${pr.annee || ""}</p>
+      <p><strong>SAÉ :</strong> ${pr.sae || ""}</p>
+      <p>${pr.description || ""}</p>
+      ${imgHtml}
+    `;
+
+    conteneur.appendChild(card);
+  });
+}
+
+// ---------------------------------------------------------
 //  Navigation entre vues
 // ---------------------------------------------------------
 function initNavigation() {
   const links = document.querySelectorAll("header nav a");
   const views = document.querySelectorAll(".view");
+
+  if (!views.length) return;
 
   function showView(name) {
     views.forEach((v) => v.classList.remove("active"));
@@ -504,10 +637,6 @@ function initCvButtons() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  const btnProofs = document.getElementById("btnProofs");
-  if (btnProofs) {
-    btnProofs.addEventListener("click", () => {
-      alert("Galerie de preuves non encore configurée dans la version statique.");
-    });
-  }
+  // Le bouton "Voir les preuves" sur la home est maintenant un <a href="preuve.html">
+  // donc pas besoin de JS ici.
 }
