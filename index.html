@@ -124,7 +124,8 @@
           <div class="kpi">
             <div class="t">Preuves</div>
             <div style="margin-top:6px;">
-              <button class="btn small primary" id="btnProofs">Voir les preuves</button>
+              <!-- Lien direct vers la page des preuves -->
+              <a class="btn small primary" id="btnProofs" href="preuve.html">Voir les preuves</a>
             </div>
             <div class="s" id="kProofHint" style="margin-top:4px;">Galerie d’images</div>
           </div>
@@ -288,25 +289,36 @@
     <section class="view" id="view-sae">
       <section class="section">
         <div class="section-header">
-          <h2 class="section-title">Saé & Projets</h2>
-          <p class="section-sub">Détails des Saé, compétences visées et ressources utilisées.</p>
+          <h2 class="section-title">SAÉ & Projets</h2>
+          <p class="section-sub">Détails des SAÉ, compétences visées et ressources utilisées.</p>
         </div>
 
         <div class="grid" style="grid-template-areas:'g3 side'; grid-template-columns:1.1fr 1fr;">
           <!-- Radar -->
           <section class="card" style="grid-area:g3">
-            <h3>Radar par Saé</h3>
+            <h3>Radar par SAÉ</h3>
             <div class="radar-wrap"><canvas id="radar-sae"></canvas></div>
           </section>
 
           <!-- SAÉ panneau -->
           <aside class="card" style="grid-area:side">
-            <h3>Saé & projets</h3>
+            <h3>SAÉ & projets</h3>
             <p class="muted" style="margin:0 0 6px;">Sélectionnez une SAÉ pour voir les compétences, AC et ressources associées.</p>
             <select id="sae" size="10" class="list"></select>
-            <h4 id="dTitle" class="detail-title">Détails Saé</h4>
-            <div id="dBody" class="detail-body muted">Aucune Saé sélectionnée.</div>
+            <h4 id="dTitle" class="detail-title">Détails SAÉ</h4>
+            <div id="dBody" class="detail-body muted">Aucune SAÉ sélectionnée.</div>
           </aside>
+        </div>
+
+        <!-- Zone d'explication personnelle + lien vers les preuves -->
+        <div class="sae-extra">
+          <div id="sae-explication" class="sae-explication">
+            Sélectionne une SAÉ pour voir mon explication personnelle ici.
+          </div>
+
+          <a id="btn-preuves-sae" class="btn-preuves-sae" href="preuve.html">
+            Voir les preuves de cette SAÉ
+          </a>
         </div>
 
         <button class="btn outline back-home" style="margin-top:16px;">↑ Retour à l’accueil</button>
@@ -371,14 +383,7 @@
 
   </main>
 </div>
-<div id="sae-explication" class="sae-explication">
-  Sélectionne une SAÉ pour voir mon explication personnelle ici.
-</div>
 
-<a id="btn-preuves-sae" class="btn-preuves-sae" href="preuve.html">
-  Voir les preuves de cette SAÉ
-</a>
-  
 <!-- JS (chemin relatif pour GitHub Pages) -->
 <script src="main.js" defer></script>
 </body>
