@@ -93,14 +93,14 @@ CREATE TABLE IF NOT EXISTS ACTIVITE_PEDAGOGIQUE (
 INSERT OR IGNORE INTO ACTIVITE_PEDAGOGIQUE (num, semestre, heure, skill, id_competence) VALUES
 
 --S1
-(1, 1, 30, 'Traiter des données à des fins décisionnelles',              'C1'),
+(1, 1, 45, 'Traiter des données à des fins décisionnelles',              'C1'),
 (2, 1, 45, 'Analyser statistiquement les données',                        'C2'),
-(3, 1, 45, 'Valoriser une production dans un contexte professionnel',     'C3'),
+(3, 1, 50, 'Valoriser une production dans un contexte professionnel',     'C3'),
 
 --S2
 (4, 2, 45, 'Traiter des données à des fins décisionnelles',              'C1'),
 (5, 2, 40, 'Analyser statistiquement les données',                        'C2'),
-(6, 2, 35, 'Valoriser une production dans un contexte professionnel',     'C3'),
+(6, 2, 45, 'Valoriser une production dans un contexte professionnel',     'C3'),
 
 --S3
 (7,  3, 45, 'Développer un outil décisionnel',                            'C4'),
