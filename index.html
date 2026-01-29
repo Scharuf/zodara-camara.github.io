@@ -1,187 +1,390 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <title>Portfolio BUT SD – Zodara CAMARA</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <title>Parcours universitaire – Zodara CAMARA</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- CSS (chemin relatif pour GitHub Pages) -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
 
-  <header class="profile-card" id="top">
-    <div class="profile-top">
-      <div class="brand">Zodara CAMARA</div>
-      <nav>
-        <a href="#" data-view="home" class="active">📊 Parcours</a>
-        <a href="#" data-view="sae">🧪 SAÉ & Projets</a>
-        <a href="#" data-view="competences">🎯 Compétences</a>
-        <a href="#" data-view="ressources">📚 Ressources</a>
-        <a href="#" data-view="cv">📄 Mon CV</a> <a href="#" data-view="contact">✉️ Contact</a>
-      </nav>
-    </div>
+  <!-- ========= HEADER / PROFIL ========= -->
+  <header class="profile-card" id="top">
+    <div class="profile-top">
+      <div class="brand">Zodara CAMARA</div>
+      <nav>
+        <a href="#" data-view="home">
+          <span class="nav-icon">📊</span>
+          <span>Parcours</span>
+        </a>
+        <a href="#" data-view="sae">
+          <span class="nav-icon">🧪</span>
+          <span>SAÉ & Projets</span>
+        </a>
+        <a href="#" data-view="competences">
+          <span class="nav-icon">🎯</span>
+          <span>Compétences</span>
+        </a>
+        <a href="#" data-view="ressources">
+          <span class="nav-icon">📚</span>
+          <span>Ressources</span>
+        </a>
+        <a href="#" data-view="contact">
+          <span class="nav-icon">✉️</span>
+          <span>Contact</span>
+        </a>
+      </nav>
+    </div>
 
-    <div class="profile-main">
-      <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
-        <div class="avatar">
-          <img src="photo.jpg" alt="Photo de Zodara Camara">
-        </div>
-        <div class="profile-text">
-          <h1>Zodara CAMARA</h1>
-          <p>Étudiant en Science des données – Parcours Visualisation Conception Outils Décisionnels</p>
-          <div class="profile-meta">
-            <span>BUT Science des Données (VCOD)</span>
-            <span>•</span>
-            <span id="user-parcours">Dole, Jura</span>
-          </div>
-        </div>
-      </div>
+    <div class="profile-main">
+      <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+        <div class="avatar">
+          <img src="photo.jpg"
+               alt="Photo de profil de Zodara Camara">
+        </div>
+        <div class="profile-text">
+          <h1>Zodara CAMARA</h1>
+          <p>Étudiant en Science des données – Parcours Visualisation Conception Outils Décisionnels</p>
+          <div class="profile-meta">
+            <span>Formation : Bachelor Universitaire de Technologie Science des Données</span>
+            <span>•</span>
+            <span>Parcours : Visualisation, Conception d’outils Décisionnels</span>
+          </div>
+        </div>
+      </div>
 
-      <div class="profile-actions">
-        <div class="cv-actions">
-          <a class="btn cv-btn primary" id="btnDownloadCV" href="CV_CAMARA_ZODARA.pdf" download>
-            <span>Télécharger CV</span> <span class="cv-icon">⬇</span>
-          </a>
-          <button class="btn cv-btn outline" id="btnViewCV" type="button">
-            <span>Visualiser CV</span> <span class="cv-icon">👁</span>
-          </button>
-        </div>
+      <div class="profile-actions">
+        <div class="cv-actions">
+          <!-- Bouton téléchargement PDF -->
+          <a
+            class="btn cv-btn primary"
+            id="btnDownloadCV"
+            href="CV_CAMARA_ZODARA.pdf"
+            download
+          >
+            <span>Télécharger<br>le CV</span>
+            <span class="cv-icon">⬇</span>
+          </a>
 
-        <div class="pill-inline">
-          <label>Semestre :
-            <select id="sem">
-              <option value="">Tous</option>
-              <option value="S1">S1</option><option value="S2">S2</option>
-              <option value="S3">S3</option><option value="S4">S4</option>
-              <option value="S5">S5</option><option value="S6">S6</option>
-            </select>
-          </label>
-          <button id="theme" class="btn outline">🌙 Mode sombre</button>
-        </div>
-      </div>
-    </div>
-  </header>
+          <!-- Bouton visualisation en ligne -->
+          <button class="btn cv-btn outline" id="btnViewCV" type="button">
+            <span>Visualiser<br>le CV</span>
+            <span class="cv-icon">👁</span>
+          </button>
+        </div>
 
-  <main>
+        <div class="pill-inline">
+          <label>Semestre :
+            <select id="sem">
+              <option value="">Tous</option>
+              <option>S1</option><option>S2</option><option>S3</option>
+              <option>S4</option><option>S5</option><option>S6</option>
+            </select>
+          </label>
+          <button id="theme" class="btn outline">🌙 Mode sombre</button>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section class="view active" id="view-home">
-      <section class="section">
-        <div class="section-header">
-          <h2 class="section-title">Parcours & indicateurs</h2>
-        </div>
+  <!-- ========= VUES ========= -->
+  <main>
 
-        <div class="kpis">
-          <div class="kpi">
-            <div class="t">Heures totales</div>
-            <div class="v" id="kHours">0</div>
-            <div class="s" id="kSplit">Chargement...</div>
-          </div>
-          <div class="kpi">
-            <div class="t">SAÉ VCOD</div>
-            <div class="v" id="kVCOD">0</div>
-            <div class="s">Projets évalués</div>
-          </div>
-          <div class="kpi">
-            <div class="t">Ressources</div>
-            <div class="v" id="kRess">0</div>
-            <div class="s">Modules suivis</div>
-          </div>
-          <div class="kpi">
-            <div class="t">Preuves</div>
-            <div style="margin-top:6px;">
-              <a class="btn small primary" href="preuve.html">Voir la galerie</a>
-            </div>
-            <div class="s" id="kProofHint">0 preuves</div>
-          </div>
-        </div>
-      </section>
+    <!-- ====== VUE ACCUEIL (KPIs + graphiques) ====== -->
+    <section class="view active" id="view-home">
+      <!-- Parcours & indicateurs -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Parcours & indicateurs</h2>
+          <p class="section-sub">Synthèse des heures, SAÉ et ressources par compétence.</p>
+        </div>
 
-      <section class="section">
-        <div class="grid">
-          <section class="card" style="grid-area:g1">
-            <h3>Heures par compétence</h3>
-            <div class="chart-box"><canvas id="bar"></canvas></div>
-          </section>
-          <section class="card" style="grid-area:g2">
-            <h3>Part des heures</h3>
-            <div class="chart-box"><canvas id="donut"></canvas></div>
-            <div id="donutLegend" class="legend-row"></div>
-          </section>
-          <section class="card" style="grid-area:g3">
-            <h3>Profil Global</h3>
-            <div class="radar-wrap"><canvas id="radar"></canvas></div>
-          </section>
-        </div>
-      </section>
-    </section>
+        <div class="kpis">
+          <div class="kpi">
+            <div class="t">Heures totales</div>
+            <div class="v" id="kHours">0</div>
+            <div class="s" id="kSplit">—</div>
+          </div>
+          <div class="kpi">
+            <div class="t">SAÉ VCOD</div>
+            <div class="v" id="kVCOD">0</div>
+            <div class="s">Projets évalués VCOD</div>
+          </div>
+          <div class="kpi">
+            <div class="t">Ressources</div>
+            <div class="v" id="kRess">0</div>
+            <div class="s">Références distinctes suivies</div>
+          </div>
+          <div class="kpi">
+            <div class="t">Preuves</div>
+            <div style="margin-top:6px;">
+              <!-- Lien direct vers la page des preuves -->
+              <a class="btn small primary" id="btnProofs" href="preuve.html">Voir les preuves</a>
+            </div>
+            <div class="s" id="kProofHint" style="margin-top:4px;">Galerie d’images</div>
+          </div>
+        </div>
+      </section>
 
-    <section class="view" id="view-sae">
-      <section class="section">
-        <div class="grid" style="grid-template-areas:'g3 side'; grid-template-columns:1fr 1fr;">
-          <section class="card" style="grid-area:g3">
-            <h3>Radar par SAÉ</h3>
-            <div class="radar-wrap"><canvas id="radar-sae"></canvas></div>
-          </section>
-          <aside class="card" style="grid-area:side">
-            <h3>Sélectionner une SAÉ</h3>
-            <select id="sae" size="8" class="list"></select>
-            <h4 id="dTitle" class="detail-title" style="margin-top:15px;">Détails</h4>
-            <div id="dBody" class="detail-body muted">Cliquez sur une SAÉ pour voir les détails.</div>
-          </aside>
-        </div>
-        <div class="sae-extra card" style="margin-top:20px;">
-          <div id="sae-explication" class="sae-explication">...</div>
-          <a id="btn-preuves-sae" class="btn small primary" href="preuve.html">📎 Voir les preuves de cette SAÉ</a>
-        </div>
-      </section>
-    </section>
+      <!-- Visualisations -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Visualisations</h2>
+          <p class="section-sub">Répartition des heures par compétence.</p>
+        </div>
 
-    <section class="view" id="view-cv">
-      <div class="card cv-card">
-        <div class="cv-banner">
-          <h3>Zodara CAMARA</h3>
-          <p>Bachelor Universitaire Technologique de Sciences des Données</p>
-        </div>
-        <div class="cv-columns">
-          <div class="cv-col">
-            <h4>Formations</h4>
-            <p><strong>BUT SD – Dole | 2023-2024</strong><br>Reporting SQL, Python, R, Statistiques...</p>
-            <p><strong>Univ. Strasbourg | 2018-2023</strong><br>L2 Mathématiques appliquées.</p>
-          </div>
-          <div class="cv-col">
-            <h4>Expériences</h4>
-            <p><strong>Projet Adrian Pizza :</strong> Reporting SGBD & Tableaux de bord.</p>
-            <p><strong>Cora Dole :</strong> Conseiller vente.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="grid">
+          <!-- Graphique 1 -->
+          <section class="card" style="grid-area:g1">
+            <h3>Heures par compétence</h3>
+            <div class="chart-box"><canvas id="bar"></canvas></div>
+          </section>
 
-    <section class="view" id="view-competences">
-        <h2>Compétences du BUT</h2>
-        <div id="compBadges" class="chips"></div>
-    </section>
+          <!-- Graphique 2 -->
+          <section class="card" style="grid-area:g2">
+            <h3>Part des heures</h3>
+            <div class="chart-box"><canvas id="donut"></canvas></div>
+            <div id="donutLegend" class="legend-row"></div>
+          </section>
 
-    <section class="view" id="view-ressources">
-        <h2>Tableau des ressources</h2>
-        <div id="ressTable"></div>
-    </section>
+          <!-- Graphique 3 (overview) -->
+          <section class="card" style="grid-area:g3">
+            <h3>Radar global (Saé sélectionnée)</h3>
+            <div class="radar-wrap"><canvas id="radar"></canvas></div>
+          </section>
+        </div>
 
-    <section class="view" id="view-contact">
-        <div class="card">
-            <h3>Me contacter</h3>
-            <p>📧 Email : <a href="mailto:Zodara.camara01@outlook.fr">Zodara.camara01@outlook.fr</a></p>
-            <p>🔗 LinkedIn : <a href="https://www.linkedin.com/in/camara-zod/" target="_blank">Profil LinkedIn</a></p>
-        </div>
-    </section>
+        <button class="btn outline back-home" style="margin-top:16px;">↑ Retour à l’accueil</button>
+      </section>
+    </section>
 
-  </main>
+    <!-- ====== VUE CV (lecture) ====== -->
+    <section class="view" id="view-cv">
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Mon CV</h2>
+          <p class="section-sub">Version lecture du CV de Zodara CAMARA.</p>
+        </div>
+
+        <div class="card cv-card">
+          <!-- Bandeau haut -->
+          <div class="cv-banner">
+            <h3>Zodara CAMARA</h3>
+            <p>Bachelor Universitaire Technologique de Sciences des Données – Parcours VCOD</p>
+          </div>
+
+          <!-- Deux colonnes de blocs -->
+          <div class="cv-columns">
+            <!-- Colonne gauche -->
+            <div class="cv-col cv-left">
+              <section class="cv-box">
+                <h4>Mail / Tél / Adresse</h4>
+                <p>Mail : <a href="mailto:Zodara.camara01@outlook.fr">Zodara.camara01@outlook.fr</a></p>
+                <p>Tél : (+33) 07.53.84.75.37</p>
+                <p>Adresse : ....................</p>
+                <p>Permis B</p>
+                <p>
+                  LinkedIn :
+                  <a href="https://www.linkedin.com/in/camara-zod/"
+                     target="_blank" rel="noopener noreferrer">
+                    Mon profil LinkedIn
+                  </a>
+                </p>
+              </section>
+
+              <section class="cv-box">
+                <h4>Formations</h4>
+                <ul>
+                  <li>
+                    <strong>BUT Sciences des Données – Dole | 2023-2024</strong><br>
+                    Reporting à partir des données stockées dans un SGBD relationnel (SQL), programmation (Python),
+                    analyse et datavisualisation de données, programmation statistique (R), estimation par
+                    échantillonnage (statistique inférentielle), étude des données de l’environnement
+                    entrepreneurial et économique.
+                  </li>
+                  <li>
+                    <strong>Université de Strasbourg | 2018-2023</strong><br>
+                    Licence 2 (validée) de Mathématiques appliquées : modélisation statistique (R),
+                    statistique mathématique, calcul scientifique (Python), intégration et probabilité,
+                    bases de la programmation en C et C++.
+                  </li>
+                  <li>
+                    <strong>Baccalauréat scientifique (série D) – Côte d’Ivoire | 2016-2018</strong>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="cv-box">
+                <h4>Compétences</h4>
+                <ul>
+                  <li>Préparation et traitement des données à des fins décisionnelles</li>
+                  <li>Bases de données et requêtes SQL, NoSQL</li>
+                  <li>Conception de tableaux de bord / datavisualisation</li>
+                  <li>Modélisation statistique et statistique inférentielle</li>
+                  <li><strong>Logiciels :</strong> RStudio, Excel, Power BI, QGIS, Qlik Sense, Talend</li>
+                  <li><strong>Langages :</strong> VBA, SQL, Python, R, Java</li>
+                  <li><strong>Soft skills :</strong> communication, économie, gestion, créativité</li>
+                </ul>
+              </section>
+            </div>
+
+            <!-- Colonne droite -->
+            <div class="cv-col cv-right">
+              <section class="cv-box">
+                <h4>Expériences</h4>
+                <ul>
+                  <li>
+                    <strong>Projet étudiant – Pizza et tartes flambées d’Adrian</strong><br>
+                    Reporting à partir des données stockées dans un SGBD relationnel, écriture et lecture de fichiers,
+                    requêtage SQL, création de tableaux de bord à partir des données du SGBD.
+                  </li>
+                  <li>
+                    <strong>Projet étudiant – Traitement et tableau de bord</strong><br>
+                    Construction et présentation d’indicateurs de performance pour le service pilotage
+                    de l’IUT de Besançon-Vesoul.
+                  </li>
+                  <li>
+                    <strong>Projet – Mise en œuvre d’une enquête</strong><br>
+                    Traitement et analyse des données, restitution des résultats auprès de la mairie de Dole.
+                  </li>
+                  <li>
+                    <strong>Vente en grande distribution – Cora Dole (janvier 2024)</strong><br>
+                    Conseiller vente.
+                  </li>
+                </ul>
+              </section>
+
+              <section class="cv-box">
+                <h4>Langues</h4>
+                <ul>
+                  <li>Français : langue maternelle</li>
+                  <li>Anglais : niveau B2</li>
+                  <li>Arabe : niveau A1</li>
+                </ul>
+              </section>
+
+              <section class="cv-box">
+                <h4>Centres d’intérêt</h4>
+                <ul>
+                  <li>Musique : musique locale et traditionnelle</li>
+                  <li>Football : R1 amateur (FC Vauban)</li>
+                  <li>Lecture : romans historiques, annales scientifiques</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn outline back-home" style="margin-top:16px;">↑ Retour à l’accueil</button>
+      </section>
+    </section>
+
+    <!-- ====== VUE SAÉ & PROJETS ====== -->
+    <section class="view" id="view-sae">
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">SAÉ & Projets</h2>
+          <p class="section-sub">Détails des SAÉ, compétences visées et ressources utilisées.</p>
+        </div>
+
+        <div class="grid" style="grid-template-areas:'g3 side'; grid-template-columns:1.1fr 1fr;">
+          <!-- Radar -->
+          <section class="card" style="grid-area:g3">
+            <h3>Radar par SAÉ</h3>
+            <div class="radar-wrap"><canvas id="radar-sae"></canvas></div>
+          </section>
+
+          <!-- SAÉ panneau -->
+          <aside class="card" style="grid-area:side">
+            <h3>SAÉ & projets</h3>
+            <p class="muted" style="margin:0 0 6px;">Sélectionnez une SAÉ pour voir les compétences, AC et ressources associées.</p>
+            <select id="sae" size="10" class="list"></select>
+            <h4 id="dTitle" class="detail-title">Détails SAÉ</h4>
+            <div id="dBody" class="detail-body muted">Aucune SAÉ sélectionnée.</div>
+          </aside>
+        </div>
+
+        <!-- Zone d'explication personnelle + lien vers les preuves -->
+        <div class="sae-extra">
+          <div id="sae-explication" class="sae-explication">
+            Sélectionne une SAÉ pour voir mon explication personnelle ici.
+          </div>
+
+          <a id="btn-preuves-sae" class="btn-preuves-sae" href="preuve.html">
+            Voir les preuves de cette SAÉ
+          </a>
+        </div>
+
+        <button class="btn outline back-home" style="margin-top:16px;">↑ Retour à l’accueil</button>
+      </section>
+    </section>
+
+    <!-- ====== VUE COMPETENCES ====== -->
+    <section class="view" id="view-competences">
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Compétences</h2>
+          <p class="section-sub">Les quatre grandes compétences du BUT et leurs descriptions.</p>
+        </div>
+        <div id="compBadges" class="chips"></div>
+
+        <button class="btn outline back-home">↑ Retour à l’accueil</button>
+      </section>
+    </section>
+
+    <!-- ====== VUE RESSOURCES ====== -->
+    <section class="view" id="view-ressources">
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Ressources suivies</h2>
+          <p class="section-sub">Liste des ressources associées au BUT Science des Données.</p>
+        </div>
+        <div class="card">
+          <div id="ressTable"></div>
+        </div>
+
+        <button class="btn outline back-home" style="margin-top:16px;">↑ Retour à l’accueil</button>
+      </section>
+    </section>
+
+    <!-- ====== VUE CONTACT ====== -->
+    <section class="view" id="view-contact">
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-sub">Restons en contact pour de futurs projets ou opportunités.</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-item">
+            <strong>Email</strong><br>
+            zodara.camara01@outlook.fr
+          </div>
+          <div class="contact-item">
+            <strong>LinkedIn</strong><br>
+            <a href="https://www.linkedin.com/in/camara-zod/"
+               target="_blank" rel="noopener noreferrer">LinkedIn.com
+            </a>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub / Portfolio</strong><br>
+            Lien vers tes projets techniques
+          </div>
+        </div>
+
+        <button class="btn outline back-home" style="margin-top:16px;">↑ Retour à l’accueil</button>
+      </section>
+    </section>
+
+  </main>
 </div>
 
+<!-- JS (chemin relatif pour GitHub Pages) -->
 <script src="main.js" defer></script>
-
 </body>
 </html>
