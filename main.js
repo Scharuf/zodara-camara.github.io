@@ -204,6 +204,30 @@ function initPreuvesPage() {
         </article>
     `).join('');
 }
+function initNavigation() {
+    const navLinks = document.querySelectorAll('nav a[data-view]');
+    const views = document.querySelectorAll('.view');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetView = link.getAttribute('data-view');
+
+            // 1. Masquer toutes les vues
+            views.forEach(v => v.style.display = 'none');
+            
+            // 2. Afficher la vue cible
+            const activeView = document.getElementById(`view-${targetView}`);
+            if (activeView) {
+                activeView.style.display = 'block';
+            }
+
+            // 3. Gérer la classe active sur le menu
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+}
 
 // Les autres fonctions (Ressources, Navigation, CV) restent identiques à ton code d'origine
 function initNavigation() { /* ... ta logique de liens ... */ }
