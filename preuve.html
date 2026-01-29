@@ -5,50 +5,101 @@
   <title>Galerie des preuves</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- CSS commun -->
+  <!-- CSS global -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Petit style spécifique preuves (léger) -->
+  <style>
+    .top-bar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-top:24px;
+      margin-bottom:16px;
+    }
+    .top-bar h1{ margin:0; font-size:20px; }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .page-preuves{ margin-top:8px; }
+
+    /* grille preuves */
+    #liste-preuves{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    @media (max-width: 1000px){
+      #liste-preuves{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width: 650px){
+      #liste-preuves{ grid-template-columns:1fr; }
+    }
+
+    /* carte preuve (réutilise ton look) */
+    .preuve-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:12px 14px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-size:13px;
+    }
+    .preuve-card h2{ margin:0 0 6px; font-size:14px; }
+    .preuve-card p{ margin:0; }
+    .preuve-image{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-top:8px;
+    }
+
+    /* bloc vide */
+    .empty{
+      color:var(--muted);
+      padding:24px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+  </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- Header simple cohérent avec le site -->
-    <header class="profile-card" style="padding:18px 20px;">
-      <div class="profile-top" style="padding-bottom:10px;">
-        <div class="brand">Galerie des preuves</div>
 
-        <nav style="gap:18px;">
-          <a href="index.html" style="flex-direction:row; gap:8px;">
-            <span class="nav-icon">←</span>
-            <span>Retour</span>
-          </a>
-        </nav>
+    <div class="top-bar">
+      <h1>Galerie des preuves</h1>
+
+      <div class="top-actions">
+        <a class="btn outline" href="index.html">← Retour</a>
+        <button id="theme" class="btn outline" type="button">🌙 Mode sombre</button>
       </div>
+    </div>
 
-      <div class="profile-main" style="gap:12px;">
-        <!-- Texte de filtre (rempli par main.js) -->
-        <div class="muted" id="filtre-sae-texte">Chargement des preuves...</div>
+    <main class="page-preuves">
+      <p id="filtre-sae-texte" class="muted">Chargement des preuves...</p>
 
-        <!-- Bouton thème -->
-        <div class="pill-inline">
-          <button id="theme" class="btn outline" type="button">🌙 Mode sombre</button>
-        </div>
+      <div id="liste-preuves">
+        <!-- Cartes générées par main.js -->
       </div>
-    </header>
-
-    <!-- Contenu -->
-    <main class="view active" id="view-preuves">
-      <section class="section" style="margin-top:18px;">
-        <!-- Cartes générées par main.js (initPreuvesPage) -->
-        <div id="liste-preuves"></div>
-      </section>
-
-      <button class="btn outline back-home" style="margin-top:16px;" onclick="window.location.href='index.html'">
-        ← Retour au portfolio
-      </button>
     </main>
+
   </div>
 
-  <!-- JS commun -->
+  <!-- JS partagé -->
   <script src="main.js" defer></script>
 </body>
 </html>
