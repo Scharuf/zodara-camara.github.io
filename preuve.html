@@ -1,46 +1,149 @@
-<!DOCTYPE html>
+Voici mon preuve.html: <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <title>Galerie des preuves</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1d2125;
+      --muted: #6c757d;
+      --border: #e9edf3;
+      --shadow: 0 2px 12px rgba(16, 24, 40, 0.06);
+      --primary: #0d6efd;
+    }
 
-  <!-- CSS commun -->
-  <link rel="stylesheet" href="style.css" />
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .top-bar h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    a.btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .page-preuves {
+      margin-top: 8px;
+    }
+
+    #filtre-sae-texte {
+      margin: 8px 0 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    #liste-preuves {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 1000px) {
+      #liste-preuves {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      #liste-preuves {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .preuve-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .preuve-card h2 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+    }
+
+    .preuve-card p {
+      margin: 0;
+    }
+
+    .preuve-card p strong {
+      font-weight: 600;
+    }
+
+    .preuve-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 6px;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
   <div class="container">
-    <!-- Mini header cohérent -->
-    <header class="profile-card" style="padding:18px 20px;">
-      <div class="profile-top" style="padding-bottom:10px;">
-        <div class="brand">Galerie des preuves</div>
-        <nav style="gap:18px;">
-          <a href="index.html" style="flex-direction:row; gap:8px;">
-            <span class="nav-icon">←</span>
-            <span>Retour</span>
-          </a>
-        </nav>
+    <div class="top-bar">
+      <h1>Galerie des preuves</h1>
+      <a class="btn" href="index.html">← Retour au portfolio</a>
+    </div>
+
+    <main class="page-preuves">
+      <p id="filtre-sae-texte">Chargement des preuves...</p>
+      <div id="liste-preuves">
+        <!-- Cartes de preuves générées par main.js (initPreuvesPage) -->
       </div>
-
-      <div class="profile-main" style="gap:12px;">
-        <div class="muted" id="filtre-sae-texte">Chargement des preuves...</div>
-
-        <div class="pill-inline">
-          <button id="theme" class="btn outline" type="button">🌙 Mode sombre</button>
-        </div>
-      </div>
-    </header>
-
-    <main class="view active" id="view-preuves">
-      <!-- la grille est stylée dans style.css (#liste-preuves, .preuve-card, .preuve-image, etc.) -->
-      <section class="section" style="margin-top:18px;">
-        <div id="liste-preuves"></div>
-      </section>
     </main>
   </div>
 
-  <!-- JS commun -->
+  <!-- JS partagé avec index.html -->
   <script src="main.js" defer></script>
 </body>
 </html>
