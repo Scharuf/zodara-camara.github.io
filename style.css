@@ -405,6 +405,11 @@ button.back-home:focus-visible{
 /* ===========================
    9) COMPETENCES (version pro)
    =========================== */
+/* ===========================
+   9) COMPETENCES (version pro)
+   =========================== */
+
+/* Mobile = 1 colonne */
 .chips{
   display:grid;
   grid-template-columns:1fr;
@@ -412,9 +417,18 @@ button.back-home:focus-visible{
   margin-top:12px;
 }
 
-/* On transforme chip-large en vraie "card" */
+/* Desktop = 2 colonnes */
+@media (min-width: 900px){
+  .chips{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+  }
+}
+
+/* Carte compétence */
 .chip-large{
-  display:block;
+  display:flex;
+  flex-direction:column;
   width:100%;
   padding:16px 18px;
   border-radius:18px;
@@ -422,6 +436,7 @@ button.back-home:focus-visible{
   border:1px solid var(--border);
   box-shadow:var(--shadow);
   transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  min-height: 140px; /* rendu plus équilibré en grille */
 }
 
 /* Titre (C1 — ...) */
@@ -457,50 +472,6 @@ button.back-home:focus-visible{
   align-items:center;
   gap:6px;
 }
-
-
-/* ===========================
-   10) SAÉ EXTRAS
-   =========================== */
-.sae-extra{
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-  flex-wrap:wrap;
-  margin-top:16px;
-}
-
-.sae-explication{
-  flex:1 1 420px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:14px 16px;
-  box-shadow:var(--shadow);
-  font-size:13px;
-  color:var(--text);
-}
-
-.btn-preuves-sae{
-  flex:0 0 auto;
-  align-self:stretch;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 16px;
-  border-radius:16px;
-  border:2px solid var(--accent);
-  background:var(--accent);
-  color:#fff;
-  font-weight:800;
-  text-decoration:none;
-  transition:transform .15s ease, box-shadow .15s ease;
-}
-.btn-preuves-sae:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 30px rgba(251,113,133,0.45);
-}
-
 
 /* ===========================
    11) CONTACT
