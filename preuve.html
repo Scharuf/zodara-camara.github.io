@@ -11,10 +11,11 @@
 
 <body>
   <div class="container">
-    <!-- Mini header cohérent -->
+    <!-- Header simple cohérent avec le site -->
     <header class="profile-card" style="padding:18px 20px;">
       <div class="profile-top" style="padding-bottom:10px;">
         <div class="brand">Galerie des preuves</div>
+
         <nav style="gap:18px;">
           <a href="index.html" style="flex-direction:row; gap:8px;">
             <span class="nav-icon">←</span>
@@ -24,19 +25,26 @@
       </div>
 
       <div class="profile-main" style="gap:12px;">
+        <!-- Texte de filtre (rempli par main.js) -->
         <div class="muted" id="filtre-sae-texte">Chargement des preuves...</div>
 
+        <!-- Bouton thème -->
         <div class="pill-inline">
           <button id="theme" class="btn outline" type="button">🌙 Mode sombre</button>
         </div>
       </div>
     </header>
 
+    <!-- Contenu -->
     <main class="view active" id="view-preuves">
-      <!-- la grille est stylée dans style.css (#liste-preuves, .preuve-card, .preuve-image, etc.) -->
       <section class="section" style="margin-top:18px;">
+        <!-- Cartes générées par main.js (initPreuvesPage) -->
         <div id="liste-preuves"></div>
       </section>
+
+      <button class="btn outline back-home" style="margin-top:16px;" onclick="window.location.href='index.html'">
+        ← Retour au portfolio
+      </button>
     </main>
   </div>
 
