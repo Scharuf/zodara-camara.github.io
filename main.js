@@ -560,10 +560,16 @@ function initPreuvesPage() {
 //  Navigation entre vues
 // ---------------------------------------------------------
 function initNavigation() {
-  const links = document.querySelectorAll("header nav a");
-  const views = document.querySelectorAll(".view");
-  if (!views.length) return;
+   const links = document.querySelectorAll("header nav a");
+   links.forEach((a) =>
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const v = a.dataset.view;
+    if (v) showView(v);
+  })
+);
 
+);
   function showView(name) {
     views.forEach((v) => v.classList.remove("active"));
     const target = document.getElementById(`view-${name}`);
