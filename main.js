@@ -1,209 +1,37 @@
 /**
- * main.js – Version unifiée et corrigée
- * Gère le chargement JSON, les graphiques dynamiques et la navigation.
+ * main.js - Version unifiée
+ * Gère la navigation, les graphiques Chart.js et le filtrage des données.
  */
 
 let DATA = null;
-let barChart = null;
-let donutChart = null;
-let radarHomeChart = null;
-let radarSaeChart = null;
-let currentSemFilter = null; 
-
-let SAE_KEY_FOR_PREUVES = "id";
+let charts = { bar: null, donut: null, radar: null, radarSae: null };
 
 document.addEventListener("DOMContentLoaded", () => {
     fetch("portfolio.json")
-        .then((res) => res.json())
-        .then((json) => {
+        .then(res => res.json())
+        .then(json => {
             DATA = json;
-
-            // 1. Détecter si on lie les preuves par "id" ou "code"
-            detectSaeKeyForPreuves();
-
-            // 2. Initialiser les statistiques globales (tous semestres)
-            const initialStats = computeStatsForSemester(null);
-
-            // 3. Lancer l'interface
-            initKpis(initialStats);
             
-            // Un léger délai assure que les Canvas sont bien rendus avant Chart.js
-            setTimeout(() => {
-                initCharts(initialStats);
-                initSaeView();
-            }, 50);
-
-            initCompetencesView();
-            initRessourcesView();
+            // Initialisation de l'interface
             initNavigation();
             initThemeToggle();
-            initCvButtons();
-            initPreuvesPage();
+            initSaeSelector();
+            
+            // Premier affichage (Global)
+            updateDashboard(null);
+
+            // Listener pour le filtre Semestre
+            const semSelect = document.getElementById("sem");
+            if (semSelect) {
+                semSelect.addEventListener("change", (e) => {
+                    updateDashboard(e.target.value || null);
+                });
+            }
         })
-        .catch((err) => {
-            console.error("Erreur critique de chargement :", err);
-        });
+        .catch(err => console.error("Erreur chargement JSON:", err));
 });
 
-// --- LOGIQUE DE CALCUL ET DÉTECTION ---
-
-function detectSaeKeyForPreuves() {
-    if (!DATA || !DATA.preuves || DATA.preuves.length === 0) return;
-    const sample = DATA.preuves[0].sae;
-    const matchId = DATA.sae.some((s) => s.id === sample);
-    const matchCode = DATA.sae.some((s) => s.code === sample);
-    SAE_KEY_FOR_PREUVES = (matchCode && !matchId) ? "code" : "id";
-}
-
-function computeStatsForSemester(semValue) {
-    const baseStats = DATA.stats;
-    const allHoursByComp = baseStats.hours_by_competence;
-    const compKeys = Object.keys(allHoursByComp);
-
-    if (!semValue) {
-        return {
-            total_hours: baseStats.total_hours,
-            nb_sae: baseStats.nb_sae,
-            nb_preuves: baseStats.nb_preuves,
-            nb_ressources: DATA.ressources.length,
-            hours_by_competence: { ...allHoursByComp }
-        };
-    }
-
-    const semNum = parseInt(semValue.slice(1), 10);
-    const saeSem = DATA.sae.filter((s) => s.semestre === semNum);
-    
-    // Calcul de répartition prorata pour le filtre semestre
-    const hoursByCompSem = {};
-    compKeys.forEach((c) => {
-        const totalSaeWithComp = DATA.sae.filter(s => s.competences?.includes(c)).length;
-        const semSaeWithComp = saeSem.filter(s => s.competences?.includes(c)).length;
-        hoursByCompSem[c] = totalSaeWithComp > 0 
-            ? Math.round(allHoursByComp[c] * (semSaeWithComp / totalSaeWithComp)) 
-            : 0;
-    });
-
-    return {
-        total_hours: Object.values(hoursByCompSem).reduce((a, b) => a + b, 0),
-        nb_sae: saeSem.length,
-        nb_preuves: DATA.preuves.length,
-        nb_ressources: DATA.ressources.filter(r => r.semestre === semNum).length,
-        hours_by_competence: hoursByCompSem
-    };
-}
-
-// --- AFFICHAGE DES COMPOSANTS ---
-
-function initKpis(stats) {
-    const elHours = document.getElementById("kHours");
-    const elSplit = document.getElementById("kSplit");
-    if (elHours) elHours.textContent = stats.total_hours;
-    if (elSplit) {
-        elSplit.textContent = Object.entries(stats.hours_by_competence)
-            .map(([c, h]) => `${c}: ${h}h`).join(" • ");
-    }
-    // Update IDs secondaires
-    ["kVCOD", "kRess", "kProofHint"].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-            if (id === "kVCOD") el.textContent = stats.nb_sae;
-            if (id === "kRess") el.textContent = stats.nb_ressources;
-            if (id === "kProofHint") el.textContent = `Preuves : ${stats.nb_preuves}`;
-        }
-    });
-}
-
-function initCharts(stats) {
-    const hours = stats.hours_by_competence;
-    const labels = Object.keys(hours);
-    const values = Object.values(hours);
-
-    const config = (type, data, legend = false) => ({
-        type: type,
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Heures',
-                data: data,
-                backgroundColor: ['#3b82f6', '#ef4444', '#10b981', '#f59e0b'],
-                borderColor: '#3b82f6',
-                borderWidth: 1
-            }]
-        },
-        options: { 
-            responsive: true, 
-            maintainAspectRatio: false,
-            plugins: { legend: { display: legend } }
-        }
-    });
-
-    // Destruction/Création pour éviter les superpositions au survol
-    if (document.getElementById("bar")) {
-        if (barChart) barChart.destroy();
-        barChart = new Chart(document.getElementById("bar"), config('bar', values));
-    }
-    if (document.getElementById("donut")) {
-        if (donutChart) donutChart.destroy();
-        donutChart = new Chart(document.getElementById("donut"), config('doughnut', values, true));
-    }
-    if (document.getElementById("radar")) {
-        if (radarHomeChart) radarHomeChart.destroy();
-        radarHomeChart = new Chart(document.getElementById("radar"), config('radar', values));
-    }
-}
-
-// --- NAVIGATION ET INTERACTION ---
-
-function initSaeView() {
-    const select = document.getElementById("sae");
-    if (!select) return;
-
-    select.addEventListener("change", () => {
-        const sae = DATA.sae.find(s => s.code === select.value);
-        if (!sae) return;
-        
-        document.getElementById("dTitle").textContent = `${sae.code} - ${sae.titre}`;
-        document.getElementById("dBody").innerHTML = `<p>${sae.description}</p><ul>` + 
-            (sae.acs || []).map(ac => `<li>${ac}</li>`).join('') + `</ul>`;
-
-        // Mise à jour Radar SAÉ spécifique
-        if (radarSaeChart) {
-            radarSaeChart.data.datasets[0].data = ["C1", "C2", "C3", "C4"].map(c => 
-                sae.competences?.includes(c) ? 3 : 0
-            );
-            radarSaeChart.update();
-        }
-    });
-}
-
-function initThemeToggle() {
-    const btn = document.getElementById("theme");
-    if (!btn) return;
-    btn.addEventListener("click", () => {
-        const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-        const target = isDark ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", target);
-        btn.textContent = isDark ? "🌙 Mode sombre" : "☀️ Mode clair";
-        localStorage.setItem("theme", target);
-    });
-    // Appliquer au chargement
-    const saved = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", saved);
-}
-
-function initPreuvesPage() {
-    const container = document.getElementById("liste-preuves");
-    if (!container || !DATA) return;
-
-    container.innerHTML = DATA.preuves.map(p => `
-        <article class="preuve-card">
-            <h2>${p.titre}</h2>
-            <p class="muted">${p.annee} | ${p.sae}</p>
-            <p>${p.description}</p>
-            <img src="${p.fichier}" alt="Aperçu" class="preuve-image" onerror="this.style.display='none'">
-        </article>
-    `).join('');
-}
+// --- NAVIGATION ---
 function initNavigation() {
     const navLinks = document.querySelectorAll('nav a[data-view]');
     const views = document.querySelectorAll('.view');
@@ -211,26 +39,147 @@ function initNavigation() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetView = link.getAttribute('data-view');
+            const target = link.getAttribute('data-view');
 
-            // 1. Masquer toutes les vues
-            views.forEach(v => v.style.display = 'none');
-            
-            // 2. Afficher la vue cible
-            const activeView = document.getElementById(`view-${targetView}`);
-            if (activeView) {
-                activeView.style.display = 'block';
-            }
-
-            // 3. Gérer la classe active sur le menu
+            // Mise à jour visuelle du menu
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+
+            // Changement de vue
+            views.forEach(v => {
+                v.style.display = (v.id === `view-${target}`) ? 'block' : 'none';
+            });
+            
+            // Déclencher le rendu des vues spécifiques
+            if (target === 'competences') renderCompetences();
+            if (target === 'ressources') renderRessources();
         });
     });
 }
 
-// Les autres fonctions (Ressources, Navigation, CV) restent identiques à ton code d'origine
-function initNavigation() { /* ... ta logique de liens ... */ }
-function initCvButtons() { /* ... ta logique de boutons CV ... */ }
-function initCompetencesView() { /* ... ta logique de badges ... */ }
-function initRessourcesView() { /* ... ta logique de table ... */ }
+// --- LOGIQUE DE DONNÉES & DASHBOARD ---
+function updateDashboard(semFilter) {
+    const stats = computeStats(semFilter);
+    
+    // Mise à jour des chiffres (KPIs)
+    const elHours = document.getElementById("kHours");
+    if (elHours) elHours.textContent = stats.total_hours;
+    
+    const elSplit = document.getElementById("kSplit");
+    if (elSplit) {
+        elSplit.textContent = Object.entries(stats.hours_by_competence)
+            .map(([c, h]) => `${c}: ${h}h`).join(" • ");
+    }
+
+    // Mise à jour des graphiques
+    renderMainCharts(stats.hours_by_competence);
+}
+
+function computeStats(semFilter) {
+    if (!semFilter) return DATA.stats;
+
+    const semNum = parseInt(semFilter.slice(1));
+    const saeFiltered = DATA.sae.filter(s => s.semestre === semNum);
+    const resFiltered = DATA.ressources.filter(r => r.semestre === semNum);
+
+    // Calcul simplifié pour le filtrage par semestre
+    const hours = { "C1": 0, "C2": 0, "C3": 0, "C4": 0 };
+    saeFiltered.forEach(s => {
+        s.competences.forEach(c => { if(hours[c] !== undefined) hours[c] += 20; }); // Estimation
+    });
+
+    return {
+        total_hours: Object.values(hours).reduce((a, b) => a + b, 0),
+        hours_by_competence: hours,
+        nb_sae: saeFiltered.length,
+        nb_ressources: resFiltered.length
+    };
+}
+
+// --- GRAPHIQUES ---
+function renderMainCharts(hoursData) {
+    const labels = Object.keys(hoursData);
+    const values = Object.values(hoursData);
+    const colors = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b'];
+
+    // Helper pour détruire/créer
+    const updateChart = (id, type, data, options = {}) => {
+        const ctx = document.getElementById(id);
+        if (!ctx) return;
+        if (charts[id]) charts[id].destroy();
+        charts[id] = new Chart(ctx, {
+            type: type,
+            data: {
+                labels: labels,
+                datasets: [{ data: data, backgroundColor: colors, borderWidth: 1 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, ...options }
+        });
+    };
+
+    updateChart('bar', 'bar', values, { plugins: { legend: { display: false } } });
+    updateChart('donut', 'doughnut', values);
+    updateChart('radar', 'radar', values);
+}
+
+// --- VUE SAÉ ---
+function initSaeSelector() {
+    const select = document.getElementById("sae");
+    if (!select) return;
+
+    select.innerHTML = DATA.sae.map(s => `<option value="${s.code}">${s.code} - ${s.titre}</option>`).join('');
+    
+    select.addEventListener("change", () => {
+        const sae = DATA.sae.find(s => s.code === select.value);
+        document.getElementById("dTitle").textContent = sae.titre;
+        document.getElementById("dBody").innerHTML = `<p>${sae.description}</p>`;
+        
+        // Radar spécifique SAÉ
+        const saeValues = ["C1", "C2", "C3", "C4"].map(c => sae.competences.includes(c) ? 80 : 20);
+        renderSaeRadar(saeValues);
+    });
+}
+
+function renderSaeRadar(data) {
+    const ctx = document.getElementById("radar-sae");
+    if (!ctx) return;
+    if (charts.radarSae) charts.radarSae.destroy();
+    charts.radarSae = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ["C1", "C2", "C3", "C4"],
+            datasets: [{ label: 'Compétences visées', data: data, backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6' }]
+        },
+        options: { maintainAspectRatio: false }
+    });
+}
+
+// --- AUTRES VUES ---
+function renderCompetences() {
+    const container = document.getElementById("compBadges");
+    if (container) {
+        container.innerHTML = DATA.competences.map(c => `
+            <div class="chip"><strong>${c.id}</strong>: ${c.libelle}</div>
+        `).join('');
+    }
+}
+
+function renderRessources() {
+    const container = document.getElementById("ressTable");
+    if (container) {
+        container.innerHTML = `<table>
+            <tr><th>Code</th><th>Titre</th><th>Semestre</th></tr>
+            ${DATA.ressources.map(r => `<tr><td>${r.code}</td><td>${r.titre}</td><td>S${r.semestre}</td></tr>`).join('')}
+        </table>`;
+    }
+}
+
+function initThemeToggle() {
+    const btn = document.getElementById("theme");
+    btn.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        btn.textContent = next === "dark" ? "☀️ Mode Clair" : "🌙 Mode Sombre";
+    });
+}
