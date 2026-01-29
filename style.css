@@ -215,7 +215,57 @@ a{ color:inherit; }
   gap:10px;
   min-width:220px;
 }
+/* ===== PRESENTATION FORMATION ===== */
+.formation-intro{
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
 
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.formation-intro h2{
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.formation-intro p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.formation-right{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.formation-pill{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: var(--text);
+  box-shadow: 0 10px 25px rgba(15,23,42,.05);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px){
+  .formation-intro{
+    grid-template-columns: 1fr;
+  }
+  .formation-right{
+    justify-content: flex-start;
+  }
+}
 
 /* ===========================
    5) BOUTONS / INPUTS
