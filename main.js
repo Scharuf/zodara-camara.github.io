@@ -1,5 +1,3 @@
-Voici le main: 
-main.js:
 // main.js – version statique pour GitHub Pages (portfolio.json)
 
 let DATA = null;
