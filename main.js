@@ -560,14 +560,17 @@ function initPreuvesPage() {
 //  Navigation entre vues
 // ---------------------------------------------------------
 function initNavigation() {
-   const links = document.querySelectorAll("header nav a");
-   links.forEach((a) =>
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      const v = a.dataset.view;
-    if (v) showView(v);
+  links.forEach((a) =>
+  a.addEventListener("click", (e) => {
+    const v = a.dataset.view;
+    // ✅ si pas de data-view, on laisse le lien fonctionner normalement (ex: retour)
+    if (!v) return;
+
+    e.preventDefault();
+    showView(v);
   })
 );
+
 
 );
   function showView(name) {
