@@ -696,8 +696,8 @@
       "sae": "SAÉ 5.01",
       "titre": "Analyse Fonctionnelle (1/3)",
       "fichier": "PREUVES/BUT_3e_annee/SAE_501/1.png",
-      "description": "Diagrammes ou spécifications de l'analyse et de la conception de l'outil décisionnel."}
-{
+      "description": "Diagrammes ou spécifications de l'analyse et de la conception de l'outil décisionnel."},
+    {
       "annee": "BUT2",
       "sae": "SAÉ 4.02",
       "titre": "Visualisation Multivariée (2/2)",
@@ -777,5 +777,6 @@
   ]
 }
    
+
 
 
