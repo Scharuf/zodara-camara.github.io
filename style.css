@@ -2,7 +2,9 @@
    style.css — Portfolio Zodara
    =========================== */
 
-/* ---------- Variables ---------- */
+/* ===========================
+   1) VARIABLES
+   =========================== */
 :root{
   --bg:#f5f7fb;
   --card:#fff;
@@ -37,7 +39,10 @@
   --accent:#fb7185;
 }
 
-/* ---------- Base ---------- */
+
+/* ===========================
+   2) BASE
+   =========================== */
 *{ box-sizing:border-box; }
 
 body{
@@ -55,11 +60,28 @@ body{
 a{ color:inherit; }
 .container{ max-width:1200px; margin:0 auto; }
 
-/* ---------- Vues : une seule visible ---------- */
+
+/* ===========================
+   3) VUES / LAYOUT
+   =========================== */
 .view{ display:none; margin-top:28px; }
 .view.active{ display:block; }
 
-/* ---------- Header / Profil ---------- */
+.section{ margin-top:28px; }
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+  margin-bottom:10px;
+}
+.section-title{ font-size:20px; margin:0; }
+.section-sub{ margin:0; color:var(--muted); font-size:13px; }
+
+
+/* ===========================
+   4) HEADER / PROFIL
+   =========================== */
 .profile-card{
   background:var(--card);
   border-radius:24px;
@@ -126,7 +148,6 @@ a{ color:inherit; }
   color:var(--text);
   transform:translateY(-1px);
 }
-
 .profile-top nav a:hover::after,
 .profile-top nav a:focus::after{
   opacity:1;
@@ -164,7 +185,6 @@ a{ color:inherit; }
   border-radius:999px;
   overflow:hidden;
   flex-shrink:0;
-
   display:flex;
   align-items:center;
   justify-content:center;
@@ -178,6 +198,7 @@ a{ color:inherit; }
 
 .profile-text h1{ margin:0 0 6px; font-size:28px; }
 .profile-text p{ margin:0; color:var(--muted); font-size:14px; }
+
 .profile-meta{
   margin-top:8px;
   display:flex;
@@ -195,7 +216,10 @@ a{ color:inherit; }
   min-width:220px;
 }
 
-/* ---------- Boutons ---------- */
+
+/* ===========================
+   5) BOUTONS / INPUTS
+   =========================== */
 .btn{
   border-radius:999px;
   border:none;
@@ -214,13 +238,11 @@ a{ color:inherit; }
   color:#fff;
   box-shadow:0 10px 25px var(--ring);
 }
-
 .btn.outline{
   background:transparent;
   color:var(--muted);
   border:1px solid var(--border);
 }
-
 .btn.small{ padding:6px 10px; font-size:12px; }
 
 .pill-inline{
@@ -231,7 +253,6 @@ a{ color:inherit; }
   font-size:13px;
   color:var(--muted);
 }
-
 .pill-inline select{
   padding:6px 10px;
   border-radius:999px;
@@ -241,19 +262,28 @@ a{ color:inherit; }
   font-size:13px;
 }
 
-/* ---------- Sections ---------- */
-.section{ margin-top:28px; }
-.section-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:12px;
-  margin-bottom:10px;
+/* Bouton "Retour à l’accueil" (propre) */
+.back-home.btn,
+button.back-home{
+  margin-top:16px;
+  text-decoration:none;
 }
-.section-title{ font-size:20px; margin:0; }
-.section-sub{ margin:0; color:var(--muted); font-size:13px; }
+.back-home.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.back-home.btn:focus-visible,
+button.back-home:focus-visible{
+  outline:3px solid var(--ring);
+  outline-offset:3px;
+}
 
-/* ---------- KPIs ---------- */
+
+/* ===========================
+   6) KPIs
+   =========================== */
 .kpis{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -280,7 +310,10 @@ a{ color:inherit; }
 .kpi .v{ font-size:24px; font-weight:800; margin-top:4px; }
 .kpi .s{ font-size:11px; color:var(--muted); margin-top:4px; }
 
-/* ---------- Cartes / Grille ---------- */
+
+/* ===========================
+   7) CARTES / GRILLES / CHARTS
+   =========================== */
 .card{
   background:var(--card);
   border-radius:18px;
@@ -289,14 +322,12 @@ a{ color:inherit; }
   box-shadow:var(--shadow);
   transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease, background .2s ease;
 }
-
 .card:hover{
   transform:translateY(-3px);
   box-shadow:0 18px 40px rgba(15,23,42,.12);
   border-color:rgba(251,113,133,0.4);
   background:linear-gradient(135deg,var(--card),rgba(251,113,133,0.05));
 }
-
 .card h3{ margin:0 0 8px; font-size:15px; }
 
 .grid{
@@ -333,7 +364,10 @@ a{ color:inherit; }
   color:var(--muted);
 }
 
-/* ---------- Table / Listes ---------- */
+
+/* ===========================
+   8) TABLES / LISTES / TEXTE
+   =========================== */
 #ressTable{
   max-height:360px;
   overflow:auto;
@@ -367,14 +401,52 @@ a{ color:inherit; }
 
 .muted{ color:var(--muted); font-size:12px; }
 
-/* ---------- Chips ---------- */
+
+/* ===========================
+   9) COMPETENCES (version pro)
+   =========================== */
 .chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:8px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  margin-top:12px;
 }
 
+/* On transforme chip-large en vraie "card" */
+.chip-large{
+  display:block;
+  width:100%;
+  padding:16px 18px;
+  border-radius:18px;
+  background:var(--card);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Titre (C1 — ...) */
+.chip-large > div:first-child{
+  font-weight:800;
+  font-size:14px;
+  margin-bottom:8px;
+  color:var(--text);
+}
+
+/* Texte */
+.chip-large .muted{
+  margin-top:8px;
+  font-size:12.5px;
+  line-height:1.4;
+}
+
+/* Hover élégant */
+.chip-large:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(15,23,42,.12);
+  border-color:rgba(251,113,133,0.35);
+}
+
+/* Chips simples (utilisés pour légende donut, etc.) */
 .chip{
   padding:6px 10px;
   border-radius:999px;
@@ -386,16 +458,10 @@ a{ color:inherit; }
   gap:6px;
 }
 
-.chip-large{
-  border-radius:16px;
-  padding:12px 14px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  min-width:260px;
-}
 
-/* ---------- SAÉ extras ---------- */
+/* ===========================
+   10) SAÉ EXTRAS
+   =========================== */
 .sae-extra{
   display:flex;
   gap:14px;
@@ -430,19 +496,20 @@ a{ color:inherit; }
   text-decoration:none;
   transition:transform .15s ease, box-shadow .15s ease;
 }
-
 .btn-preuves-sae:hover{
   transform:translateY(-2px);
   box-shadow:0 16px 30px rgba(251,113,133,0.45);
 }
 
-/* ---------- Contact ---------- */
+
+/* ===========================
+   11) CONTACT
+   =========================== */
 .contact-card{
   display:flex;
   flex-wrap:wrap;
   gap:18px;
 }
-
 .contact-item{
   flex:1 1 220px;
   background:var(--card);
@@ -453,7 +520,10 @@ a{ color:inherit; }
   font-size:13px;
 }
 
-/* ---------- Boutons CV ---------- */
+
+/* ===========================
+   12) CV
+   =========================== */
 .cv-actions{
   display:flex;
   gap:12px;
@@ -476,16 +546,14 @@ a{ color:inherit; }
   color:#fff;
   transition:transform .15s ease, box-shadow .15s ease;
 }
-
 .cv-btn:hover{
   transform:translateY(-2px);
   box-shadow:0 16px 30px rgba(251,113,133,0.45);
 }
-
 .cv-btn span{ display:block; line-height:1.1; }
 .cv-btn .cv-icon{ font-size:18px; align-self:center; }
 
-/* ---------- Vue CV ---------- */
+/* Vue CV */
 .cv-card{ padding:0; border-radius:18px; overflow:hidden; }
 
 .cv-banner{
@@ -525,13 +593,15 @@ a{ color:inherit; }
   font-size:14px;
   text-decoration:underline;
 }
-
 .cv-box p{ margin:2px 0; }
 .cv-box ul{ margin:0 0 4px 18px; padding:0; }
 .cv-box li{ margin-bottom:4px; }
 .cv-box a{ color:#fffbeb; text-decoration:underline; }
 
-/* ---------- Page preuves (preuve.html) ---------- */
+
+/* ===========================
+   13) PREUVES (preuve.html)
+   =========================== */
 #liste-preuves{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -548,78 +618,14 @@ a{ color:inherit; }
   padding:14px 16px;
   box-shadow:var(--shadow);
 }
-
 .preuve-card h2{
   margin:0 0 8px;
   font-size:15px;
 }
-
 .preuve-image{
   width:100%;
   height:auto;
   border-radius:14px;
   margin-top:10px;
   border:1px solid var(--border);
-}
-/* ====== COMPETENCES (version pro) ====== */
-.chips{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:14px;
-  margin-top:12px;
-}
-
-/* On transforme chip-large en vraie "card" */
-.chip-large{
-  display:block;
-  width:100%;
-  padding:16px 18px;
-  border-radius:18px;
-  background:var(--card);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-/* Titre (C1 — ...) */
-.chip-large > div:first-child{
-  font-weight:800;
-  font-size:14px;
-  margin-bottom:8px;
-  color:var(--text);
-}
-
-/* Texte */
-.chip-large .muted{
-  margin-top:8px;
-  font-size:12.5px;
-  line-height:1.4;
-}
-
-/* Hover élégant */
-.chip-large:hover{
-  transform:translateY(-2px);
-  box-shadow:0 18px 40px rgba(15,23,42,.12);
-  border-color:rgba(251,113,133,0.35);
-}
-
-/* ====== Bouton "Retour à l'accueil" (propre) ====== */
-.back-home.btn,
-button.back-home{
-  margin-top:16px;
-  text-decoration:none;
-}
-
-.back-home.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-}
-
-/* focus clavier */
-.back-home.btn:focus-visible,
-button.back-home:focus-visible{
-  outline:3px solid var(--ring);
-  outline-offset:3px;
 }
