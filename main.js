@@ -318,11 +318,16 @@ function updateDonutLegend(labels, values) {
 // ---------------------------------------------------------
 function updateDashboardForSemester(semValue) {
   currentSemFilter = semValue || null;
+
   const stats = computeStatsForSemester(currentSemFilter);
   updateKpis(stats);
   updateCharts(stats);
   updateProofsLink();
+
+  // ✅ met à jour la table des ressources
+  initRessourcesView(currentSemFilter);
 }
+
 
 // ---------------------------------------------------------
 // Vue SAÉ & Projets
@@ -468,11 +473,20 @@ function initCompetencesView() {
 // ---------------------------------------------------------
 // Vue Ressources (corrigée)
 // ---------------------------------------------------------
-function initRessourcesView() {
+// ---------------------------------------------------------
+// Vue Ressources (interactive avec le semestre)
+// ---------------------------------------------------------
+function initRessourcesView(filterSem = null) {
   const container = document.getElementById("ressTable");
   if (!container || !DATA) return;
 
-  const rows = (DATA.ressources || [])
+  const semNum = filterSem ? parseSemValue(filterSem) : null;
+
+  const ressources = semNum
+    ? (DATA.ressources || []).filter((r) => Number(r.semestre) === semNum)
+    : (DATA.ressources || []);
+
+  const rows = ressources
     .map(
       (r) => `
       <tr>
@@ -494,7 +508,10 @@ function initRessourcesView() {
         </tr>
       </thead>
       <tbody>
-        ${rows}
+        ${
+          rows ||
+          `<tr><td colspan="3" class="muted" style="padding:14px;">Aucune ressource pour ce semestre.</td></tr>`
+        }
       </tbody>
     </table>
   `;
