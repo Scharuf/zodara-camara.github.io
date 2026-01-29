@@ -1,765 +1,782 @@
+voici mon portfolio.json: 
+porfolio.json:
+
 {
-  "meta": {
-    "etudiant": "Zodara CAMARA",
-    "parcours": "Visualisation, Conception d’outils Décisionnels",
-    "but": "BUT Science des Données"
-  },
-  "stats": {
-    "total_hours": 1140,
-    "nb_sae": 20,
-    "nb_preuves": 48,
-    "hours_by_competence": {
-      "C1": 230,
-      "C2": 210,
-      "C3": 190,
-      "C4": 220
-    }
-  },
-  "competences": {
-    "C1": {
-      "label": "Traiter des données à des fins décisionnelles",
-      "description": "Intervenir à toutes les étapes du cycle de vie de la donnée en utilisant des modèles de données et des programmes adaptés."
-    },
-    "C2": {
-      "label": "Analyser statistiquement les données",
-      "description": "Mettre en évidence les grandes tendances et les informations clés à l’aide de méthodes statistiques appropriées."
-    },
-    "C3": {
-      "label": "Valoriser une production dans un contexte professionnel",
-      "description": "Restituer et communiquer les résultats en s’adaptant au public, au contexte et aux contraintes professionnelles."
-    },
-    "C4": {
-      "label": "Développer un outil décisionnel",
-      "description": "Concevoir et maintenir des solutions logicielles et des composants s’intégrant dans une chaîne décisionnelle."
-    }
-  },
-  "acs": {
-    "AC11.01": { "label": "Interpréter et prendre en compte le besoin du client" },
-    "AC11.02": { "label": "Respecter les formalismes de notation" },
-    "AC11.03": { "label": "Connaître la syntaxe des langages et savoir l’utiliser" },
-    "AC11.04": { "label": "Maîtriser la structure des données à exploiter" },
-    "AC11.05": { "label": "Comprendre les structures algorithmiques de base" },
-    "AC11.06": { "label": "Prendre conscience de l’intérêt de la programmation" },
-    "AC12.01": { "label": "Identifier les caractéristiques propres aux différentes sources de données" },
-    "AC12.02": { "label": "Comprendre qu’une bonne analyse nécessite des données propres et préparées" },
-    "AC12.03": { "label": "Utiliser des synthèses numériques et graphiques pour décrire une variable" },
-    "AC12.04": { "label": "Utiliser des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables" },
-    "AC12.05": { "label": "Comprendre l’intérêt de l’utilisation d’un modèle probabiliste" },
-    "AC12.06": { "label": "Appréhender la notion de fluctuation d’échantillonnage à l’aide de simulations" },
-    "AC13.01": { "label": "Connaître les biais possibles lors de la mise en place d’une enquête" },
-    "AC13.02": { "label": "Mesurer l’importance de contextualiser les données" },
-    "AC13.03": { "label": "Mettre en évidence des résultats clés à l’aide d’indicateurs pertinents" },
-    "AC13.04": { "label": "Savoir expliciter la démarche suivie lors de la restitution des résultats" },
-    "AC13.05": { "label": "Comprendre les apports de la datavisualisation et de l’infographie" },
-    "AC13.06": { "label": "Mesurer l’importance d’une expression précise et nuancée pour communiquer les résultats" },
-    "AC21.01": { "label": "Comprendre l’organisation des données dans l’entreprise" },
-    "AC21.02": { "label": "Comprendre le rôle central de l’entrepôt de données dans la chaîne décisionnelle" },
-    "AC21.03": { "label": "Identifier et résoudre les problèmes d’intégration de sources hétérogènes" },
-    "AC21.04": { "label": "Comprendre la nécessité de tester, corriger et documenter un programme" },
-    "AC21.05": { "label": "Apprécier l’intérêt des briques logicielles existantes et savoir les utiliser" },
-    "AC21.06": { "label": "Apprécier les limites de validité et les conditions d’application d’une analyse" },
-    "AC22.01": { "label": "Différencier modélisation statistique et analyse exploratoire" },
-    "AC22.02": { "label": "Comprendre la spécificité de l’analyse des données temporelles" },
-    "AC22.05": { "label": "Apprécier les limites de validité des modèles statistiques utilisés" },
-    "AC23.01": { "label": "Mobiliser de manière proactive des ressources métiers liées à l’environnement" },
-    "AC23.02": { "label": "Défendre et justifier ses choix d’analyses" },
-    "AC23.03": { "label": "Choisir des indicateurs pertinents pour communiquer sur les résultats" },
-    "AC23.04": { "label": "Assurer la rigueur des productions et de la communication associée" },
-    "AC23.05": { "label": "Comprendre les enjeux éthiques et juridiques liés à la diffusion des résultats" },
-    "AC24.01": { "label": "Analyser les besoins et l’existant dans un projet décisionnel" },
-    "AC24.02": { "label": "Percevoir les enjeux de l’automatisation et de l’interopérabilité des tâches" },
-    "AC24.03": { "label": "Choisir des outils adaptés parmi plusieurs logiciels et langages" },
-    "AC24.04": { "label": "Comprendre le cycle de vie d’un projet informatique" },
-    "AC25.01": { "label": "Adapter sa communication aux interlocuteurs et à leur culture en milieu professionnel" },
-    "AC31.02": { "label": "Identifier les spécificités des données complexes" },
-    "AC31.03": { "label": "Mener une veille technologique sur les outils et méthodes décisionnels" },
-    "AC32.02": { "label": "Apprécier l’importance de méthodes adaptées aux données disponibles" },
-    "AC33.01": { "label": "Transformer et préparer les données pour l’analyse" },
-    "AC33.02": { "label": "Mesurer l’impact du RGPD sur les traitements de données" },
-    "AC33.03": { "label": "Mettre en œuvre une communication claire et adaptée" },
-    "AC33.04": { "label": "Comprendre les mécanismes de base de l’intelligence artificielle" },
-    "AC33.05": { "label": "Être force de proposition dans un contexte décisionnel" },
-    "AC34.01": { "label": "Adapter sa présentation selon les interlocuteurs" },
-    "AC34.02": { "label": "Défendre ses choix de solution technique" },
-    "AC34.03": { "label": "Appliquer des méthodes de développement logicielle" },
-    "AC34.04": { "label": "Comprendre l’intérêt d’un gestionnaire de versions" },
-    "AC43.04": { "label": "Assurer la rigueur des productions et de la communication associée" },
-    "AC52.01": { "label": "Choisir l’outil statistique le plus adapté" },
-    "AC52.02": { "label": "Comprendre les limites et hypothèses des méthodes de data mining" },
-    "AC52.03": { "label": "Adapter les méthodes à des domaines et des données spécifiques" },
-    "AC52.04": { "label": "Comprendre les bases de l’IA et de l’apprentissage supervisé" },
-    "AC53.01": { "label": "Mesurer l’impact du respect de la législation sur les données" },
-    "AC53.02": { "label": "Identifier les clés d’une bonne communication (procédures, supports, canaux)" },
-    "AC53.03": { "label": "Comprendre et traiter l’ensemble des problématiques posées" },
-    "AC53.04": { "label": "Identifier les solutions technologiques pour collecter et diffuser des données" }
-  },
-  "ressources": [
-    { "code": "R1.01", "titre": "Tableur et reporting", "semestre": 1 },
-    { "code": "R1.02", "titre": "Bases de données relationnelles 1", "semestre": 1 },
-    { "code": "R1.03", "titre": "Bases de la programmation 1", "semestre": 1 },
-    { "code": "R1.04", "titre": "Statistique descriptive 1", "semestre": 1 },
-    { "code": "R1.05", "titre": "Probabilités 1", "semestre": 1 },
-    { "code": "R1.06", "titre": "Mathématiques - analyse", "semestre": 1 },
-    { "code": "R1.07", "titre": "Initiation à l’anglais de spécialité", "semestre": 1 },
-    { "code": "R1.08", "titre": "Communication de l’information et recherche documentaire", "semestre": 1 },
-    { "code": "R1.09", "titre": "Données de l’environnement territorial et économique", "semestre": 1 },
-    { "code": "R1.10", "titre": "Projet Personnel et Professionnel 1", "semestre": 1 },
-    { "code": "R2.01", "titre": "Reporting et Datavisualisation", "semestre": 2 },
-    { "code": "R2.02", "titre": "Bases de données relationnelles 2", "semestre": 2 },
-    { "code": "R2.03", "titre": "Bases de la programmation 2", "semestre": 2 },
-    { "code": "R2.04", "titre": "Programmation statistique 2", "semestre": 2 },
-    { "code": "R2.05", "titre": "Statistique descriptive 2", "semestre": 2 },
-    { "code": "R2.06", "titre": "Probabilités 2", "semestre": 2 },
-    { "code": "R2.07", "titre": "Bases de l’algèbre", "semestre": 2 },
-    { "code": "R2.08", "titre": "Statistique inférentielle", "semestre": 2 },
-    { "code": "R2.09", "titre": "Approfondissement de l’anglais de spécialité", "semestre": 2 },
-    { "code": "R2.10", "titre": "Communication et sémiologie", "semestre": 2 },
-    { "code": "R2.11", "titre": "Données de l’environnement entrepreneurial et économique", "semestre": 2 },
-    { "code": "R2.12", "titre": "Projet Personnel et Professionnel 2", "semestre": 2 },
-    { "code": "R3.01", "titre": "Utilisation avancée d’outils de reporting", "semestre": 3 },
-    { "code": "R3.02", "titre": "Systèmes d’information décisionnels", "semestre": 3 },
-    { "code": "R3.03", "titre": "Technologies web", "semestre": 3 },
-    { "code": "R3.04", "titre": "Programmation statistique automatisée", "semestre": 3 },
-    { "code": "R3.05", "titre": "Algèbre linéaire", "semestre": 3 },
-    { "code": "R3.06", "titre": "Tests d’hypothèses pour analyses bivariées", "semestre": 3 },
-    { "code": "R3.07", "titre": "Anglais professionnel", "semestre": 3 },
-    { "code": "R3.08", "titre": "Communication professionnelle", "semestre": 3 },
-    { "code": "R3.09", "titre": "Données de l’environnement entrepreneurial et économique pour l’aide à la décision", "semestre": 3 },
-    { "code": "R3.10", "titre": "Programmation objet", "semestre": 3 },
-    { "code": "R3.11", "titre": "Projet Personnel et Professionnel 3", "semestre": 3 },
-    { "code": "R4.01", "titre": "Automatisation et test en programmation", "semestre": 4 },
-    { "code": "R4.02", "titre": "Méthodes factorielles", "semestre": 4 },
-    { "code": "R4.03", "titre": "Classification automatique", "semestre": 4 },
-    { "code": "R4.04", "titre": "Anglais scientifique et argumentation", "semestre": 4 },
-    { "code": "R4.05", "titre": "Communication scientifique et argumentation", "semestre": 4 },
-    { "code": "R4.06", "titre": "Exploration et valorisation de données dans un cadre juridique et économique", "semestre": 4 },
-    { "code": "R4.07", "titre": "Projet Personnel et Professionnel 4", "semestre": 4 },
-    { "code": "R4.08", "titre": "Préparation / intégration de données", "semestre": 4 },
-    { "code": "R4.09", "titre": "Programmation web", "semestre": 4 },
-    { "code": "R5.01", "titre": "Bases de données NoSQL", "semestre": 5 },
-    { "code": "R5.02", "titre": "Data mining", "semestre": 5 },
-    { "code": "R5.03", "titre": "Anglais pour la coopération internationale", "semestre": 5 },
-    { "code": "R5.04", "titre": "Communication des données, éthique et responsabilités", "semestre": 5 },
-    { "code": "R5.05", "titre": "Projet Personnel et Professionnel 5", "semestre": 5 },
-    { "code": "R5.06", "titre": "Développement logiciel", "semestre": 5 },
-    { "code": "R5.07", "titre": "Programmation web pour la visualisation", "semestre": 5 },
-    { "code": "R6.01", "titre": "Big Data : enjeux, stockage et extraction", "semestre": 6 },
-    { "code": "R6.02", "titre": "Méthodes statistiques pour le Big Data", "semestre": 6 },
-    { "code": "R6.03", "titre": "Anglais pour la communication d’entreprise", "semestre": 6 },
-    { "code": "R6.04", "titre": "Communication pour le management", "semestre": 6 },
-    { "code": "R6.05", "titre": "Approfondissement en Big Data", "semestre": 6 }
-  ],
-  "sae": [
-    {
-      "code": "SAÉ 1.01",
-      "titre": "Reporting à partir de données stockées dans un SGBD relationnel",
-      "semestre": 1,
-      "valeur": "VCOD",
-      "competences": ["C1"],
-      "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04"],
-      "ressources": ["R1.01", "R1.02", "R1.10"],
-      "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel."
-    },
-    {
-      "code": "SAÉ 1.02",
-      "titre": "Écriture et lecture de fichiers de données",
-      "semestre": 1,
-      "valeur": "VCOD",
-      "competences": ["C1"],
-      "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06"],
-      "ressources": ["R1.03", "R1.10"],
-      "description": "Automatiser l’écriture et la lecture de fichiers de données pour alimenter des traitements décisionnels."
-    },
-    {
-      "code": "SAÉ 1.03",
-      "titre": "Préparation et synthèse d’une analyse simple",
-      "semestre": 1,
-      "valeur": "VCOD",
-      "competences": ["C2"],
-      "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
-      "description": "Préparer un tableau de données, choisir des indicateurs descriptifs et les interpréter."
-    },
-    {
-      "code": "SAÉ 1.04",
-      "titre": "Apprendre en situation professionnelle ou production de données",
-      "semestre": 1,
-      "valeur": "VCOD",
-      "competences": ["C3"],
-      "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
-      "ressources": ["R1.04", "R1.10"],
-      "description": "Découvrir un contexte professionnel ou produire des données et en restituer les résultats."
-    },
-    {
-      "code": "SAÉ 1.05",
-      "titre": "Présentation en anglais d’un territoire économique et culturel",
-      "semestre": 1,
-      "valeur": "VCOD",
-      "competences": ["C3"],
-      "acs": ["AC13.04", "AC13.06"],
-      "ressources": ["R1.07", "R1.08", "R1.09", "R1.10"],
-      "description": "Présenter en anglais un territoire en mobilisant des indicateurs économiques et culturels."
-    },
-    {
-      "code": "SAÉ 1.06",
-      "titre": "Mise en œuvre d’une enquête",
-      "semestre": 1,
-      "valeur": "VCOD",
-      "competences": ["C3"],
-      "acs": ["AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06"],
-      "ressources": ["R1.08", "R1.09", "R1.10"],
-      "description": "Concevoir et mener une enquête, puis analyser et présenter les résultats."
-    },
-    {
-      "code": "SAÉ 2.01",
-      "titre": "Conception et implémentation d’une base de données",
-      "semestre": 2,
-      "valeur": "VCOD",
-      "competences": ["C1"],
-      "acs": ["AC12.01", "AC12.02", "AC12.05", "AC12.06"],
-      "ressources": ["R2.01", "R2.02", "R2.03", "R2.12"],
-      "description": "Modéliser et implémenter une base de données adaptée à un besoin métier."
-    },
-    {
-      "code": "SAÉ 2.02",
-      "titre": "Estimation par échantillonnage",
-      "semestre": 2,
-      "valeur": "VCOD",
-      "competences": ["C2"],
-      "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
-      "ressources": ["R2.06", "R2.08", "R2.12"],
-      "description": "Mettre en œuvre un plan de sondage et réaliser une estimation à partir d’un échantillon."
-    },
-    {
-      "code": "SAÉ 2.03",
-      "titre": "Régression sur données réelles",
-      "semestre": 2,
-      "valeur": "VCOD",
-      "competences": ["C2"],
-      "acs": ["AC12.03", "AC12.04"],
-      "ressources": ["R2.04", "R2.05", "R2.12"],
-      "description": "Ajuster et interpréter un modèle de régression sur des données réelles."
-    },
-    {
-      "code": "SAÉ 2.04",
-      "titre": "Datavisualisation",
-      "semestre": 2,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3"],
-      "acs": ["AC11.01", "AC11.04", "AC12.02", "AC12.03", "AC12.04", "AC13.02", "AC13.05"],
-      "ressources": ["R2.01", "R2.05", "R2.05", "R2.12"],
-      "description": "Concevoir des visualisations interactives permettant d’explorer et de communiquer des données."
-    },
-    {
-      "code": "SAÉ 2.05",
-      "titre": "Construction et présentation d’indicateurs de performance",
-      "semestre": 2,
-      "valeur": "VCOD",
-      "competences": ["C3"],
-      "acs": ["AC13.02", "AC13.03", "AC13.04", "AC13.05"],
-      "ressources": ["R2.11", "R2.12"],
-      "description": "Construire des tableaux de bord de performance et les présenter à un client."
-    },
-    {
-      "code": "SAÉ 2.06",
-      "titre": "Analyse de données, reporting et datavisualisation",
-      "semestre": 2,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3"],
-      "acs": [
-        "AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06",
-        "AC12.01", "AC12.02", "AC12.03", "AC12.04", "AC12.05", "AC12.06",
-        "AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06"
-      ],
-      "ressources": ["R2.01", "R2.02", "R2.03", "R2.04", "R2.05", "R2.06", "R2.08", "R2.09", "R2.10", "R2.11", "R2.12"],
-      "description": "Réaliser une étude complète : préparation des données, analyses statistiques, reporting et restitution."
-    },
-    {
-      "code": "SAÉ 3.01",
-      "titre": "Collecte automatisée de données web",
-      "semestre": 3,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3", "C4"],
-      "acs": ["AC21.01", "AC21.03", "AC21.05", "AC21.06", "AC23.01", "AC23.02", "AC24.01", "AC24.02", "AC24.03"],
-      "ressources": ["R3.02", "R3.03", "R3.04", "R3.05", "R3.11"],
-      "description": "Mettre en œuvre un système de collecte automatisée (web scraping ou API) et stocker les données."
-    },
-    {
-      "code": "SAÉ 3.02",
-      "titre": "Intégration de données dans un datawarehouse",
-      "semestre": 3,
-      "valeur": "VCOD",
-      "competences": ["C1", "C3"],
-      "acs": ["AC21.01", "AC21.02", "AC21.03", "AC21.04", "AC21.05", "AC23.03", "AC23.04"],
-      "ressources": ["R3.02", "R3.04", "R3.11"],
-      "description": "Concevoir et alimenter un entrepôt de données en intégrant des sources hétérogènes."
-    },
-    {
-      "code": "SAÉ 3.03",
-      "titre": "Description et prévision de données temporelles",
-      "semestre": 3,
-      "valeur": "VCOD",
-      "competences": ["C2", "C3"],
-      "acs": ["AC22.01", "AC22.02", "AC22.05", "AC21.06", "AC23.01", "AC23.02", "AC23.05", "AC43.04"],
-      "ressources": ["R3.09", "R3.11"],
-      "description": "Analyser une série temporelle et proposer des prévisions à court ou moyen terme."
-    },
-    {
-      "code": "SAÉ 3.04",
-      "titre": "Conformité réglementaire pour traiter des données",
-      "semestre": 3,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3"],
-      "acs": ["AC21.01", "AC23.01", "AC23.03", "AC23.04", "AC25.01"],
-      "ressources": ["R3.02", "R3.08", "R3.09", "R3.11"],
-      "description": "Évaluer la conformité d’un traitement de données vis-à-vis du RGPD et des contraintes réglementaires."
-    },
-    {
-      "code": "SAÉ 4.01",
-      "titre": "Développement d’un composant d’une solution décisionnelle",
-      "semestre": 4,
-      "valeur": "VCOD",
-      "competences": ["C4", "C1", "C3"],
-      "acs": ["AC21.01", "AC21.02", "AC21.03", "AC21.04", "AC21.05", "AC23.01", "AC23.02", "AC23.03", "AC24.01", "AC24.02", "AC24.03", "AC24.04"],
-      "ressources": ["R4.01", "R4.07", "R4.08", "R4.09"],
-      "description": "Concevoir et développer un composant logiciel interopérable dans une chaîne décisionnelle."
-    },
-    {
-      "code": "SAÉ 4.02",
-      "titre": "Reporting d’une analyse multivariée",
-      "semestre": 4,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3"],
-      "acs": ["AC21.01", "AC21.04", "AC21.05", "AC22.01", "AC22.02", "AC22.05", "AC23.01", "AC23.02", "AC23.03", "AC23.04"],
-      "ressources": ["R4.01", "R4.02", "R4.03", "R4.05", "R4.07"],
-      "description": "Mettre en œuvre des méthodes factorielles ou de classification et restituer les résultats à un client."
-    },
-    {
-      "code": "SAÉ 5.01",
-      "titre": "Analyse et conception d’un outil décisionnel",
-      "semestre": 5,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3", "C4"],
-      "acs": ["AC31.02", "AC31.03", "AC32.02", "AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC34.01", "AC34.02", "AC34.03", "AC34.04"],
-      "ressources": ["R4.01", "R5.05", "R5.06"],
-      "description": "Analyser les besoins d’un client et spécifier un futur outil décisionnel."
-    },
-    {
-      "code": "SAÉ 5.02",
-      "titre": "Migration de données vers ou depuis un environnement NoSQL",
-      "semestre": 5,
-      "valeur": "VCOD",
-      "competences": ["C1", "C3", "C4"],
-      "acs": ["AC31.02", "AC31.03", "AC33.01", "AC33.03", "AC33.05"],
-      "ressources": ["R5.05"],
-      "description": "Concevoir et mettre en œuvre la migration de données entre bases relationnelles et NoSQL."
-    },
-    {
-      "code": "SAÉ 5.03",
-      "titre": "Mise en œuvre d’un processus de Datamining",
-      "semestre": 5,
-      "valeur": "VCOD",
-      "competences": ["C2", "C3"],
-      "acs": ["AC52.01", "AC52.02", "AC52.03", "AC53.01", "AC53.02", "AC53.03", "AC53.04"],
-      "ressources": ["R4.01", "R5.05", "R5.06", "R5.05"],
-      "description": "Mettre en place un workflow de datamining pour répondre à une problématique métier."
-    },
-    {
-      "code": "SAÉ 6.01",
-      "titre": "Développement et test d’un outil décisionnel",
-      "semestre": 6,
-      "valeur": "VCOD",
-      "competences": ["C1", "C2", "C3", "C4"],
-      "acs": ["AC11.01", "AC12.03", "AC22.05"],
-      "ressources": ["R5.01", "R5.06", "R5.07", "R6.01"],
-      "description": "Développer, tester et livrer un outil décisionnel complet en respectant un cahier des charges."
-    }
-  ],
-  "preuves": [
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.01",
-      "titre": "Schéma et Livrable Technique (1/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_101/1.png",
-      "description": "Livrable ou schéma principal de la SAÉ (ex: conception de la base)."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.01",
-      "titre": "Jeu de Données ou Code SQL (2/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_101/2.png",
-      "description": "Exemple de jeu de données ou de requêtes utilisées pour le reporting."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.01",
-      "titre": "Support de Présentation (3/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_101/3.png",
-      "description": "Diaporama ou support utilisé lors de la soutenance."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.02",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_102/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.02",
-      "titre": "Code Source (2/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_102/2.png",
-      "description": "Code pour la lecture et l'écriture des fichiers."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.03",
-      "titre": "Tableau de Données Final (1/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_103/1.png",
-      "description": "Tableau de données final prêt pour l'analyse exploratoire."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.03",
-      "titre": "Rapport d'Analyse (2/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_103/2.png",
-      "description": "Rapport détaillant les étapes de préparation et la synthèse."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.03",
-      "titre": "Jeu de Données Initial (3/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_103/3.png",
-      "description": "Jeu de données initial utilisé."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.04",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_104/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.04",
-      "titre": "Support de Présentation (2/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_104/2.png",
-      "description": "Support de présentation."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.05",
-      "titre": "Diaporama de Soutenance (1/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_105/1.png",
-      "description": "Diaporama utilisé pour la présentation en anglais."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.05",
-      "titre": "Script de Présentation (2/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_105/2.png",
-      "description": "Texte complet du discours de présentation."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.05",
-      "titre": "Carte du Territoire (3/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_105/3.png",
-      "description": "Carte ou illustration du territoire étudié."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.06",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_106/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 1.06",
-      "titre": "Support de Présentation (2/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_106/2.png",
-      "description": "Support de présentation."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.01",
-      "titre": "Schéma Entité-Relation (1/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_201/1.png",
-      "description": "Diagramme Entité-Association ou MLD de la base de données."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.01",
-      "titre": "Script d'Implémentation SQL (2/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_201/2.png",
-      "description": "Script de création des tables (DDL)."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.01",
-      "titre": "Rapport de Conception (3/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_201/3.png",
-      "description": "Rapport expliquant les choix de modélisation."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.02",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_202/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.02",
-      "titre": "Code de Simulation (2/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_202/2.png",
-      "description": "Code utilisé pour les simulations d'échantillonnage."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.03",
-      "titre": "Modèle de Régression Final (1/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_203/1.png",
-      "description": "Sortie du modèle de régression sélectionné (coefficients, R²)."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.03",
-      "titre": "Rapport d'Analyse de Régression (2/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_203/2.png",
-      "description": "Rapport sur la méthodologie et l'interprétation des résultats."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.03",
-      "titre": "Support de Présentation (3/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_203/3.png",
-      "description": "Support de présentation."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.04",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_204/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.04",
-      "titre": "Tableau de Bord / Visualisation (2/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_204/2.png",
-      "description": "Image de la datavisualisation réalisée."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.05",
-      "titre": "Indicateurs Clés de Performance (1/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_205/1.png",
-      "description": "Liste et définition des indicateurs de performance construits."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.05",
-      "titre": "Rapport de Construction (2/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_205/2.png",
-      "description": "Rapport détaillé sur la méthode de construction des indicateurs."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.05",
-      "titre": "Support de Présentation (3/3)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_205/3.png",
-      "description": "Support de présentation."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.06",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_206/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT1",
-      "sae": "SAÉ 2.06",
-      "titre": "Tableau de Bord / Visualisation (2/2)",
-      "fichier": "PREUVES/BUT_1er_annee/SAE_206/2.png",
-      "description": "Image du reporting final."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.01",
-      "titre": "Code de Scraping (1/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_301/1.png",
-      "description": "Code Python ou autre pour la collecte automatisée de données."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.01",
-      "titre": "Données Brutes Collectées (2/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_301/2.png",
-      "description": "Extrait des données brutes obtenues."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.01",
-      "titre": "Rapport de Méthode (3/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_301/3.png",
-      "description": "Rapport détaillant la méthode et les outils de collecte."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.02",
-      "titre": "Schéma Datawarehouse (1/2)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_302/1.png",
-      "description": "Schéma en étoile (Star Schema) du Data Warehouse."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.02",
-      "titre": "Pipeline ETL/ELT (2/2)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_302/2.png",
-      "description": "Capture d'écran du workflow d'intégration (ETL/ELT)."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.03",
-      "titre": "Modèle de Prévision (1/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_303/1.png",
-      "description": "Résultat et paramètres du modèle de séries temporelles (ex: ARIMA)."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.03",
-      "titre": "Rapport d'Analyse Temporelle (2/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_303/2.png",
-      "description": "Rapport sur la description, l'analyse et la prévision des données."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.03",
-      "titre": "Graphique de Prévision (3/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_303/3.png",
-      "description": "Visualisation de la prévision et de l'intervalle de confiance."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.04",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_304/1.png",
-      "description": "Rapport principal sur la conformité réglementaire (RGPD, etc.)."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 3.04",
-      "titre": "Checklist de Conformité (2/2)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_304/2.png",
-      "description": "Checklist des exigences réglementaires."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 4.01",
-      "titre": "Code Source du Composant (1/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_401/1.png",
-      "description": "Code du composant développé (module, fonction, API)."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 4.01",
-      "titre": "Architecture de la Solution (2/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_401/2.png",
-      "description": "Diagramme montrant l'intégration du composant dans la solution décisionnelle."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 4.01",
-      "titre": "Rapport Technique (3/3)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_401/3.png",
-      "description": "Rapport technique décrivant le développement et les tests."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 4.02",
-      "titre": "Rapport Synthétique (1/2)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_402/1.png",
-      "description": "Rapport principal de la SAÉ."
-    },
-    {
-      "annee": "BUT2",
-      "sae": "SAÉ 4.02",
-      "titre": "Visualisation Multivariée (2/2)",
-      "fichier": "PREUVES/BUT_2e_annee/SAE_402/2.png",
-      "description": "Graphique ou tableau de bord présentant l'analyse multivariée."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.01",
-      "titre": "Analyse Fonctionnelle (1/3)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_501/1.png",
-      "description": "Diagrammes ou spécifications de l'analyse et de la conception de l'outil décisionnel."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.01",
-      "titre": "Spécifications Techniques (2/3)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_501/2.png",
-      "description": "Détails sur l'architecture logicielle et les technologies choisies."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.01",
-      "titre": "Rapport de Conception (3/3)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_501/3.png",
-      "description": "Rapport justifiant les choix d'analyse et de conception."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.02",
-      "titre": "Schéma NoSQL (1/2)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_502/1.png",
-      "description": "Modèle de données NoSQL (ex: structure de collection MongoDB)."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.02",
-      "titre": "Script de Migration (2/2)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_502/2.png",
-      "description": "Code (ex: Python) du script de migration de données."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.03",
-      "titre": "Workflow Datamining (1/3)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_503/1.png",
-      "description": "Diagramme ou capture d'écran du processus de datamining (outil, étapes)."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.03",
-      "titre": "Rapport d'Analyse (2/3)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_503/2.png",
-      "description": "Rapport sur les modèles, l'interprétation des résultats et leur impact métier."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 5.03",
-      "titre": "Support de Présentation (3/3)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_503/3.png",
-      "description": "Support de présentation pour la soutenance."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 6.01",
-      "titre": "Code de l'Outil Décisionnel (1/2)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_601/1.png",
-      "description": "Extrait du code source principal de l'outil final."
-    },
-    {
-      "annee": "BUT3",
-      "sae": "SAÉ 6.01",
-      "titre": "Rapport de Test et Livraison (2/2)",
-      "fichier": "PREUVES/BUT_3e_annee/SAE_601/2.png",
-      "description": "Rapport technique incluant les tests unitaires et le processus de déploiement."
-    }
-  ]
+  "meta": {
+    "etudiant": "Zodara CAMARA",
+    "parcours": "Visualisation, Conception d’outils Décisionnels",
+    "but": "BUT Science des Données"
+  },
+  "stats": {
+    "total_hours": 1140,
+    "nb_sae": 20,
+    "nb_preuves": 48,
+    "hours_by_competence": {
+      "C1": 230,
+      "C2": 210,
+      "C3": 190,
+      "C4": 220
+    }
+  },
+  "competences": {
+    "C1": {
+      "label": "Traiter des données à des fins décisionnelles",
+      "description": "Intervenir à toutes les étapes du cycle de vie de la donnée en utilisant des modèles de données et des programmes adaptés."
+    },
+    "C2": {
+      "label": "Analyser statistiquement les données",
+      "description": "Mettre en évidence les grandes tendances et les informations clés à l’aide de méthodes statistiques appropriées."
+    },
+    "C3": {
+      "label": "Valoriser une production dans un contexte professionnel",
+      "description": "Restituer et communiquer les résultats en s’adaptant au public, au contexte et aux contraintes professionnelles."
+    },
+    "C4": {
+      "label": "Développer un outil décisionnel",
+      "description": "Concevoir et maintenir des solutions logicielles et des composants s’intégrant dans une chaîne décisionnelle."
+    }
+  },
+  "acs": {
+    "AC11.01": { "label": "Interpréter et prendre en compte le besoin du client" },
+    "AC11.02": { "label": "Respecter les formalismes de notation" },
+    "AC11.03": { "label": "Connaître la syntaxe des langages et savoir l’utiliser" },
+    "AC11.04": { "label": "Maîtriser la structure des données à exploiter" },
+    "AC11.05": { "label": "Comprendre les structures algorithmiques de base" },
+    "AC11.06": { "label": "Prendre conscience de l’intérêt de la programmation" },
+    "AC12.01": { "label": "Identifier les caractéristiques propres aux différentes sources de données" },
+    "AC12.02": { "label": "Comprendre qu’une bonne analyse nécessite des données propres et préparées" },
+    "AC12.03": { "label": "Utiliser des synthèses numériques et graphiques pour décrire une variable" },
+    "AC12.04": { "label": "Utiliser des synthèses numériques et graphiques pour mettre en évidence des liaisons entre variables" },
+    "AC12.05": { "label": "Comprendre l’intérêt de l’utilisation d’un modèle probabiliste" },
+    "AC12.06": { "label": "Appréhender la notion de fluctuation d’échantillonnage à l’aide de simulations" },
+    "AC13.01": { "label": "Connaître les biais possibles lors de la mise en place d’une enquête" },
+    "AC13.02": { "label": "Mesurer l’importance de contextualiser les données" },
+    "AC13.03": { "label": "Mettre en évidence des résultats clés à l’aide d’indicateurs pertinents" },
+    "AC13.04": { "label": "Savoir expliciter la démarche suivie lors de la restitution des résultats" },
+    "AC13.05": { "label": "Comprendre les apports de la datavisualisation et de l’infographie" },
+    "AC13.06": { "label": "Mesurer l’importance d’une expression précise et nuancée pour communiquer les résultats" },
+    "AC21.01": { "label": "Comprendre l’organisation des données dans l’entreprise" },
+    "AC21.02": { "label": "Comprendre le rôle central de l’entrepôt de données dans la chaîne décisionnelle" },
+    "AC21.03": { "label": "Identifier et résoudre les problèmes d’intégration de sources hétérogènes" },
+    "AC21.04": { "label": "Comprendre la nécessité de tester, corriger et documenter un programme" },
+    "AC21.05": { "label": "Apprécier l’intérêt des briques logicielles existantes et savoir les utiliser" },
+    "AC21.06": { "label": "Apprécier les limites de validité et les conditions d’application d’une analyse" },
+    "AC22.01": { "label": "Différencier modélisation statistique et analyse exploratoire" },
+    "AC22.02": { "label": "Comprendre la spécificité de l’analyse des données temporelles" },
+    "AC22.05": { "label": "Apprécier les limites de validité des modèles statistiques utilisés" },
+    "AC23.01": { "label": "Mobiliser de manière proactive des ressources métiers liées à l’environnement" },
+    "AC23.02": { "label": "Défendre et justifier ses choix d’analyses" },
+    "AC23.03": { "label": "Choisir des indicateurs pertinents pour communiquer sur les résultats" },
+    "AC23.04": { "label": "Assurer la rigueur des productions et de la communication associée" },
+    "AC23.05": { "label": "Comprendre les enjeux éthiques et juridiques liés à la diffusion des résultats" },
+    "AC24.01": { "label": "Analyser les besoins et l’existant dans un projet décisionnel" },
+    "AC24.02": { "label": "Percevoir les enjeux de l’automatisation et de l’interopérabilité des tâches" },
+    "AC24.03": { "label": "Choisir des outils adaptés parmi plusieurs logiciels et langages" },
+    "AC24.04": { "label": "Comprendre le cycle de vie d’un projet informatique" },
+    "AC25.01": { "label": "Adapter sa communication aux interlocuteurs et à leur culture en milieu professionnel" },
+    "AC31.02": { "label": "Identifier les spécificités des données complexes" },
+    "AC31.03": { "label": "Mener une veille technologique sur les outils et méthodes décisionnels" },
+    "AC32.02": { "label": "Apprécier l’importance de méthodes adaptées aux données disponibles" },
+    "AC33.01": { "label": "Transformer et préparer les données pour l’analyse" },
+    "AC33.02": { "label": "Mesurer l’impact du RGPD sur les traitements de données" },
+    "AC33.03": { "label": "Mettre en œuvre une communication claire et adaptée" },
+    "AC33.04": { "label": "Comprendre les mécanismes de base de l’intelligence artificielle" },
+    "AC33.05": { "label": "Être force de proposition dans un contexte décisionnel" },
+    "AC34.01": { "label": "Adapter sa présentation selon les interlocuteurs" },
+    "AC34.02": { "label": "Défendre ses choix de solution technique" },
+    "AC34.03": { "label": "Appliquer des méthodes de développement logicielle" },
+    "AC34.04": { "label": "Comprendre l’intérêt d’un gestionnaire de versions" },
+    "AC43.04": { "label": "Assurer la rigueur des productions et de la communication associée" },
+    "AC52.01": { "label": "Choisir l’outil statistique le plus adapté" },
+    "AC52.02": { "label": "Comprendre les limites et hypothèses des méthodes de data mining" },
+    "AC52.03": { "label": "Adapter les méthodes à des domaines et des données spécifiques" },
+    "AC52.04": { "label": "Comprendre les bases de l’IA et de l’apprentissage supervisé" },
+    "AC53.01": { "label": "Mesurer l’impact du respect de la législation sur les données" },
+    "AC53.02": { "label": "Identifier les clés d’une bonne communication (procédures, supports, canaux)" },
+    "AC53.03": { "label": "Comprendre et traiter l’ensemble des problématiques posées" },
+    "AC53.04": { "label": "Identifier les solutions technologiques pour collecter et diffuser des données" }
+  },
+  "ressources": [
+    { "code": "R1.01", "titre": "Tableur et reporting", "semestre": 1 },
+    { "code": "R1.02", "titre": "Bases de données relationnelles 1", "semestre": 1 },
+    { "code": "R1.03", "titre": "Bases de la programmation 1", "semestre": 1 },
+    { "code": "R1.04", "titre": "Statistique descriptive 1", "semestre": 1 },
+    { "code": "R1.05", "titre": "Probabilités 1", "semestre": 1 },
+    { "code": "R1.06", "titre": "Mathématiques - analyse", "semestre": 1 },
+    { "code": "R1.07", "titre": "Initiation à l’anglais de spécialité", "semestre": 1 },
+    { "code": "R1.08", "titre": "Communication de l’information et recherche documentaire", "semestre": 1 },
+    { "code": "R1.09", "titre": "Données de l’environnement territorial et économique", "semestre": 1 },
+    { "code": "R1.10", "titre": "Projet Personnel et Professionnel 1", "semestre": 1 },
+    { "code": "R2.01", "titre": "Reporting et Datavisualisation", "semestre": 2 },
+    { "code": "R2.02", "titre": "Bases de données relationnelles 2", "semestre": 2 },
+    { "code": "R2.03", "titre": "Bases de la programmation 2", "semestre": 2 },
+    { "code": "R2.04", "titre": "Programmation statistique 2", "semestre": 2 },
+    { "code": "R2.05", "titre": "Statistique descriptive 2", "semestre": 2 },
+    { "code": "R2.06", "titre": "Probabilités 2", "semestre": 2 },
+    { "code": "R2.07", "titre": "Bases de l’algèbre", "semestre": 2 },
+    { "code": "R2.08", "titre": "Statistique inférentielle", "semestre": 2 },
+    { "code": "R2.09", "titre": "Approfondissement de l’anglais de spécialité", "semestre": 2 },
+    { "code": "R2.10", "titre": "Communication et sémiologie", "semestre": 2 },
+    { "code": "R2.11", "titre": "Données de l’environnement entrepreneurial et économique", "semestre": 2 },
+    { "code": "R2.12", "titre": "Projet Personnel et Professionnel 2", "semestre": 2 },
+    { "code": "R3.01", "titre": "Utilisation avancée d’outils de reporting", "semestre": 3 },
+    { "code": "R3.02", "titre": "Systèmes d’information décisionnels", "semestre": 3 },
+    { "code": "R3.03", "titre": "Technologies web", "semestre": 3 },
+    { "code": "R3.04", "titre": "Programmation statistique automatisée", "semestre": 3 },
+    { "code": "R3.05", "titre": "Algèbre linéaire", "semestre": 3 },
+    { "code": "R3.06", "titre": "Tests d’hypothèses pour analyses bivariées", "semestre": 3 },
+    { "code": "R3.07", "titre": "Anglais professionnel", "semestre": 3 },
+    { "code": "R3.08", "titre": "Communication professionnelle", "semestre": 3 },
+    { "code": "R3.09", "titre": "Données de l’environnement entrepreneurial et économique pour l’aide à la décision", "semestre": 3 },
+    { "code": "R3.10", "titre": "Programmation objet", "semestre": 3 },
+    { "code": "R3.11", "titre": "Projet Personnel et Professionnel 3", "semestre": 3 },
+    { "code": "R4.01", "titre": "Automatisation et test en programmation", "semestre": 4 },
+    { "code": "R4.02", "titre": "Méthodes factorielles", "semestre": 4 },
+    { "code": "R4.03", "titre": "Classification automatique", "semestre": 4 },
+    { "code": "R4.04", "titre": "Anglais scientifique et argumentation", "semestre": 4 },
+    { "code": "R4.05", "titre": "Communication scientifique et argumentation", "semestre": 4 },
+    { "code": "R4.06", "titre": "Exploration et valorisation de données dans un cadre juridique et économique", "semestre": 4 },
+    { "code": "R4.07", "titre": "Projet Personnel et Professionnel 4", "semestre": 4 },
+    { "code": "R4.08", "titre": "Préparation / intégration de données", "semestre": 4 },
+    { "code": "R4.09", "titre": "Programmation web", "semestre": 4 },
+    { "code": "R5.01", "titre": "Bases de données NoSQL", "semestre": 5 },
+    { "code": "R5.02", "titre": "Data mining", "semestre": 5 },
+    { "code": "R5.03", "titre": "Anglais pour la coopération internationale", "semestre": 5 },
+    { "code": "R5.04", "titre": "Communication des données, éthique et responsabilités", "semestre": 5 },
+    { "code": "R5.05", "titre": "Projet Personnel et Professionnel 5", "semestre": 5 },
+    { "code": "R5.06", "titre": "Développement logiciel", "semestre": 5 },
+    { "code": "R5.07", "titre": "Programmation web pour la visualisation", "semestre": 5 },
+    { "code": "R6.01", "titre": "Big Data : enjeux, stockage et extraction", "semestre": 6 },
+    { "code": "R6.02", "titre": "Méthodes statistiques pour le Big Data", "semestre": 6 },
+    { "code": "R6.03", "titre": "Anglais pour la communication d’entreprise", "semestre": 6 },
+    { "code": "R6.04", "titre": "Communication pour le management", "semestre": 6 },
+    { "code": "R6.05", "titre": "Approfondissement en Big Data", "semestre": 6 }
+  ],
+  "sae": [
+    {
+      "code": "SAÉ 1.01",
+      "titre": "Reporting à partir de données stockées dans un SGBD relationnel",
+      "semestre": 1,
+      "valeur": "VCOD",
+      "competences": ["C1"],
+      "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04"],
+      "ressources": ["R1.01", "R1.02", "R1.10"],
+      "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel."
+    },
+    {
+      "code": "SAÉ 1.02",
+      "titre": "Écriture et lecture de fichiers de données",
+      "semestre": 1,
+      "valeur": "VCOD",
+      "competences": ["C1"],
+      "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06"],
+      "ressources": ["R1.03", "R1.10"],
+      "description": "Automatiser l’écriture et la lecture de fichiers de données pour alimenter des traitements décisionnels."
+    },
+    {
+      "code": "SAÉ 1.03",
+      "titre": "Préparation et synthèse d’une analyse simple",
+      "semestre": 1,
+      "valeur": "VCOD",
+      "competences": ["C2"],
+      "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
+      "description": "Préparer un tableau de données, choisir des indicateurs descriptifs et les interpréter."
+    },
+    {
+      "code": "SAÉ 1.04",
+      "titre": "Apprendre en situation professionnelle ou production de données",
+      "semestre": 1,
+      "valeur": "VCOD",
+      "competences": ["C3"],
+      "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
+      "ressources": ["R1.04", "R1.10"],
+      "description": "Découvrir un contexte professionnel ou produire des données et en restituer les résultats."
+    },
+    {
+      "code": "SAÉ 1.05",
+      "titre": "Présentation en anglais d’un territoire économique et culturel",
+      "semestre": 1,
+      "valeur": "VCOD",
+      "competences": ["C3"],
+      "acs": ["AC13.04", "AC13.06"],
+      "ressources": ["R1.07", "R1.08", "R1.09", "R1.10"],
+      "description": "Présenter en anglais un territoire en mobilisant des indicateurs économiques et culturels."
+    },
+    {
+      "code": "SAÉ 1.06",
+      "titre": "Mise en œuvre d’une enquête",
+      "semestre": 1,
+      "valeur": "VCOD",
+      "competences": ["C3"],
+      "acs": ["AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06"],
+      "ressources": ["R1.08", "R1.09", "R1.10"],
+      "description": "Concevoir et mener une enquête, puis analyser et présenter les résultats."
+    },
+    {
+      "code": "SAÉ 2.01",
+      "titre": "Conception et implémentation d’une base de données",
+      "semestre": 2,
+      "valeur": "VCOD",
+      "competences": ["C1"],
+      "acs": ["AC12.01", "AC12.02", "AC12.05", "AC12.06"],
+      "ressources": ["R2.01", "R2.02", "R2.03", "R2.12"],
+      "description": "Modéliser et implémenter une base de données adaptée à un besoin métier."
+    },
+    {
+      "code": "SAÉ 2.02",
+      "titre": "Estimation par échantillonnage",
+      "semestre": 2,
+      "valeur": "VCOD",
+      "competences": ["C2"],
+      "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
+      "ressources": ["R2.06", "R2.08", "R2.12"],
+      "description": "Mettre en œuvre un plan de sondage et réaliser une estimation à partir d’un échantillon."
+    },
+    {
+      "code": "SAÉ 2.03",
+      "titre": "Régression sur données réelles",
+      "semestre": 2,
+      "valeur": "VCOD",
+      "competences": ["C2"],
+      "acs": ["AC12.03", "AC12.04"],
+      "ressources": ["R2.04", "R2.05", "R2.12"],
+      "description": "Ajuster et interpréter un modèle de régression sur des données réelles."
+    },
+    {
+      "code": "SAÉ 2.04",
+      "titre": "Datavisualisation",
+      "semestre": 2,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3"],
+      "acs": ["AC11.01", "AC11.04", "AC12.02", "AC12.03", "AC12.04", "AC13.02", "AC13.05"],
+      "ressources": ["R2.01", "R2.05", "R2.05", "R2.12"],
+      "description": "Concevoir des visualisations interactives permettant d’explorer et de communiquer des données."
+    },
+    {
+      "code": "SAÉ 2.05",
+      "titre": "Construction et présentation d’indicateurs de performance",
+      "semestre": 2,
+      "valeur": "VCOD",
+      "competences": ["C3"],
+      "acs": ["AC13.02", "AC13.03", "AC13.04", "AC13.05"],
+      "ressources": ["R2.11", "R2.12"],
+      "description": "Construire des tableaux de bord de performance et les présenter à un client."
+    },
+    {
+      "code": "SAÉ 2.06",
+      "titre": "Analyse de données, reporting et datavisualisation",
+      "semestre": 2,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3"],
+      "acs": [
+        "AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06",
+        "AC12.01", "AC12.02", "AC12.03", "AC12.04", "AC12.05", "AC12.06",
+        "AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06"
+      ],
+      "ressources": ["R2.01", "R2.02", "R2.03", "R2.04", "R2.05", "R2.06", "R2.08", "R2.09", "R2.10", "R2.11", "R2.12"],
+      "description": "Réaliser une étude complète : préparation des données, analyses statistiques, reporting et restitution."
+    },
+    {
+      "code": "SAÉ 3.01",
+      "titre": "Collecte automatisée de données web",
+      "semestre": 3,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3", "C4"],
+      "acs": ["AC21.01", "AC21.03", "AC21.05", "AC21.06", "AC23.01", "AC23.02", "AC24.01", "AC24.02", "AC24.03"],
+      "ressources": ["R3.02", "R3.03", "R3.04", "R3.05", "R3.11"],
+      "description": "Mettre en œuvre un système de collecte automatisée (web scraping ou API) et stocker les données."
+    },
+    {
+      "code": "SAÉ 3.02",
+      "titre": "Intégration de données dans un datawarehouse",
+      "semestre": 3,
+      "valeur": "VCOD",
+      "competences": ["C1", "C3"],
+      "acs": ["AC21.01", "AC21.02", "AC21.03", "AC21.04", "AC21.05", "AC23.03", "AC23.04"],
+      "ressources": ["R3.02", "R3.04", "R3.11"],
+      "description": "Concevoir et alimenter un entrepôt de données en intégrant des sources hétérogènes."
+    },
+    {
+      "code": "SAÉ 3.03",
+      "titre": "Description et prévision de données temporelles",
+      "semestre": 3,
+      "valeur": "VCOD",
+      "competences": ["C2", "C3"],
+      "acs": ["AC22.01", "AC22.02", "AC22.05", "AC21.06", "AC23.01", "AC23.02", "AC23.05", "AC43.04"],
+      "ressources": ["R3.09", "R3.11"],
+      "description": "Analyser une série temporelle et proposer des prévisions à court ou moyen terme."
+    },
+    {
+      "code": "SAÉ 3.04",
+      "titre": "Conformité réglementaire pour traiter des données",
+      "semestre": 3,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3"],
+      "acs": ["AC21.01", "AC23.01", "AC23.03", "AC23.04", "AC25.01"],
+      "ressources": ["R3.02", "R3.08", "R3.09", "R3.11"],
+      "description": "Évaluer la conformité d’un traitement de données vis-à-vis du RGPD et des contraintes réglementaires."
+    },
+    {
+      "code": "SAÉ 4.01",
+      "titre": "Développement d’un composant d’une solution décisionnelle",
+      "semestre": 4,
+      "valeur": "VCOD",
+      "competences": ["C4", "C1", "C3"],
+      "acs": ["AC21.01", "AC21.02", "AC21.03", "AC21.04", "AC21.05", "AC23.01", "AC23.02", "AC23.03", "AC24.01", "AC24.02", "AC24.03", "AC24.04"],
+      "ressources": ["R4.01", "R4.07", "R4.08", "R4.09"],
+      "description": "Concevoir et développer un composant logiciel interopérable dans une chaîne décisionnelle."
+    },
+    {
+      "code": "SAÉ 4.02",
+      "titre": "Reporting d’une analyse multivariée",
+      "semestre": 4,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3"],
+      "acs": ["AC21.01", "AC21.04", "AC21.05", "AC22.01", "AC22.02", "AC22.05", "AC23.01", "AC23.02", "AC23.03", "AC23.04"],
+      "ressources": ["R4.01", "R4.02", "R4.03", "R4.05", "R4.07"],
+      "description": "Mettre en œuvre des méthodes factorielles ou de classification et restituer les résultats à un client."
+    },
+    {
+      "code": "SAÉ 5.01",
+      "titre": "Analyse et conception d’un outil décisionnel",
+      "semestre": 5,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3", "C4"],
+      "acs": ["AC31.02", "AC31.03", "AC32.02", "AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC34.01", "AC34.02", "AC34.03", "AC34.04"],
+      "ressources": ["R4.01", "R5.05", "R5.06"],
+      "description": "Analyser les besoins d’un client et spécifier un futur outil décisionnel."
+    },
+    {
+      "code": "SAÉ 5.02",
+      "titre": "Migration de données vers ou depuis un environnement NoSQL",
+      "semestre": 5,
+      "valeur": "VCOD",
+      "competences": ["C1", "C3", "C4"],
+      "acs": ["AC31.02", "AC31.03", "AC33.01", "AC33.03", "AC33.05"],
+      "ressources": ["R5.05"],
+      "description": "Concevoir et mettre en œuvre la migration de données entre bases relationnelles et NoSQL."
+    },
+    {
+      "code": "SAÉ 5.03",
+      "titre": "Mise en œuvre d’un processus de Datamining",
+      "semestre": 5,
+      "valeur": "VCOD",
+      "competences": ["C2", "C3"],
+      "acs": ["AC52.01", "AC52.02", "AC52.03", "AC53.01", "AC53.02", "AC53.03", "AC53.04"],
+      "ressources": ["R4.01", "R5.05", "R5.06", "R5.05"],
+      "description": "Mettre en place un workflow de datamining pour répondre à une problématique métier."
+    },
+    {
+      "code": "SAÉ 6.01",
+      "titre": "Développement et test d’un outil décisionnel",
+      "semestre": 6,
+      "valeur": "VCOD",
+      "competences": ["C1", "C2", "C3", "C4"],
+      "acs": ["AC11.01", "AC12.03", "AC22.05"],
+      "ressources": ["R5.01", "R5.06", "R5.07", "R6.01"],
+      "description": "Développer, tester et livrer un outil décisionnel complet en respectant un cahier des charges."
+    }
+  ],
+  "preuves": [
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.01",
+      "titre": "Schéma et Livrable Technique (1/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_101/1.png",
+      "description": "Livrable ou schéma principal de la SAÉ (ex: conception de la base)."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.01",
+      "titre": "Jeu de Données ou Code SQL (2/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_101/2.png",
+      "description": "Exemple de jeu de données ou de requêtes utilisées pour le reporting."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.01",
+      "titre": "Support de Présentation (3/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_101/3.png",
+      "description": "Diaporama ou support utilisé lors de la soutenance."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.02",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_102/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.02",
+      "titre": "Code Source (2/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_102/2.png",
+      "description": "Code pour la lecture et l'écriture des fichiers."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.03",
+      "titre": "Tableau de Données Final (1/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_103/1.png",
+      "description": "Tableau de données final prêt pour l'analyse exploratoire."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.03",
+      "titre": "Rapport d'Analyse (2/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_103/2.png",
+      "description": "Rapport détaillant les étapes de préparation et la synthèse."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.03",
+      "titre": "Jeu de Données Initial (3/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_103/3.png",
+      "description": "Jeu de données initial utilisé."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.04",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_104/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.04",
+      "titre": "Support de Présentation (2/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_104/2.png",
+      "description": "Support de présentation."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.05",
+      "titre": "Diaporama de Soutenance (1/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_105/1.png",
+      "description": "Diaporama utilisé pour la présentation en anglais."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.05",
+      "titre": "Script de Présentation (2/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_105/2.png",
+      "description": "Texte complet du discours de présentation."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.05",
+      "titre": "Carte du Territoire (3/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_105/3.png",
+      "description": "Carte ou illustration du territoire étudié."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.06",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_106/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 1.06",
+      "titre": "Support de Présentation (2/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_106/2.png",
+      "description": "Support de présentation."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.01",
+      "titre": "Schéma Entité-Relation (1/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_201/1.png",
+      "description": "Diagramme Entité-Association ou MLD de la base de données."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.01",
+      "titre": "Script d'Implémentation SQL (2/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_201/2.png",
+      "description": "Script de création des tables (DDL)."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.01",
+      "titre": "Rapport de Conception (3/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_201/3.png",
+      "description": "Rapport expliquant les choix de modélisation."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.02",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_202/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.02",
+      "titre": "Code de Simulation (2/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_202/2.png",
+      "description": "Code utilisé pour les simulations d'échantillonnage."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.03",
+      "titre": "Modèle de Régression Final (1/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_203/1.png",
+      "description": "Sortie du modèle de régression sélectionné (coefficients, R²)."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.03",
+      "titre": "Rapport d'Analyse de Régression (2/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_203/2.png",
+      "description": "Rapport sur la méthodologie et l'interprétation des résultats."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.03",
+      "titre": "Support de Présentation (3/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_203/3.png",
+      "description": "Support de présentation."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.04",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_204/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.04",
+      "titre": "Tableau de Bord / Visualisation (2/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_204/2.png",
+      "description": "Image de la datavisualisation réalisée."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.05",
+      "titre": "Indicateurs Clés de Performance (1/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_205/1.png",
+      "description": "Liste et définition des indicateurs de performance construits."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.05",
+      "titre": "Rapport de Construction (2/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_205/2.png",
+      "description": "Rapport détaillé sur la méthode de construction des indicateurs."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.05",
+      "titre": "Support de Présentation (3/3)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_205/3.png",
+      "description": "Support de présentation."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.06",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_206/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT1",
+      "sae": "SAÉ 2.06",
+      "titre": "Tableau de Bord / Visualisation (2/2)",
+      "fichier": "PREUVES/BUT_1er_annee/SAE_206/2.png",
+      "description": "Image du reporting final."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.01",
+      "titre": "Code de Scraping (1/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_301/1.png",
+      "description": "Code Python ou autre pour la collecte automatisée de données."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.01",
+      "titre": "Données Brutes Collectées (2/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_301/2.png",
+      "description": "Extrait des données brutes obtenues."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.01",
+      "titre": "Rapport de Méthode (3/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_301/3.png",
+      "description": "Rapport détaillant la méthode et les outils de collecte."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.02",
+      "titre": "Schéma Datawarehouse (1/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_302/1.png",
+      "description": "Schéma en étoile (Star Schema) du Data Warehouse."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.02",
+      "titre": "Pipeline ETL/ELT (2/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_302/2.png",
+      "description": "Capture d'écran du workflow d'intégration (ETL/ELT)."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.03",
+      "titre": "Modèle de Prévision (1/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_303/1.png",
+      "description": "Résultat et paramètres du modèle de séries temporelles (ex: ARIMA)."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.03",
+      "titre": "Rapport d'Analyse Temporelle (2/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_303/2.png",
+      "description": "Rapport sur la description, l'analyse et la prévision des données."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.03",
+      "titre": "Graphique de Prévision (3/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_303/3.png",
+      "description": "Visualisation de la prévision et de l'intervalle de confiance."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.04",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_304/1.png",
+      "description": "Rapport principal sur la conformité réglementaire (RGPD, etc.)."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 3.04",
+      "titre": "Checklist de Conformité (2/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_304/2.png",
+      "description": "Checklist des exigences réglementaires."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 4.01",
+      "titre": "Code Source du Composant (1/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_401/1.png",
+      "description": "Code du composant développé (module, fonction, API)."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 4.01",
+      "titre": "Architecture de la Solution (2/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_401/2.png",
+      "description": "Diagramme montrant l'intégration du composant dans la solution décisionnelle."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 4.01",
+      "titre": "Rapport Technique (3/3)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_401/3.png",
+      "description": "Rapport technique décrivant le développement et les tests."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 4.02",
+      "titre": "Rapport Synthétique (1/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_402/1.png",
+      "description": "Rapport principal de la SAÉ."
+    },
+    {
+      "annee": "BUT2",
+      "sae": "SAÉ 4.02",
+      "titre": "Visualisation Multivariée (2/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_402/2.png",
+      "description": "Graphique ou tableau de bord présentant l'analyse multivariée."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.01",
+      "titre": "Analyse Fonctionnelle (1/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_501/1.png",
+      "description": "Diagrammes ou spécifications de l'analyse et de la conception de l'outil décisionnel."}
+{
+      "annee": "BUT2",
+      "sae": "SAÉ 4.02",
+      "titre": "Visualisation Multivariée (2/2)",
+      "fichier": "PREUVES/BUT_2e_annee/SAE_402/2.png",
+      "description": "Graphique ou tableau de bord présentant l'analyse multivariée."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.01",
+      "titre": "Analyse Fonctionnelle (1/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_501/1.png",
+      "description": "Diagrammes ou spécifications de l'analyse et de la conception de l'outil décisionnel."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.01",
+      "titre": "Spécifications Techniques (2/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_501/2.png",
+      "description": "Détails sur l'architecture logicielle et les technologies choisies."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.01",
+      "titre": "Rapport de Conception (3/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_501/3.png",
+      "description": "Rapport justifiant les choix d'analyse et de conception."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.02",
+      "titre": "Schéma NoSQL (1/2)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_502/1.png",
+      "description": "Modèle de données NoSQL (ex: structure de collection MongoDB)."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.02",
+      "titre": "Script de Migration (2/2)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_502/2.png",
+      "description": "Code (ex: Python) du script de migration de données."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.03",
+      "titre": "Workflow Datamining (1/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_503/1.png",
+      "description": "Diagramme ou capture d'écran du processus de datamining (outil, étapes)."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.03",
+      "titre": "Rapport d'Analyse (2/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_503/2.png",
+      "description": "Rapport sur les modèles, l'interprétation des résultats et leur impact métier."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 5.03",
+      "titre": "Support de Présentation (3/3)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_503/3.png",
+      "description": "Support de présentation pour la soutenance."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 6.01",
+      "titre": "Code de l'Outil Décisionnel (1/2)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_601/1.png",
+      "description": "Extrait du code source principal de l'outil final."
+    },
+    {
+      "annee": "BUT3",
+      "sae": "SAÉ 6.01",
+      "titre": "Rapport de Test et Livraison (2/2)",
+      "fichier": "PREUVES/BUT_3e_annee/SAE_601/2.png",
+      "description": "Rapport technique incluant les tests unitaires et le processus de déploiement."
+    }
+  ]
 }
+   
