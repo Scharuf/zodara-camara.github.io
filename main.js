@@ -559,20 +559,40 @@ function initPreuvesPage() {
 // ---------------------------------------------------------
 //  Navigation entre vues
 // ---------------------------------------------------------
-function initNavigation() {
+  function initNavigation() {
+  const links = document.querySelectorAll("header nav a");
+  const views = document.querySelectorAll(".view");
+
+  // Si on est sur preuve.html (pas de .view), on ne fait rien
+  if (!views.length) return;
+
+  function showView(name) {
+    views.forEach((v) => v.classList.remove("active"));
+    const target = document.getElementById(`view-${name}`);
+    if (target) target.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   links.forEach((a) =>
-  a.addEventListener("click", (e) => {
-    const v = a.dataset.view;
-    // ✅ si pas de data-view, on laisse le lien fonctionner normalement (ex: retour)
-    if (!v) return;
+    a.addEventListener("click", (e) => {
+      const v = a.dataset.view;
 
-    e.preventDefault();
-    showView(v);
-  })
-);
+      // ✅ si pas de data-view, on laisse le lien fonctionner normalement (ex: retour vers index.html)
+      if (!v) return;
 
+      e.preventDefault();
+      showView(v);
+    })
+  );
 
-);
+  document.querySelectorAll(".back-home").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      showView("home");
+    });
+  });
+}
+
   function showView(name) {
     views.forEach((v) => v.classList.remove("active"));
     const target = document.getElementById(`view-${name}`);
