@@ -5,14 +5,22 @@
     "but": "BUT Science des Données"
   },
   "stats": {
-    "total_hours": 1140,
-    "nb_sae": 22,
+    "total_hours": 1390,
+    "nb_sae": 20,
     "nb_preuves": 48,
+    "hours_by_semestre": {
+      "S1": 340,
+      "S2": 330,
+      "S3": 260,
+      "S4": 180,
+      "S5": 160,
+      "S6": 120
+    },
     "hours_by_competence": {
-      "C1": 326,
-      "C2": 301,
-      "C3": 376,
-      "C4": 137
+      "C1": 405,
+      "C2": 366,
+      "C3": 511,
+      "C4": 108
     }
   },
   "competences": {
@@ -156,72 +164,66 @@
   ],
   "sae": [
     {
-      "id": "SAE_101",
       "code": "SAÉ 1.01",
       "titre": "Reporting à partir de données stockées dans un SGBD relationnel",
       "semestre": 1,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 60,
       "competences": ["C1"],
       "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04"],
       "ressources": ["R1.01", "R1.02", "R1.10"],
       "description": "Mettre en place un reporting simple à partir de données stockées dans un SGBD relationnel."
     },
     {
-      "id": "SAE_102",
       "code": "SAÉ 1.02",
       "titre": "Écriture et lecture de fichiers de données",
       "semestre": 1,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C1"],
       "acs": ["AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06"],
       "ressources": ["R1.03", "R1.10"],
       "description": "Automatiser l’écriture et la lecture de fichiers de données pour alimenter des traitements décisionnels."
     },
     {
-      "id": "SAE_103",
       "code": "SAÉ 1.03",
       "titre": "Préparation et synthèse d’une analyse simple",
       "semestre": 1,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C2"],
       "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
       "ressources": ["R1.04", "R1.10"],
       "description": "Préparer un tableau de données, choisir des indicateurs descriptifs et les interpréter."
     },
     {
-      "id": "SAE_104",
       "code": "SAÉ 1.04",
       "titre": "Apprendre en situation professionnelle ou production de données",
       "semestre": 1,
-      "heures": 20,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C3"],
       "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
       "ressources": ["R1.04", "R1.10"],
       "description": "Découvrir un contexte professionnel ou produire des données et en restituer les résultats."
     },
     {
-      "id": "SAE_105",
       "code": "SAÉ 1.05",
       "titre": "Présentation en anglais d’un territoire économique et culturel",
       "semestre": 1,
-      "heures": 20,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C3"],
       "acs": ["AC13.04", "AC13.06"],
       "ressources": ["R1.07", "R1.08", "R1.09", "R1.10"],
       "description": "Présenter en anglais un territoire en mobilisant des indicateurs économiques et culturels."
     },
     {
-      "id": "SAE_106",
       "code": "SAÉ 1.06",
       "titre": "Mise en œuvre d’une enquête",
       "semestre": 1,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 60,
       "competences": ["C3"],
       "acs": ["AC13.01", "AC13.02", "AC13.03", "AC13.04", "AC13.05", "AC13.06"],
       "ressources": ["R1.08", "R1.09", "R1.10"],
@@ -229,72 +231,66 @@
     },
 
     {
-      "id": "SAE_201",
       "code": "SAÉ 2.01",
       "titre": "Conception et implémentation d’une base de données",
       "semestre": 2,
-      "heures": 40,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C1"],
       "acs": ["AC12.01", "AC12.02", "AC12.05", "AC12.06"],
       "ressources": ["R2.01", "R2.02", "R2.03", "R2.12"],
       "description": "Modéliser et implémenter une base de données adaptée à un besoin métier."
     },
     {
-      "id": "SAE_202",
       "code": "SAÉ 2.02",
       "titre": "Estimation par échantillonnage",
       "semestre": 2,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 50,
       "competences": ["C2"],
       "acs": ["AC12.01", "AC12.02", "AC12.03", "AC12.04"],
       "ressources": ["R2.06", "R2.08", "R2.12"],
       "description": "Mettre en œuvre un plan de sondage et réaliser une estimation à partir d’un échantillon."
     },
     {
-      "id": "SAE_203",
       "code": "SAÉ 2.03",
       "titre": "Régression sur données réelles",
       "semestre": 2,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 50,
       "competences": ["C2"],
       "acs": ["AC12.03", "AC12.04"],
       "ressources": ["R2.04", "R2.05", "R2.12"],
       "description": "Ajuster et interpréter un modèle de régression sur des données réelles."
     },
     {
-      "id": "SAE_204",
       "code": "SAÉ 2.04",
       "titre": "Datavisualisation",
       "semestre": 2,
-      "heures": 40,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C1", "C2", "C3"],
       "acs": ["AC11.01", "AC11.04", "AC12.02", "AC12.03", "AC12.04", "AC13.02", "AC13.05"],
       "ressources": ["R2.01", "R2.05", "R2.05", "R2.12"],
       "description": "Concevoir des visualisations interactives permettant d’explorer et de communiquer des données."
     },
     {
-      "id": "SAE_205",
       "code": "SAÉ 2.05",
       "titre": "Construction et présentation d’indicateurs de performance",
       "semestre": 2,
-      "heures": 30,
       "valeur": "VCOD",
+      "heures": 55,
       "competences": ["C3"],
       "acs": ["AC13.02", "AC13.03", "AC13.04", "AC13.05"],
       "ressources": ["R2.11", "R2.12"],
       "description": "Construire des tableaux de bord de performance et les présenter à un client."
     },
     {
-      "id": "SAE_206",
       "code": "SAÉ 2.06",
       "titre": "Analyse de données, reporting et datavisualisation",
       "semestre": 2,
-      "heures": 50,
       "valeur": "VCOD",
+      "heures": 65,
       "competences": ["C1", "C2", "C3"],
       "acs": [
         "AC11.01", "AC11.02", "AC11.03", "AC11.04", "AC11.05", "AC11.06",
@@ -306,48 +302,44 @@
     },
 
     {
-      "id": "SAE_301",
       "code": "SAÉ 3.01",
       "titre": "Collecte automatisée de données web",
       "semestre": 3,
-      "heures": 50,
       "valeur": "VCOD",
+      "heures": 70,
       "competences": ["C1", "C2", "C3", "C4"],
       "acs": ["AC21.01", "AC21.03", "AC21.05", "AC21.06", "AC23.01", "AC23.02", "AC24.01", "AC24.02", "AC24.03"],
       "ressources": ["R3.02", "R3.03", "R3.04", "R3.05", "R3.11"],
       "description": "Mettre en œuvre un système de collecte automatisée (web scraping ou API) et stocker les données."
     },
     {
-      "id": "SAE_302",
       "code": "SAÉ 3.02",
       "titre": "Intégration de données dans un datawarehouse",
       "semestre": 3,
-      "heures": 50,
       "valeur": "VCOD",
+      "heures": 60,
       "competences": ["C1", "C3"],
       "acs": ["AC21.01", "AC21.02", "AC21.03", "AC21.04", "AC21.05", "AC23.03", "AC23.04"],
       "ressources": ["R3.02", "R3.04", "R3.11"],
       "description": "Concevoir et alimenter un entrepôt de données en intégrant des sources hétérogènes."
     },
     {
-      "id": "SAE_303",
       "code": "SAÉ 3.03",
       "titre": "Description et prévision de données temporelles",
       "semestre": 3,
-      "heures": 40,
       "valeur": "VCOD",
+      "heures": 60,
       "competences": ["C2", "C3"],
       "acs": ["AC22.01", "AC22.02", "AC22.05", "AC21.06", "AC23.01", "AC23.02", "AC23.05", "AC43.04"],
       "ressources": ["R3.09", "R3.11"],
       "description": "Analyser une série temporelle et proposer des prévisions à court ou moyen terme."
     },
     {
-      "id": "SAE_304",
       "code": "SAÉ 3.04",
       "titre": "Conformité réglementaire pour traiter des données",
       "semestre": 3,
-      "heures": 40,
       "valeur": "VCOD",
+      "heures": 70,
       "competences": ["C1", "C2", "C3"],
       "acs": ["AC21.01", "AC23.01", "AC23.03", "AC23.04", "AC25.01"],
       "ressources": ["R3.02", "R3.08", "R3.09", "R3.11"],
@@ -355,24 +347,22 @@
     },
 
     {
-      "id": "SAE_401",
       "code": "SAÉ 4.01",
       "titre": "Développement d’un composant d’une solution décisionnelle",
       "semestre": 4,
-      "heures": 60,
       "valeur": "VCOD",
+      "heures": 90,
       "competences": ["C4", "C1", "C3"],
       "acs": ["AC21.01", "AC21.02", "AC21.03", "AC21.04", "AC21.05", "AC23.01", "AC23.02", "AC23.03", "AC24.01", "AC24.02", "AC24.03", "AC24.04"],
       "ressources": ["R4.01", "R4.07", "R4.08", "R4.09"],
       "description": "Concevoir et développer un composant logiciel interopérable dans une chaîne décisionnelle."
     },
     {
-      "id": "SAE_402",
       "code": "SAÉ 4.02",
       "titre": "Reporting d’une analyse multivariée",
       "semestre": 4,
-      "heures": 60,
       "valeur": "VCOD",
+      "heures": 90,
       "competences": ["C1", "C2", "C3"],
       "acs": ["AC21.01", "AC21.04", "AC21.05", "AC22.01", "AC22.02", "AC22.05", "AC23.01", "AC23.02", "AC23.03", "AC23.04"],
       "ressources": ["R4.01", "R4.02", "R4.03", "R4.05", "R4.07"],
@@ -380,36 +370,33 @@
     },
 
     {
-      "id": "SAE_501",
       "code": "SAÉ 5.01",
       "titre": "Analyse et conception d’un outil décisionnel",
       "semestre": 5,
-      "heures": 80,
       "valeur": "VCOD",
+      "heures": 60,
       "competences": ["C1", "C2", "C3", "C4"],
       "acs": ["AC31.02", "AC31.03", "AC32.02", "AC33.01", "AC33.02", "AC33.03", "AC33.04", "AC33.05", "AC34.01", "AC34.02", "AC34.03", "AC34.04"],
       "ressources": ["R4.01", "R5.05", "R5.06"],
       "description": "Analyser les besoins d’un client et spécifier un futur outil décisionnel."
     },
     {
-      "id": "SAE_502",
       "code": "SAÉ 5.02",
       "titre": "Migration de données vers ou depuis un environnement NoSQL",
       "semestre": 5,
-      "heures": 60,
       "valeur": "VCOD",
+      "heures": 50,
       "competences": ["C1", "C3", "C4"],
       "acs": ["AC31.02", "AC31.03", "AC33.01", "AC33.03", "AC33.05"],
       "ressources": ["R5.05"],
       "description": "Concevoir et mettre en œuvre la migration de données entre bases relationnelles et NoSQL."
     },
     {
-      "id": "SAE_503",
       "code": "SAÉ 5.03",
       "titre": "Mise en œuvre d’un processus de Datamining",
       "semestre": 5,
-      "heures": 60,
       "valeur": "VCOD",
+      "heures": 50,
       "competences": ["C2", "C3"],
       "acs": ["AC52.01", "AC52.02", "AC52.03", "AC53.01", "AC53.02", "AC53.03", "AC53.04"],
       "ressources": ["R4.01", "R5.05", "R5.06", "R5.05"],
@@ -417,12 +404,11 @@
     },
 
     {
-      "id": "SAE_601",
       "code": "SAÉ 6.01",
       "titre": "Développement et test d’un outil décisionnel",
       "semestre": 6,
-      "heures": 260,
       "valeur": "VCOD",
+      "heures": 120,
       "competences": ["C1", "C2", "C3", "C4"],
       "acs": ["AC11.01", "AC12.03", "AC22.05"],
       "ressources": ["R5.01", "R5.06", "R5.07", "R6.01"],
@@ -451,7 +437,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_101/3.png",
       "description": "Diaporama ou support utilisé lors de la soutenance."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 1.02",
@@ -466,7 +451,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_102/2.png",
       "description": "Code pour la lecture et l'écriture des fichiers."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 1.03",
@@ -488,7 +472,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_103/3.png",
       "description": "Jeu de données initial utilisé."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 1.04",
@@ -503,7 +486,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_104/2.png",
       "description": "Support de présentation."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 1.05",
@@ -525,7 +507,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_105/3.png",
       "description": "Carte ou illustration du territoire étudié."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 1.06",
@@ -540,7 +521,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_106/2.png",
       "description": "Support de présentation."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 2.01",
@@ -562,7 +542,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_201/3.png",
       "description": "Rapport expliquant les choix de modélisation."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 2.02",
@@ -577,7 +556,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_202/2.png",
       "description": "Code utilisé pour les simulations d'échantillonnage."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 2.03",
@@ -599,7 +577,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_203/3.png",
       "description": "Support de présentation."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 2.04",
@@ -614,7 +591,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_204/2.png",
       "description": "Image de la datavisualisation réalisée."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 2.05",
@@ -636,7 +612,6 @@
       "fichier": "PREUVES/BUT_1er_annee/SAE_205/3.png",
       "description": "Support de présentation."
     },
-
     {
       "annee": "BUT1",
       "sae": "SAÉ 2.06",
@@ -673,7 +648,6 @@
       "fichier": "PREUVES/BUT_2e_annee/SAE_301/3.png",
       "description": "Rapport détaillant la méthode et les outils de collecte."
     },
-
     {
       "annee": "BUT2",
       "sae": "SAÉ 3.02",
@@ -688,7 +662,6 @@
       "fichier": "PREUVES/BUT_2e_annee/SAE_302/2.png",
       "description": "Capture d'écran du workflow d'intégration (ETL/ELT)."
     },
-
     {
       "annee": "BUT2",
       "sae": "SAÉ 3.03",
@@ -710,7 +683,6 @@
       "fichier": "PREUVES/BUT_2e_annee/SAE_303/3.png",
       "description": "Visualisation de la prévision et de l'intervalle de confiance."
     },
-
     {
       "annee": "BUT2",
       "sae": "SAÉ 3.04",
@@ -725,7 +697,6 @@
       "fichier": "PREUVES/BUT_2e_annee/SAE_304/2.png",
       "description": "Checklist des exigences réglementaires."
     },
-
     {
       "annee": "BUT2",
       "sae": "SAÉ 4.01",
@@ -747,7 +718,6 @@
       "fichier": "PREUVES/BUT_2e_annee/SAE_401/3.png",
       "description": "Rapport technique décrivant le développement et les tests."
     },
-
     {
       "annee": "BUT2",
       "sae": "SAÉ 4.02",
@@ -784,7 +754,6 @@
       "fichier": "PREUVES/BUT_3e_annee/SAE_501/3.png",
       "description": "Rapport justifiant les choix d'analyse et de conception."
     },
-
     {
       "annee": "BUT3",
       "sae": "SAÉ 5.02",
@@ -799,7 +768,6 @@
       "fichier": "PREUVES/BUT_3e_annee/SAE_502/2.png",
       "description": "Code (ex: Python) du script de migration de données."
     },
-
     {
       "annee": "BUT3",
       "sae": "SAÉ 5.03",
@@ -821,7 +789,6 @@
       "fichier": "PREUVES/BUT_3e_annee/SAE_503/3.png",
       "description": "Support de présentation pour la soutenance."
     },
-
     {
       "annee": "BUT3",
       "sae": "SAÉ 6.01",
