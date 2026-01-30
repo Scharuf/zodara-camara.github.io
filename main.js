@@ -118,7 +118,7 @@ function computeStatsForSemester(semValue) {
 
   // Tous semestres
   if (!semValue) {
-    const total_hours = computeTotalHoursFromSaeList(allSae);
+    const total_hours = Number(DATA.stats?.total_hours ?? computeTotalHoursFromSaeList(allSae));
     const hours_by_competence = computeHoursByCompetenceFromSaeList(allSae);
 
     const nb_sae_total = allSae.length;
@@ -144,7 +144,7 @@ function computeStatsForSemester(semValue) {
   const year = semesterToYearLabel(semNum);
   const preuvesSem = year ? allPreuves.filter((p) => p.annee === year) : allPreuves;
 
-  const total_hours = computeTotalHoursFromSaeList(saeSem);
+  const total_hours = Number(DATA.stats?.hours_by_semestre?.[`S${semNum}`] ?? computeTotalHoursFromSaeList(saeSem));
   const hours_by_competence = computeHoursByCompetenceFromSaeList(saeSem);
 
   const nb_sae_total = saeSem.length;
