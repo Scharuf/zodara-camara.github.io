@@ -1,4 +1,5 @@
 // main.js – version statique pour GitHub Pages (portfolio.json)
+// Version "heures exactes" : calcule tout à partir de DATA.sae[].heures
 
 let DATA = null;
 
@@ -9,6 +10,8 @@ let radarSaeChart = null;
 
 let currentSemFilter = null; // null = tous les semestres
 let SAE_KEY_FOR_PREUVES = "id"; // lien SAÉ <-> preuves ("id" ou "code")
+
+let updateRessourcesForSemesterFn = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("portfolio.json")
@@ -28,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       initCharts(initialStats); // ne fait rien si Chart.js absent
       initSaeView();
       initCompetencesView();
-      initRessourcesView();
+      initRessourcesView(); // <- devient filtrable par semestre
       initNavigation();
       initThemeToggle();
       initCvButtons();
@@ -58,7 +61,7 @@ function parseSemValue(semValue) {
 }
 
 // ---------------------------------------------------------
-// Détection de la clé utilisée pour relier SAÉ et preuves
+// Détection de la clé SAÉ utilisée dans "preuves[].sae"
 // ---------------------------------------------------------
 function detectSaeKeyForPreuves() {
   if (!DATA || !DATA.preuves || DATA.preuves.length === 0) return;
@@ -74,70 +77,72 @@ function detectSaeKeyForPreuves() {
 }
 
 // ---------------------------------------------------------
-// Calcul des stats en fonction du semestre
+// Calcul EXACT des heures par compétence à partir des SAÉ
+// Règle : si une SAÉ cible k compétences -> on partage ses heures équitablement
+// (répartition en entiers avec gestion du reste)
 // ---------------------------------------------------------
-function computeStatsForSemester(semValue) {
-  const baseStats = DATA.stats;
-  const allHoursByComp = baseStats.hours_by_competence;
-  const compKeys = Object.keys(allHoursByComp);
+function computeHoursByCompetenceFromSae(semNumOrNull) {
+  const compKeys = DATA.competences ? Object.keys(DATA.competences) : ["C1", "C2", "C3", "C4"];
+  const hours = {};
+  compKeys.forEach((c) => (hours[c] = 0));
 
-  // Tous semestres
-  if (!semValue) {
-    const nb_sae_total = Array.isArray(DATA.sae) ? DATA.sae.length : 0;
-    const nb_sae_vcod = Array.isArray(DATA.sae)
-      ? DATA.sae.filter((s) => s.valeur === "VCOD").length
-      : 0;
+  let total = 0;
 
-    return {
-      total_hours: baseStats.total_hours,
-      nb_sae_total,
-      nb_sae_vcod,
-      nb_preuves: baseStats.nb_preuves,
-      nb_ressources: Array.isArray(DATA.ressources) ? DATA.ressources.length : 0,
-      hours_by_competence: { ...allHoursByComp },
-    };
-  }
+  (DATA.sae || []).forEach((sae) => {
+    if (semNumOrNull && sae.semestre !== semNumOrNull) return;
 
-  const semNum = parseSemValue(semValue);
-  if (!semNum) return computeStatsForSemester(null);
+    const h = Number.isFinite(sae.heures) ? sae.heures : 0;
+    const comps = Array.isArray(sae.competences) ? sae.competences.filter(Boolean) : [];
 
-  const saeSem = (DATA.sae || []).filter((s) => s.semestre === semNum);
-  const nb_sae_total = saeSem.length;
-  const nb_sae_vcod = saeSem.filter((s) => s.valeur === "VCOD").length;
+    if (h <= 0 || comps.length === 0) return;
 
-  const ressourcesSem = (DATA.ressources || []).filter((r) => r.semestre === semNum);
-  const nb_ressources = ressourcesSem.length;
+    total += h;
 
-  // Répartition approx des heures par compétence (ratio occurrences SAÉ)
-  const totalOccur = {};
-  const semOccur = {};
-  compKeys.forEach((c) => {
-    totalOccur[c] = 0;
-    semOccur[c] = 0;
-  });
+    const k = comps.length;
+    const base = Math.floor(h / k);
+    let rest = h - base * k;
 
-  (DATA.sae || []).forEach((s) => {
-    (s.competences || []).forEach((c) => {
-      if (totalOccur[c] !== undefined) totalOccur[c] += 1;
-      if (s.semestre === semNum && semOccur[c] !== undefined) semOccur[c] += 1;
+    comps.forEach((c) => {
+      if (hours[c] === undefined) hours[c] = 0;
+      const add = base + (rest > 0 ? 1 : 0);
+      hours[c] += add;
+      if (rest > 0) rest -= 1;
     });
   });
 
-  const hoursByCompSem = {};
-  compKeys.forEach((c) => {
-    const totOcc = totalOccur[c];
-    hoursByCompSem[c] = totOcc === 0 ? 0 : Math.round(allHoursByComp[c] * (semOccur[c] / totOcc));
-  });
+  return { total_hours: total, hours_by_competence: hours };
+}
 
-  const total_hours = Object.values(hoursByCompSem).reduce((sum, h) => sum + h, 0);
+// ---------------------------------------------------------
+// Calcul des stats en fonction du semestre (EXACT via SAÉ.heures)
+// ---------------------------------------------------------
+function computeStatsForSemester(semValue) {
+  const semNum = semValue ? parseSemValue(semValue) : null;
+
+  const saeFiltered = semNum ? DATA.sae.filter((s) => s.semestre === semNum) : DATA.sae;
+  const nb_sae_total = saeFiltered.length;
+  const nb_sae_vcod = saeFiltered.filter((s) => s.valeur === "VCOD").length;
+
+  const ressourcesFiltered = semNum ? DATA.ressources.filter((r) => r.semestre === semNum) : DATA.ressources;
+  const nb_ressources = ressourcesFiltered.length;
+
+  // heures exactes par compétence via SAÉ.heures
+  const { total_hours, hours_by_competence } = computeHoursByCompetenceFromSae(semNum);
+
+  // preuves : on filtre par année BUT correspondant au semestre (S1..S6)
+  let nb_preuves = (DATA.preuves || []).length;
+  if (semNum) {
+    const year = semesterToYearLabel(semNum);
+    if (year) nb_preuves = (DATA.preuves || []).filter((p) => p.annee === year).length;
+  }
 
   return {
     total_hours,
     nb_sae_total,
     nb_sae_vcod,
-    nb_preuves: baseStats.nb_preuves,
+    nb_preuves,
     nb_ressources,
-    hours_by_competence: hoursByCompSem,
+    hours_by_competence
   };
 }
 
@@ -146,7 +151,7 @@ function computeStatsForSemester(semValue) {
 // ---------------------------------------------------------
 function initKpis(stats) {
   updateKpis(stats);
-  updateProofsLink(); // lien preuves dépend du semestre
+  updateProofsLink();
 }
 
 function updateKpis(stats) {
@@ -159,7 +164,7 @@ function updateKpis(stats) {
   if (!kHours || !kSplit || !kVCOD || !kRess || !kProofHint) return;
 
   kHours.textContent = stats.total_hours;
-  kVCOD.textContent = stats.nb_sae_vcod; // SAÉ VCOD uniquement
+  kVCOD.textContent = stats.nb_sae_vcod;
   kRess.textContent = stats.nb_ressources;
   kProofHint.textContent = `Preuves : ${stats.nb_preuves}`;
 
@@ -172,28 +177,23 @@ function updateProofsLink() {
   const btn = document.getElementById("btnProofs");
   if (!btn) return;
 
-  btn.href = currentSemFilter
-    ? `preuve.html?sem=${encodeURIComponent(currentSemFilter)}`
-    : "preuve.html";
+  btn.href = currentSemFilter ? `preuve.html?sem=${encodeURIComponent(currentSemFilter)}` : "preuve.html";
 }
 
 // ---------------------------------------------------------
 // Graphiques (Chart.js)
 // ---------------------------------------------------------
 function initCharts(stats) {
-  // Si Chart.js n’est pas chargé (ex: preuve.html), on ne fait rien
   if (typeof Chart === "undefined") return;
 
-  const hoursByComp = stats.hours_by_competence;
-  const labels = Object.keys(hoursByComp);
-  const values = Object.values(hoursByComp);
+  const labels = Object.keys(stats.hours_by_competence);
+  const values = Object.values(stats.hours_by_competence);
 
   const barCanvas = document.getElementById("bar");
   const donutCanvas = document.getElementById("donut");
   const radarCanvas = document.getElementById("radar");
   const radarSaeCanvas = document.getElementById("radar-sae");
 
-  // BAR
   if (barCanvas) {
     barChart = new Chart(barCanvas.getContext("2d"), {
       type: "bar",
@@ -203,21 +203,17 @@ function initCharts(stats) {
         plugins: { legend: { display: false } },
         scales: {
           x: { title: { display: true, text: "Compétence" } },
-          y: { title: { display: true, text: "Heures" }, beginAtZero: true },
-        },
-      },
+          y: { title: { display: true, text: "Heures" }, beginAtZero: true }
+        }
+      }
     });
   }
 
-  // DONUT (la proportion est correcte car Chart.js calcule la part à partir des valeurs)
-  // Tooltip : affiche % + heures
+  // Donut : proportions + heures (proportion calculée automatiquement par Chart)
   if (donutCanvas) {
     donutChart = new Chart(donutCanvas.getContext("2d"), {
       type: "doughnut",
-      data: {
-        labels,
-        datasets: [{ label: "Répartition des heures", data: values }],
-      },
+      data: { labels, datasets: [{ label: "Répartition", data: values }] },
       options: {
         responsive: true,
         plugins: {
@@ -226,18 +222,17 @@ function initCharts(stats) {
             callbacks: {
               label: (context) => {
                 const value = context.parsed; // heures
-                const total = (context.dataset.data || []).reduce((a, b) => a + b, 0);
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
                 const pct = total ? ((value / total) * 100).toFixed(1) : "0.0";
                 return `${context.label} : ${pct}% (${value} h)`;
-              },
-            },
-          },
-        },
-      },
+              }
+            }
+          }
+        }
+      }
     });
   }
 
-  // RADAR GLOBAL
   if (radarCanvas) {
     radarHomeChart = new Chart(radarCanvas.getContext("2d"), {
       type: "radar",
@@ -245,26 +240,25 @@ function initCharts(stats) {
       options: {
         responsive: true,
         plugins: { legend: { display: false } },
-        scales: { r: { beginAtZero: true, suggestedMax: Math.max(...values) + 20 } },
-      },
+        scales: { r: { beginAtZero: true, suggestedMax: Math.max(...values) + 20 } }
+      }
     });
   }
 
   updateDonutLegend(labels, values);
 
-  // RADAR SAÉ
   if (radarSaeCanvas) {
     radarSaeChart = new Chart(radarSaeCanvas.getContext("2d"), {
       type: "radar",
       data: {
         labels: ["C1", "C2", "C3", "C4"],
-        datasets: [{ label: "Poids des compétences dans la SAÉ", data: [0, 0, 0, 0] }],
+        datasets: [{ label: "Compétences SAÉ", data: [0, 0, 0, 0] }]
       },
       options: {
         responsive: true,
         plugins: { legend: { display: false } },
-        scales: { r: { beginAtZero: true, suggestedMax: 3 } },
-      },
+        scales: { r: { beginAtZero: true, suggestedMax: 3 } }
+      }
     });
   }
 }
@@ -272,9 +266,8 @@ function initCharts(stats) {
 function updateCharts(stats) {
   if (typeof Chart === "undefined") return;
 
-  const hoursByComp = stats.hours_by_competence;
-  const labels = Object.keys(hoursByComp);
-  const values = Object.values(hoursByComp);
+  const labels = Object.keys(stats.hours_by_competence);
+  const values = Object.values(stats.hours_by_competence);
 
   if (barChart) {
     barChart.data.labels = labels;
@@ -303,8 +296,6 @@ function updateDonutLegend(labels, values) {
   if (!legendContainer) return;
 
   const total = values.reduce((a, b) => a + b, 0);
-
-  // Légende : % + heures (plus "juste" visuellement)
   legendContainer.innerHTML = labels
     .map((c, i) => {
       const pct = total ? ((values[i] / total) * 100).toFixed(1) : "0.0";
@@ -324,10 +315,11 @@ function updateDashboardForSemester(semValue) {
   updateCharts(stats);
   updateProofsLink();
 
-  // ✅ met à jour la table des ressources
-  initRessourcesView(currentSemFilter);
+  // ✅ ressources filtrées selon semestre
+  if (typeof updateRessourcesForSemesterFn === "function") {
+    updateRessourcesForSemesterFn(currentSemFilter);
+  }
 }
-
 
 // ---------------------------------------------------------
 // Vue SAÉ & Projets
@@ -376,7 +368,7 @@ function initSaeView() {
     dTitle.textContent = `${sae.code} — Semestre S${sae.semestre}`;
 
     const compLabels = (sae.competences || []).map((c) => {
-      const meta = DATA.competences && DATA.competences[c];
+      const meta = DATA.competences[c];
       return meta ? `${c} — ${meta.label}` : c;
     });
 
@@ -396,6 +388,7 @@ function initSaeView() {
     dBody.innerHTML = `
       <p><strong>Titre :</strong> ${sae.titre}</p>
       <p><strong>Semestre :</strong> S${sae.semestre}</p>
+      <p><strong>Heures :</strong> ${Number.isFinite(sae.heures) ? sae.heures : 0} h</p>
       <p><strong>Valeur :</strong> ${sae.valeur}</p>
       <p><strong>Compétences ciblées :</strong> ${compLabels.length ? compLabels.join(", ") : "—"}</p>
       <p><strong>Description :</strong> ${sae.description || "—"}</p>
@@ -407,7 +400,7 @@ function initSaeView() {
       ${resLines.length ? `<ul>${resLines.join("")}</ul>` : '<p class="muted">Aucune ressource renseignée.</p>'}
     `;
 
-    // Radar SAÉ
+    // Radar SAÉ (présence/absence)
     if (radarSaeChart) {
       const labels = ["C1", "C2", "C3", "C4"];
       const data = labels.map((c) => (sae.competences && sae.competences.includes(c) ? 3 : 0));
@@ -416,14 +409,13 @@ function initSaeView() {
       radarSaeChart.update();
     }
 
-    // Explication perso
     const blocExplication = document.getElementById("sae-explication");
     if (blocExplication) blocExplication.textContent = sae.explication || sae.description || "";
 
     // Bouton preuves SAÉ : ?sae=...&sem=Sx
     const lienPreuves = document.getElementById("btn-preuves-sae");
     if (lienPreuves) {
-      const keyValue = SAE_KEY_FOR_PREUVES === "code" ? sae.code : sae.id || sae.code;
+      const keyValue = SAE_KEY_FOR_PREUVES === "code" ? sae.code : (sae.id || sae.code);
 
       const qs = new URLSearchParams();
       qs.set("sae", keyValue);
@@ -453,68 +445,72 @@ function initCompetencesView() {
   const container = document.getElementById("compBadges");
   if (!container || !DATA) return;
 
-  const hoursByComp = (DATA.stats && DATA.stats.hours_by_competence) || {};
-
+  const compKeys = Object.keys(DATA.competences || {});
   container.innerHTML = "";
-  Object.entries(DATA.competences || {}).forEach(([code, meta]) => {
+
+  // Affiche sur le global (tous semestres) -> calcul exact
+  const { hours_by_competence, total_hours } = computeHoursByCompetenceFromSae(null);
+
+  compKeys.forEach((code) => {
+    const meta = DATA.competences[code];
+    const h = hours_by_competence[code] ?? 0;
+    const pct = total_hours ? ((h / total_hours) * 100).toFixed(1) : "0.0";
+
     const chip = document.createElement("div");
     chip.className = "chip chip-large";
-    const h = hoursByComp[code] ?? 0;
-
     chip.innerHTML = `
       <div><strong>${code}</strong> — ${meta.label}</div>
       <div class="muted">${meta.description}</div>
-      <div class="muted">Heures totales associées : ${h} h</div>
+      <div class="muted">Total : ${h} h (${pct}%)</div>
     `;
     container.appendChild(chip);
   });
 }
 
 // ---------------------------------------------------------
-// Vue Ressources (corrigée)
+// Vue Ressources (FILTRABLE par semestre)
 // ---------------------------------------------------------
-// ---------------------------------------------------------
-// Vue Ressources (interactive avec le semestre)
-// ---------------------------------------------------------
-function initRessourcesView(filterSem = null) {
+function initRessourcesView() {
   const container = document.getElementById("ressTable");
   if (!container || !DATA) return;
 
-  const semNum = filterSem ? parseSemValue(filterSem) : null;
+  function renderTable(semValue) {
+    const semNum = semValue ? parseSemValue(semValue) : null;
+    const list = semNum ? DATA.ressources.filter((r) => r.semestre === semNum) : DATA.ressources;
 
-  const ressources = semNum
-    ? (DATA.ressources || []).filter((r) => Number(r.semestre) === semNum)
-    : (DATA.ressources || []);
-
-  const rows = ressources
-    .map(
-      (r) => `
-      <tr>
-        <td>${r.code}</td>
-        <td>${r.titre}</td>
-        <td>S${r.semestre}</td>
-      </tr>
-    `
-    )
-    .join("");
-
-  container.innerHTML = `
-    <table class="table">
-      <thead>
+    const rows = list
+      .map(
+        (r) => `
         <tr>
-          <th>Code</th>
-          <th>Titre</th>
-          <th>Semestre</th>
+          <td>${r.code}</td>
+          <td>${r.titre}</td>
+          <td>S${r.semestre}</td>
         </tr>
-      </thead>
-      <tbody>
-        ${
-          rows ||
-          `<tr><td colspan="3" class="muted" style="padding:14px;">Aucune ressource pour ce semestre.</td></tr>`
-        }
-      </tbody>
-    </table>
-  `;
+      `
+      )
+      .join("");
+
+    container.innerHTML = `
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Titre</th>
+            <th>Semestre</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows || `<tr><td colspan="3" class="muted">Aucune ressource pour ce semestre.</td></tr>`}
+        </tbody>
+      </table>
+    `;
+  }
+
+  // expose une fonction que le dashboard appellera au changement de semestre
+  updateRessourcesForSemesterFn = (semValue) => renderTable(semValue);
+
+  // rendu initial
+  renderTable(null);
 }
 
 // ---------------------------------------------------------
@@ -532,18 +528,15 @@ function initPreuvesPage() {
 
   let preuves = DATA.preuves || [];
 
-  // Filtre semestre -> année BUT
   if (semParam) {
     const semNum = parseSemValue(semParam);
     const year = semesterToYearLabel(semNum);
-
     if (year) {
       preuves = preuves.filter((p) => p.annee === year);
       if (texteFiltre) texteFiltre.textContent = `Preuves du semestre ${semParam} (${year})`;
     }
   }
 
-  // Filtre SAÉ (en plus)
   if (saeParam) {
     preuves = preuves.filter((p) => p.sae === saeParam);
     if (texteFiltre) {
@@ -602,10 +595,7 @@ function initNavigation() {
   links.forEach((a) => {
     a.addEventListener("click", (e) => {
       const v = a.dataset.view;
-
-      // ✅ si pas de data-view, on laisse le lien normal fonctionner
-      if (!v) return;
-
+      if (!v) return; // lien normal
       e.preventDefault();
       showView(v);
     });
