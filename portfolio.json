@@ -5,16 +5,16 @@
     "but": "BUT Science des Données"
   },
   "stats": {
-    "total_hours": 1390,
+    "total_hours": 1850,
     "nb_sae": 20,
     "nb_preuves": 48,
     "hours_by_semestre": {
-      "S1": 340,
-      "S2": 330,
+      "S1": 650,
+      "S2": 450,
       "S3": 260,
       "S4": 180,
       "S5": 160,
-      "S6": 120
+      "S6": 150
     },
     "hours_by_competence": {
       "C1": 405,
@@ -805,3 +805,4 @@
     }
   ]
 }
+
